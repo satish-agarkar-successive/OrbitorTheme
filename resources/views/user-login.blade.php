@@ -17,6 +17,23 @@
     <link href="{{ asset('assets/css/flag-icon.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <!-- End CSS -->
+
+    <style type="text/css">
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+          -moz-appearance: textfield;
+        }
+
+    </style>
+
+
 </head>
 <body class="vertical-layout">
     <!-- Start Containerbar -->
@@ -32,16 +49,22 @@
                         <div class="auth-box-right">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="#">
+
+                                    <form action="{{url('/')}}/login" method="post">
+
+                                        {{ csrf_field() }}
+
                                         <div class="form-head">
                                             <a href="{{url('/')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
                                         </div>                                        
                                         <h4 class="text-primary my-4">Log in !</h4>
+                                        
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="username" placeholder="Enter Username here" required>
+                                            <input type="number" class="form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number here" title="Mobile Number Must Be Number Only And Max 10 Digit" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);" required>
                                         </div>
+
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" placeholder="Enter Password here" required>
+                                            <input type="password" class="form-control" name="password" placeholder="Enter Password here" required>
                                         </div>
                                         <div class="form-row mb-3">
                                             <div class="col-sm-6">
@@ -55,17 +78,28 @@
                                                 <a id="forgot-psw" href="{{url('/user-forgotpsw')}}" class="font-14">Forgot Password?</a>
                                               </div>
                                             </div>
-                                        </div>                          
+                                        </div>              
+
+  
+   @if (count($errors) > 0)
+    <div class="alert alert-danger">
+     <ul>
+     @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+     @endforeach
+     </ul>
+    </div>
+    @endif 
+
+
+
+
                                       <button type="submit" class="btn btn-success btn-lg btn-block font-18">Log in</button>
                                     </form>
                                     <div class="login-or">
                                         <h6 class="text-muted">OR</h6>
                                     </div>
-                                    <div class="social-login text-center">
-                                        <button type="submit" class="btn btn-primary-rgba font-18"><i class="mdi mdi-facebook mr-2"></i>Facebook</button>
-                                        <button type="submit" class="btn btn-danger-rgba font-18"><i class="mdi mdi-google mr-2"></i>Google</button>
-                                    </div>
-                                    <p class="mb-0 mt-3">Don't have a account? <a href="{{url('/user-register')}}">Sign up</a></p>
+                                    <p class="mb-0 mt-3">Don't have a account? <a href="{{url('/register')}}">Sign up</a></p>
                                 </div>
                             </div>
                         </div>

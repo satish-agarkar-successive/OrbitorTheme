@@ -1,5 +1,14 @@
 <?php
 
+
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Crypt;
+use Illuminate\Contracts\Encryption\DecryptException;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +21,25 @@
 */
 
 Route::get('/', function () {
-    return view('index');
+    return redirect('/home');
 });
+
+
+Route::get('/home', 'HomeController@index');
+
+//Route::get('/login', 'LoginLogoutController@index');
+Route::post('/login', 'LoginLogoutController@login');
+
+
+Route::get('/logout', 'LoginLogoutController@logout');
+
+
+Route::get('/register', 'RegisterController@index');
+Route::post('/register', 'RegisterController@register');
+
+
+
+
 Route::get('/advanced-ui-kits-image-crop', function () {
     return view('advanced-ui-kits-image-crop');
 });

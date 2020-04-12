@@ -32,34 +32,53 @@
                         <div class="auth-box-right">
                             <div class="card">
                                 <div class="card-body">
-                                    <form action="#">
+                                    <form method="POST" action="{{url('/')}}/register" >
+
+                                        {{ csrf_field() }}
+
+
                                         <div class="form-head">
                                             <a href="{{url('/')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
                                         </div> 
                                         <h4 class="text-primary my-4">Sign Up !</h4>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" id="username" placeholder="Enter Username here" required>
+                                            <input type="text" class="form-control" value="{{ old('name') }}" name="name" placeholder="Enter Username here" required> 
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" class="form-control" id="email" placeholder="Enter Email here" required>
+                                            <input type="number" class="form-control" value="{{ old('phone') }}" name="phone" placeholder="Enter Mobile Number here" title="Mobile Number Must Be Number Only And Max 10 Digit" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="password" placeholder="Enter Password here" required>
+                                            <input type="password" class="form-control" name="password" placeholder="Enter Password here" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" id="re-password" placeholder="Re-Type Password" required>
+                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Re-Type Password" required>
                                         </div>
                                         <div class="form-row mb-3">
                                             <div class="col-sm-12">
                                                 <div class="custom-control custom-checkbox text-left">
-                                                    <input type="checkbox" class="custom-control-input" id="terms">
+                                                    <input type="checkbox" class="custom-control-input" id="terms" name="term" >
                                                     <label class="custom-control-label font-14" for="terms">I Agree to Terms & Conditions of Orbiter</label>
                                                 </div>                                
                                             </div>
-                                        </div>                          
+                                        </div>                      
+
+
+    @if (count($errors) > 0)
+    <div class="alert alert-danger">
+     <ul>
+     @foreach($errors->all() as $error)
+      <li>{{ $error }}</li>
+     @endforeach
+     </ul>
+    </div>
+    @endif 
+
+
+
+
                                       <button type="submit" class="btn btn-success btn-lg btn-block font-18">Register</button>
                                     </form>
-                                    <p class="mb-0 mt-3">Already have an account? <a href="{{url('/user-login')}}">Log in</a></p>
+                                    <p class="mb-0 mt-3">Already have an account? <a href="{{url('/')}}">Log in</a></p>
                                 </div>
                             </div>
                         </div>
