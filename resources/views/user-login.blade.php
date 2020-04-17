@@ -92,6 +92,15 @@
     @endif 
 
 
+     @if(isset($_GET['err']))
+     <div class="alert alert-danger">
+         <ul>
+                <li> <?php Print($_GET['err']); ?> </li>
+         </ul>
+     </div>
+     @endif
+
+
 
 
                                       <button type="submit" class="btn btn-success btn-lg btn-block font-18">Log in</button>

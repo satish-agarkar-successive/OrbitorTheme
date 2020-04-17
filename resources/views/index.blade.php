@@ -10,9 +10,10 @@ Orbiter - Home
 <link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 @endsection 
 @section('rightbar-content')
+
 <!-- Start Breadcrumbbar --> 
-<div class="breadcrumbbar">
-    <div class="row align-items-center">
+<div class="breadcrumbbar" style="display: none;" >
+   <!--  <div class="row align-items-center">
         <div class="col-md-8 col-lg-8">
             <h4 class="page-title">CRM</h4>
             <div class="breadcrumb-list">
@@ -28,11 +29,12 @@ Orbiter - Home
                 <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
             </div>                        
         </div>
-    </div>          
+    </div>       -->    
 </div>
 <!-- End Breadcrumbbar -->
+
 <!-- Start Contentbar -->    
-<div class="contentbar">                
+<div class="contentbar" style="margin-top:10%;">                
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->

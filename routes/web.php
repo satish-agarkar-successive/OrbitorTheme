@@ -9,27 +9,9 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/', function () {
-    return redirect('/home');
-});
-
-
-Route::get('/home', 'HomeController@index');
-
-//Route::get('/login', 'LoginLogoutController@index');
+Route::get('/login', 'LoginLogoutController@index')->name('login');
 Route::post('/login', 'LoginLogoutController@login');
-
 
 Route::get('/logout', 'LoginLogoutController@logout');
 
@@ -38,6 +20,12 @@ Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@register');
 
 
+Route::get('/', function () {
+    return redirect('/home');
+})->middleware('auth');  // this middleware calls http / middleware / authenticate controller
+
+
+Route::get('/home', 'HomeController@index')->middleware('auth');
 
 
 Route::get('/advanced-ui-kits-image-crop', function () {

@@ -14,8 +14,14 @@ class Authenticate extends Middleware
      */
     protected function redirectTo($request)
     {
+
+        // if login has happened and session is active then , http / middleware / RedirectIfAuthenticated controller is called
+
         if (! $request->expectsJson()) {
-            return route('login');
+            return route('login'); // this is for ->name('login');
         }
+
+
+
     }
 }

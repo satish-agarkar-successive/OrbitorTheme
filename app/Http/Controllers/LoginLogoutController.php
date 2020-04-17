@@ -12,14 +12,15 @@ class LoginLogoutController extends Controller
 {
 	function index()
     {
-    	Auth::logout();
+    	if( Auth::check() ) { return redirect('/home'); }
+    	//Auth::logout();
     	return view('user-login');
     }
 
     function login(Request $request)
     {
 
-    	// if( Auth::check() ) { return redirect('/home'); }
+    	if( Auth::check() ) { return redirect('/home'); }
 
 
 	    $rules = [
@@ -53,8 +54,7 @@ class LoginLogoutController extends Controller
 	     }
 	     else
 	     {
-	     	$errors = ['Invalid Phone Number Or Password.'];
-	        return Redirect::action('LoginLogoutController@page')->withErrors($errors);
+	     	return Redirect('/home?err=Invalid Phone Number Or Password.');
 	     }
 
     }
