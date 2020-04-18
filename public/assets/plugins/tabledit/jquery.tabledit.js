@@ -106,6 +106,9 @@ if (typeof jQuery === 'undefined') {
                     });
                 },
                 editable: function() {
+
+                    console.log("sdasf");
+
                     for (var i = 0; i < settings.columns.editable.length; i++) {
                         var $td = $table.find('tbody td:nth-child(' + (parseInt(settings.columns.editable[i][0]) + 1) + ')');
 

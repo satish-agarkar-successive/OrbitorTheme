@@ -11,7 +11,7 @@ class UserController extends Controller
     	//this check is removed now since middle ware is used
     	//if( ! Auth::check() ) { return view('user-login'); }
 
-       	return view('advanced-ui-kits-image-crop');  //crm index view
+       	return view('table-editable');  //crm index view
 
     }
 }
