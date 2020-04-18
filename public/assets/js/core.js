@@ -16,6 +16,8 @@ $(document).ready(function() {
         }
     });
     /* -- Infobar Setting Sidebar -- */
+
+
     $("#infobar-settings-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
@@ -26,6 +28,74 @@ $(document).ready(function() {
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
         $("#infobar-settings-sidebar").removeClass("sidebarshow");
     });
+
+
+     $("#infobar-adduser-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-adduser-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-adduser-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-adduser-sidebar").removeClass("sidebarshow");
+    });
+
+
+    $("#infobar-edituser-open1").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edituser-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
+    });
+    $("#infobar-edituser-open2").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edituser-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
+    });
+    $("#infobar-edituser-open3").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edituser-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
+    });
+    $("#infobar-edituser-open4").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edituser-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
+    });
+    $("#infobar-edituser-open5").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edituser-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
+    });
+
+
+
+
     /* -- Menu Hamburger -- */
     $(".menu-hamburger").on("click", function(e) {
         e.preventDefault();

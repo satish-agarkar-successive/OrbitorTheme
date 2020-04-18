@@ -27,7 +27,9 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
-Route::get('/user', 'UserController@index')->middleware('auth');
+Route::get('/user', 'AdminUserController@index')->middleware('auth');
+
+Route::get('/properties', 'AdminPropertyController@index')->middleware('auth');
 
 
 

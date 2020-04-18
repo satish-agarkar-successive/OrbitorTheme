@@ -42,13 +42,16 @@
             <!-- Start row -->
             <div class="row align-items-center">
                 <!-- Start col -->
-                <div class="col-md-15 align-self-center">
-                    <div class="togglebar" >
-                                
-                                <div class="logobar" style="display:inline-block; float: left">
+                <div class="col-md-12 align-self-center">
+                    <div class="togglebar">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item">
+                                <div class="logobar">
                                     <a href="{{url('/')}}" class="logo logo-large"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
                                 </div>
+                            </li>
 
+                            <li class="list-inline-item">
 
                                 <!-- <div class="searchbar"> -->
 
@@ -62,7 +65,7 @@
                                         </div>
                                     </form> -->
 
-                                    <div class="infobar" style="display:inline-block; float: left; margin-left: 10px;"> 
+                                    <div class="infobar"> 
                                         <ul class="list-inline mb-0">
                                             <li class="list-inline-item">
                                                 <div class="settingbar">
@@ -169,6 +172,9 @@
 
                                 <!-- </div> -->
 
+                                
+                            </li>
+                        </ul>
                     </div>
 
 
@@ -213,7 +219,7 @@
     <!-- Start Footerbar -->
     <div class="footerbar">
         <footer class="footer">
-            <p class="mb-0">© 2020 Tenant Management System - All Rights Reserved.</p>
+            <p class="mb-0">© 2019 Orbiter - All Rights Reserved.</p>
         </footer>
     </div>
     <!-- End Footerbar -->
