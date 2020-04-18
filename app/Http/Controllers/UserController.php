@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    function index()
+    {
+    	//this check is removed now since middle ware is used
+    	//if( ! Auth::check() ) { return view('user-login'); }
+
+       	return view('advanced-ui-kits-image-crop');  //crm index view
+
+    }
+}

@@ -27,6 +27,10 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
+Route::get('/user', 'UserController@index')->middleware('auth');
+
+
+
 
 Route::get('/advanced-ui-kits-image-crop', function () {
     return view('advanced-ui-kits-image-crop');
