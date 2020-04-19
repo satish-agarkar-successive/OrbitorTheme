@@ -50,7 +50,7 @@
                             <div class="card">
                                 <div class="card-body">
 
-                                    <form action="{{url('/')}}/login" method="post">
+                                    <form id="form" action="{{url('/')}}/login" method="post">
 
                                         {{ csrf_field() }}
 
@@ -60,11 +60,11 @@
                                         <h4 class="text-primary my-4">Log in !</h4>
                                         
                                         <div class="form-group">
-                                            <input type="number" class="form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number here" title="Mobile Number Must Be Number Only And Max 10 Digit" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);" required>
+                                            <input type="number" id="phone" class="form-control"  name="phone" placeholder="Enter Mobile Number here" oninput="phoneOnInput();" required>
                                         </div>
 
                                         <div class="form-group">
-                                            <input type="password" class="form-control" name="password" placeholder="Enter Password here" required>
+                                            <input type="password" id="password"  class="form-control" name="password" placeholder="Enter Password here" required>
                                         </div>
                                         <div class="form-row mb-3">
                                             <div class="col-sm-6">
@@ -80,35 +80,16 @@
                                             </div>
                                         </div>              
 
-  
-   @if (count($errors) > 0)
-    <div class="alert alert-danger">
-     <ul>
-     @foreach($errors->all() as $error)
-      <li>{{ $error }}</li>
-     @endforeach
-     </ul>
-    </div>
-    @endif 
 
+<!-- error messages -->
+<div class="alert alert-danger" align="left" id="errors" style = "display: none;"> </div>
 
-     @if(isset($_GET['err']))
-     <div class="alert alert-danger">
-         <ul>
-                <li> <?php Print($_GET['err']); ?> </li>
-         </ul>
-     </div>
-     @endif
-
-
-
-
-                                      <button type="submit" class="btn btn-success btn-lg btn-block font-18">Log in</button>
+                                      <button type="button" onclick="submitfun();" id="login" class="btn btn-success btn-lg btn-block font-18">Log in</button>
                                     </form>
                                     <div class="login-or">
                                         <h6 class="text-muted">OR</h6>
                                     </div>
-                                    <p class="mb-0 mt-3">Don't have a account? <a href="{{url('/register')}}">Sign up</a></p>
+                                    <p class="mb-0 mt-3">Don't have a account? <a href="{{url('/')}}/register">Sign up</a></p>
                                 </div>
                             </div>
                         </div>
@@ -132,3 +113,78 @@
     <!-- End js -->
 </body>
 </html>
+
+
+<script type="text/javascript">
+
+    var noerror = false;
+
+    function phoneOnInput() 
+    {
+        if (document.getElementById('phone').value.length > 10) 
+        {
+            document.getElementById('phone').value = document.getElementById('phone').value.slice(0, 10);
+        }
+
+    }
+    
+    function submitfun() 
+    {
+        noerror = false;
+        
+        $("#errors").empty().hide();
+        $("#errors").append("<ul>");
+        if( $('#phone').val() == "" ) 
+        {  $("#errors").append("<li>Enter Phone Number And It Should Be Numeric.</li>").show(); noerror = true; }
+        
+        else if( $('#phone').val().length < 10 ) 
+        { $("#errors").append("<li>Phone Number Should Be 10 Digits Long.</li>").show();  noerror = true; }
+        
+        if( $('#password').val() == "" )
+        {  $("#errors").append("<li>Enter Password.</li>").show();  noerror = true; }
+        
+        else if( $('#password').val().length < 8 ) 
+        {  $("#errors").append("<li>Password Should be 8 Characters Long.</li>").show();  noerror = true; }
+        
+        $("#errors").append("</ul>");
+        if(  noerror == false ) { submitajax(); } ;   
+    }
+
+    function submitajax()
+    {
+          document.getElementById("login").disabled = true;
+          $("#login").html("Please Wait....");
+
+          $.ajax({
+          type: "POST",
+          url: "login",
+          data: new FormData($('#form')[0]),
+          dataType:"json",
+          cache:false,
+          processData:false,
+          contentType:false,
+          success: function(result) { window.location = "/home"; },
+          error: function(json) 
+          {
+             document.getElementById("login").disabled = false;
+             $("#login").html("Log in");
+
+              if(json.status === 422) 
+                {
+                    $("#errors").empty();
+                    $("#errors").append("<ul>");
+
+                    var errors = json.responseJSON;
+
+                    $.each(errors['errors'], function (key, value) {  $("#errors").append("<li>"+value+"</li>");  });
+
+                    $("#errors").append("</ul>").show();
+
+                } 
+                else { $("#errors").hide();  }
+          }
+       });
+
+    }
+
+</script>

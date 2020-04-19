@@ -6,12 +6,32 @@ use Illuminate\Http\Request;
 
 class AdminPropertyController extends Controller
 {
+
     function index()
     {
-    	//this check is removed now since middle ware is used
-    	//if( ! Auth::check() ) { return view('user-login'); }
-
-       	return view('admin-users-table');  //crm index view
-
+       	return view('admin-properties-table'); 
     }
+
+    function addget()
+    {
+        return view('admin-properties-add-table');
+    }
+
+    function addpost(Request $req)
+    {
+        dd($req);
+        return view('admin-properties-add-table');
+    }
+
+
+    function editget(Request $req) // { id } 
+    {
+       	return view('admin-properties-edit-table'); 
+    }
+
+    function editpost(Request $req) // { id } 
+    {
+        return view('admin-properties-edit-table'); 
+    }
+
 }

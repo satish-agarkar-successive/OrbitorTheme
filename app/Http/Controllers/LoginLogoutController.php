@@ -30,12 +30,12 @@ class LoginLogoutController extends Controller
 
 	    $customMessages = [
 	        
-	        'phone.required' => 'Phone Number Required.',
+	        'phone.required' => 'Phone Number Required And Should Be Numeric.',
 	        'phone.numeric' => 'Phone Number Should Be Numeric.',
-	        'phone.digits' => 'Phone Number Should Be 10 Digit Long.',
+	        'phone.digits' => 'Phone Number Should Be Numeric And 10 Digits Long.',
 	        
 	        'password.required' => 'Password Required.',
-	        'password.min' => 'Password Length Should be 8 Characters Long.',
+	        'password.min' => 'Password Should be 8 Characters Long.',
 	        
 	    ];
 
@@ -50,12 +50,13 @@ class LoginLogoutController extends Controller
 
 	     if(Auth::attempt($user_data))
 	     {
-	      	return redirect('/home');
+	      	return Response::json(array('status' => 'success' ),200 );
 	     }
 	     else
 	     {
-	     	return Redirect('/home?err=Invalid Phone Number Or Password.');
+	     	return Response::json(array('status'=>'error', 'errors'=>['Invalid Phone Number Or Password.']),422);
 	     }
+
 
     }
 

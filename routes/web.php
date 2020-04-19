@@ -20,18 +20,22 @@ Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@register');
 
 
-Route::get('/', function () {
-    return redirect('/home');
-})->middleware('auth');  // this middleware calls http / middleware / authenticate controller
-
+// this middleware calls http / middleware / authenticate controller
+Route::get('/', function () {    return redirect('/home'); });  
 
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
-Route::get('/user', 'AdminUserController@index')->middleware('auth');
+Route::get('/adminuser', 'AdminUserController@index')->middleware('auth');
 
-Route::get('/properties', 'AdminPropertyController@index')->middleware('auth');
+Route::get('/adminbusiness', 'AdminBusinessController@index')->middleware('auth');
+
+Route::get('/adminproperties', 'AdminPropertyController@index')->middleware('auth');
+Route::get('/addproperties', 'AdminPropertyController@addget')->middleware('auth');
+Route::get('/editproperty', 'AdminPropertyController@editget')->middleware('auth');
 
 
+Route::post('/addproperties', 'AdminPropertyController@addpost')->middleware('auth');
+Route::post('/editproperty', 'AdminPropertyController@editpost')->middleware('auth');
 
 
 Route::get('/advanced-ui-kits-image-crop', function () {

@@ -25,7 +25,7 @@ class RegisterController extends Controller
 
 	    $rules = [
 	    	'name' => ['required', 'regex:/^[\pL\-]+\s?[\pL\-]+\s?[\pL\-]*$/u', 'max:200'],
-            'phone' => ['required','numeric','digits:10'],
+            'phone' => ['required','numeric','digits:10','unique:login'],
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
             'term'=> 'required',
@@ -37,9 +37,10 @@ class RegisterController extends Controller
             'name.regex' => 'User Name Should Not Contain Numeric Value. Only Three Words Allowed Seperated By Space',
             'name.max' => 'User Name Should Contain Max 200 Characters only.',
             
-            'phone.required' => 'Phone Number Required.',
+            'phone.required' => 'Phone Number Required And Should Be Numeric.',
             'phone.numeric' => 'Phone Number Should Be Numeric.',
-            'phone.digits' => 'Phone Number Should Be 10 Digit Long.',
+            'phone.digits' => 'Phone Number Should Be Numeric And 10 Digits Long.',
+            'phone.unique' => 'Choose Different Phone Number , It Is Already Been Registered.',
             
             'password.required' => 'Password Required.',
             'password.min' => 'Password Should Have Minimum 8 Characters.',
@@ -59,7 +60,19 @@ class RegisterController extends Controller
 			$user->phone = $request['phone'];
 			$user->password = bcrypt( $request['password'] );
 			$user->save();
-	    	return redirect("/home"); // it will directly open login page since auth is not created
+
+
+             $user_data = array(
+              'phone'  => $request->get('phone'),
+              'password' => $request->get('password')
+             );
+
+
+            return Response::json(array('status' => 'success' ),200 );
+             
+
+
+	    	//return redirect("/home"); // it will directly open login page since auth is not created
 
 	    }
 

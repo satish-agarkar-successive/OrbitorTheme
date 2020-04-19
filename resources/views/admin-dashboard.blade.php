@@ -13,7 +13,7 @@ Tenant - Home
 
 
 <!-- Start Contentbar -->    
-<div class="contentbar" style="margin-top:10%;">                
+<div class="contentbar breadcrumbbar">                
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->

@@ -10,28 +10,6 @@ Tenant - Users
 @endsection 
 @section('rightbar-content')
 
-<!-- Start Breadcrumbbar -->                    
-<!-- <div class="breadcrumbbar">
-    <div class="row align-items-center">
-        <div class="col-md-8 col-lg-8">
-            <h4 class="page-title">Editable</h4>
-            <div class="breadcrumb-list">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{url('/')}}">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#">Tables</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Editable</li>
-                </ol>
-            </div>
-        </div>
-        <div class="col-md-4 col-lg-4">
-            <div class="widgetbar">
-                <button class="btn btn-primary-rgba"><i class="feather icon-plus mr-2"></i>Actions</button>
-            </div>                        
-        </div>
-    </div>          
-</div> -->
-<!-- End Breadcrumbbar -->
-
 
 <style type="text/css">
 
@@ -111,7 +89,7 @@ input:checked + .slider:before {
 </style>
 
 <!-- Start Contentbar -->    
-<div class="contentbar" style="margin-top:10%;" >                
+<div class="contentbar breadcrumbbar" >                
     <!-- Start row -->
     <div class="row">
         <!-- Start col -->
@@ -176,7 +154,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
 
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -212,7 +190,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open2" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open2" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -250,7 +228,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button" href="javascript:void(0)"  id="infobar-edituser-open3" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button" href="javascript:void(0)"  id="infobar-edituser-open3" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -288,7 +266,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open4" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open4" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -328,7 +306,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open5" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open5" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -352,7 +330,33 @@ input:checked + .slider:before {
 
 
                 <div class="row" style="align-self: center;" >
-                  <div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="default-datatable_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="default-datatable_previous"><a href="#" aria-controls="default-datatable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="default-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="default-datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="default-datatable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="default-datatable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="default-datatable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="default-datatable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="default-datatable_next"><a href="#" aria-controls="default-datatable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
+                  
+
+                        <div class="col-sm-12 col-md-7">
+                            <div class="dataTables_paginate paging_simple_numbers" id="default-datatable_paginate">
+                                <ul class="pagination">
+                                    <li class="paginate_button page-item previous disabled" id="default-datatable_previous">
+                                      <a href="#" tabindex="0" class="page-link">
+                                        <i class="dripicons-arrow-thin-left"></i>
+                                      </a>
+                                    </li>
+                                    <li class="paginate_button page-item active">
+                                      <a href="#" aria-controls="default-datatable" class="page-link">1</a>
+                                    </li> 
+                                    <li class="paginate_button page-item">
+                                      <a href="#" aria-controls="default-datatable" class="page-link">2</a>
+                                    </li>
+                                    <li class="paginate_button page-item next" id="default-datatable_next">
+                                      <a href="#" tabindex="0" class="page-link">
+                                        <i class="dripicons-arrow-thin-right"></i>
+                                      </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                </div>
 
 
             </div>
@@ -381,6 +385,7 @@ input:checked + .slider:before {
 
                                   <form id="add_user">
 
+                                    {{ csrf_field() }}
 
                                      <div class="row align-items-center pb-3">
                                             <input name="username" type="text" class="form-control" placeholder="User Name" required />
@@ -408,12 +413,12 @@ input:checked + .slider:before {
                                       </div>
  
                                       <div class="row align-items-center pb-3">
-                                            <input name="address" type="text" class="form-control" placeholder="Address" required />
+                                            <textarea name="address" type="text" placeholder="Address" class="form-control" style="height:100px;" required /></textarea>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
                                             <select name="state" class="form-control" required  >
-                                              <option  value="" selected>State</option>
+                                              <option  value="" selected>Select State</option>
                                               <option  value="">Maharashtra</option>
                                               <option  value="">Andhra Pradesh</option>
                                               <option  value="">Gujurat</option>
@@ -423,7 +428,7 @@ input:checked + .slider:before {
 
                                       <div class="row align-items-center pb-3">
                                             <select name="city" class="form-control" required >
-                                              <option  value="" selected>City</option>
+                                              <option  value="" selected>Select City</option>
                                               <option  value="">Mumbai</option>
                                               <option  value="">Hyderabad</option>
                                               <option  value="">Vasant Nagari</option>
@@ -477,6 +482,7 @@ input:checked + .slider:before {
 
                                     <form id="edit_user">
 
+                                      {{ csrf_field() }}
 
                                      <div class="row align-items-center pb-3">
                                             <input name="username" type="text" class="form-control" placeholder="User Name" required />
@@ -504,12 +510,12 @@ input:checked + .slider:before {
                                       </div>
  
                                       <div class="row align-items-center pb-3">
-                                            <input name="address" type="text" class="form-control" placeholder="Address" required />
+                                            <textarea name="address" type="text" placeholder="Address" class="form-control" style="height:100px;" required /></textarea>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
                                             <select name="state" class="form-control" required  >
-                                              <option  value="" selected>State</option>
+                                              <option  value="" selected>Select State</option>
                                               <option  value="">Maharashtra</option>
                                               <option  value="">Andhra Pradesh</option>
                                               <option  value="">Gujurat</option>
@@ -519,7 +525,7 @@ input:checked + .slider:before {
 
                                       <div class="row align-items-center pb-3">
                                             <select name="city" class="form-control" required >
-                                              <option  value="" selected>City</option>
+                                              <option  value="" selected>Select City</option>
                                               <option  value="">Mumbai</option>
                                               <option  value="">Hyderabad</option>
                                               <option  value="">Vasant Nagari</option>

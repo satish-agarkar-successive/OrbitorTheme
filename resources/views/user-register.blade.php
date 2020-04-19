@@ -52,7 +52,7 @@
                         <div class="auth-box-right">
                             <div class="card">
                                 <div class="card-body">
-                                    <form method="POST" action="{{url('/')}}/register" >
+                                    <form method="POST" action="{{url('/')}}/register" id="form">
 
                                         {{ csrf_field() }}
 
@@ -62,16 +62,18 @@
                                         </div> 
                                         <h4 class="text-primary my-4">Sign Up !</h4>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" value="{{ old('name') }}" name="name" placeholder="Enter Username here" required> 
+                                            <input type="text" class="form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Enter Username here" required> 
                                         </div>
                                         <div class="form-group">
-                                            <input type="number" class="form-control" value="{{ old('phone') }}" name="phone" placeholder="Enter Mobile Number here" title="Mobile Number Must Be Number Only And Max 10 Digit" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);" required>
+
+                                            <input type="number" id="phone" class="form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number here" oninput="phoneOnInput();" required>
+
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" name="password" placeholder="Enter Password here" required>
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password here" required>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" name="password_confirmation" placeholder="Re-Type Password" required>
+                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-Type Password" required>
                                         </div>
                                         <div class="form-row mb-3">
                                             <div class="col-sm-12">
@@ -81,22 +83,12 @@
                                                 </div>                                
                                             </div>
                                         </div>                      
+ 
+<!-- error messages -->
+<div class="alert alert-danger" align="left" id="errors" style = "display: none;"> </div>
 
 
-    @if (count($errors) > 0)
-    <div class="alert alert-danger">
-     <ul>
-     @foreach($errors->all() as $error)
-      <li>{{ $error }}</li>
-     @endforeach
-     </ul>
-    </div>
-    @endif 
-
-
-
-
-                                      <button type="submit" class="btn btn-success btn-lg btn-block font-18">Register</button>
+                                      <button type="button" id="register" onclick="submitfun();" class="btn btn-success btn-lg btn-block font-18">Register</button>
                                     </form>
                                     <p class="mb-0 mt-3">Already have an account? <a href="{{url('/')}}">Log in</a></p>
                                 </div>
@@ -122,3 +114,100 @@
     <!-- End js -->
 </body>
 </html>
+
+
+<script type="text/javascript">
+
+    var  noerror = false;
+
+    function phoneOnInput() 
+    {
+        if (document.getElementById('phone').value.length > 10) 
+        {
+            document.getElementById('phone').value = document.getElementById('phone').value.slice(0, 10);
+        }
+
+    }
+    
+    function submitfun() 
+    {
+        noerror = false;
+        
+        $("#errors").empty().hide();
+        $("#errors").append("<ul>");
+
+
+        if( $('#name').val() == "" ) 
+            {  $("#errors").append("<li>Enter User Name.</li>").show();  noerror = true; }
+        
+        else if( $('#name').val().length > 200 ) 
+            { $("#errors").append("<li>User Name Should Contain Max 200 Characters Only.</li>").show();  noerror = true; }
+
+        if( $('#phone').val() == "" ) 
+            {  $("#errors").append("<li>Enter Phone Number And It Should Be Numeric.</li>").show();  noerror = true; }
+        
+        else if( $('#phone').val().length < 10 ) 
+            { $("#errors").append("<li>Phone Number Should Be 10 Digits Long.</li>").show();  noerror = true; }
+
+        if( $('#password').val() == "" ) {  $("#errors").append("<li>Enter Password.</li>").show();  noerror = true; }
+        
+        else if( $('#password').val().length < 8 ) 
+            {  $("#errors").append("<li>Password Should be 8 Characters Long.</li>").show();  noerror = true; }
+
+        if( $('#password_confirmation').val() == "" ) 
+            {  $("#errors").append("<li>Enter Confirmation Password.</li>").show();  noerror = true; }
+        
+        else if( $('#password_confirmation').val().length < 8 ) 
+            {  $("#errors").append("<li>Confirmation Password Should be 8 Characters Long.</li>").show();  noerror = true; }
+
+        if( $('#password').val() != $('#password_confirmation').val()) 
+        {  $("#errors").append("<li>Password Confirmation Does Not Match.</li>").show();  noerror = true; }
+
+        if( ! $('#terms').is(':checked') ) {  $("#errors").append("<li>Please Confirm Terms And Conditions.</li>").show();  noerror = true; }
+        
+        $("#errors").append("</ul>");
+
+        if( noerror == false ) { submitajax(); } ;   
+
+    }
+
+    function submitajax()
+    {
+          document.getElementById("register").disabled = true;
+          $("#register").html("Please Wait....");
+
+          $.ajax({
+          type: "POST",
+          url: "register",
+          data: new FormData($('#form')[0]),
+          dataType:"json",
+          cache:false,
+          processData:false,
+          contentType:false,
+          success: function(result) { window.location = "/home"; },
+          error: function(json) 
+          {
+             document.getElementById("register").disabled = false;
+             $("#register").html("Register");
+
+
+              if(json.status === 422) 
+                {
+                    $("#errors").empty();
+                    $("#errors").append("<ul>");
+
+                    var errors = json.responseJSON;
+
+                    $.each(errors['errors'], function (key, value) {  $("#errors").append("<li>"+value+"</li>");  });
+
+                    $("#errors").append("</ul>").show();
+
+                } 
+                else { $("#errors").hide();  }
+
+          }
+       });
+
+    }
+
+</script>

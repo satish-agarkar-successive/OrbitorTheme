@@ -42,7 +42,7 @@ $(document).ready(function() {
     });
 
 
-    $("#infobar-edituser-open1").on("click", function(e) {
+    $(".infobar-edituser-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
         $("#infobar-edituser-sidebar").addClass("sidebarshow");
@@ -51,46 +51,18 @@ $(document).ready(function() {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
         $("#infobar-edituser-sidebar").removeClass("sidebarshow");
-    });
-    $("#infobar-edituser-open2").on("click", function(e) {
+    });    
+
+
+    $("#infobar-addbusiness-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-edituser-sidebar").addClass("sidebarshow");
+        $("#infobar-addbusiness-sidebar").addClass("sidebarshow");
     }); 
-    $("#infobar-edituser-close").on("click", function(e) {
+    $("#infobar-business-close").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
-    });
-    $("#infobar-edituser-open3").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-edituser-sidebar").addClass("sidebarshow");
-    }); 
-    $("#infobar-edituser-close").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
-    });
-    $("#infobar-edituser-open4").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-edituser-sidebar").addClass("sidebarshow");
-    }); 
-    $("#infobar-edituser-close").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
-    });
-    $("#infobar-edituser-open5").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-edituser-sidebar").addClass("sidebarshow");
-    }); 
-    $("#infobar-edituser-close").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-        $("#infobar-edituser-sidebar").removeClass("sidebarshow");
+        $("#infobar-addbusiness-sidebar").removeClass("sidebarshow");
     });
 
 
