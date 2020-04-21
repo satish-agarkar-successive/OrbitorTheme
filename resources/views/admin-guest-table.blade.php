@@ -1,5 +1,5 @@
 @section('title') 
-Tenant - Business
+Tenant - Guest
 @endsection 
 
 

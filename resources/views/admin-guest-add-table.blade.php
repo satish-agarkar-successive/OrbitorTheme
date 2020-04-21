@@ -1,5 +1,5 @@
 @section('title') 
-Tenant - Users
+Tenant - Add Guest
 @endsection 
 @extends('layouts.main')
 @section('style')

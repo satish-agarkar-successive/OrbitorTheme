@@ -1,5 +1,5 @@
 @section('title') 
-Orbiter - Form Layouts
+Tenant - Edit Properties
 @endsection 
 @extends('layouts.main')
 @section('style')
