@@ -2,8 +2,6 @@
 Orbiter - Form Layouts
 @endsection 
 @extends('layouts.main')
-
-
 @section('style')
 
 
@@ -20,93 +18,6 @@ Orbiter - Form Layouts
 
 
 @endsection 
-
-
-
-
-@section('script')
-
-
-
-
-<!-- For Editor -->
-
-<!-- Wysiwig js -->
-<!-- <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script> -->
-<!-- Wysiwig js -->
-
-
-<!-- Summernote JS -->
-<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- Summernote JS -->
-
-
-<!-- Code Mirror JS -->
-<!-- <script src="{{ asset('assets/plugins/code-mirror/codemirror.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/htmlmixed.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/css.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/javascript.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/xml.js') }}"></script> -->
-<!-- Code Mirror JS -->
-
-<script src="{{ asset('assets/js/custom/custom-form-editor.js') }}"></script>
-
-<!-- For Editor -->
-
-
-
-
-
-<script type="text/javascript">
-
-    function Submit1() 
-    {
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
-
-    function Submit2() 
-    {
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
-
-    function Submit3() 
-    {
-         
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
-
-
-    function Submit4() 
-    {
-
-         alert( $('.note-editable').text() );
-
-
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
-    
-
-
-</script>
-
-@endsection 
-
 
 
 
@@ -2070,5 +1981,87 @@ Orbiter - Form Layouts
 
 
 
+
+@endsection 
+@section('script')
+
+
+
+
+<!-- For Editor -->
+
+<!-- Wysiwig js -->
+<!-- <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script> -->
+<!-- Wysiwig js -->
+
+
+<!-- Summernote JS -->
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<!-- Summernote JS -->
+
+
+<!-- Code Mirror JS -->
+<!-- <script src="{{ asset('assets/plugins/code-mirror/codemirror.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/htmlmixed.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/css.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/javascript.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/xml.js') }}"></script> -->
+<!-- Code Mirror JS -->
+
+<script src="{{ asset('assets/js/custom/custom-form-editor.js') }}"></script>
+
+<!-- For Editor -->
+
+
+
+
+
+<script type="text/javascript">
+
+    function Submit1() 
+    {
+         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+         setInterval(function(){ 
+         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
+         }, 3000);
+         
+    }
+
+    function Submit2() 
+    {
+         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+         setInterval(function(){ 
+         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
+         }, 3000);
+         
+    }
+
+    function Submit3() 
+    {
+         
+         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+         setInterval(function(){ 
+         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
+         }, 3000);
+         
+    }
+
+
+    function Submit4() 
+    {
+
+         alert( $('.note-editable').text() );
+
+
+         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+         setInterval(function(){ 
+         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
+         }, 3000);
+         
+    }
+    
+
+
+</script>
 
 @endsection 

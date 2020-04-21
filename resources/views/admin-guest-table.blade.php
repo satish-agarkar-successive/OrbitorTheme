@@ -12,7 +12,6 @@ Tenant - Business
 @endsection 
 
 
-
 <style type="text/css">
 
 
@@ -30,17 +29,9 @@ Tenant - Business
 </style>
 
 
-@section('script')
-<!-- Tabledit js -->
-<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
-
-@endsection 
-
-
-
-
-
 @section('rightbar-content')
+
+
 
 
 <!-- Start Contentbar -->    
@@ -268,5 +259,10 @@ Tenant - Business
 
 
 
+
+@endsection 
+@section('script')
+<!-- Tabledit js -->
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
 
 @endsection 

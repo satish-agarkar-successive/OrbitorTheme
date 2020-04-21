@@ -9,6 +9,9 @@ Tenant - Home
 <link href="{{ asset('assets/plugins/slick/slick.css') }}" rel="stylesheet" type="text/css" />
 <link href="{{ asset('assets/plugins/slick/slick-theme.css') }}" rel="stylesheet" type="text/css" />
 @endsection 
+
+
+
 @section('rightbar-content')
 
 
