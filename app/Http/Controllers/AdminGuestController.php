@@ -26,13 +26,11 @@ class AdminGuestController extends Controller
 
     function editget(Request $req) // for id 
     {
-       	return view('admin-guest-add-table'); 
         return view('admin-guest-edit-table'); 
     }
 
     function editpost(Request $req) // updated fields
     {
-        return view('admin-guest-add-table'); 
         return view('admin-guest-edit-table'); 
     }
 
