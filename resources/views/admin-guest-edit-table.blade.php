@@ -42,30 +42,31 @@ Orbiter - Form Layouts
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                               
-                                <input type="text" class="form-control" id="propertyname" placeholder="Property Name" >
+                                <label>Property Name</label>
+                                <input type="text" class="form-control" id="propertyname">
                             </div>
                             <div class="form-group col-md-6">
-                               
-                                <input type="text" class="form-control" id="buildingname" placeholder="Building Name" >
+                                <label>Building Name</label>
+                                <input type="text" class="form-control" id="buildingname" >
                             </div>
                         </div>
 
 
                         <div class="form-row">
                             <div class="form-group col-md-6">
-                                
-                                <input type="text" class="form-control" id="address1" placeholder="Address Line 1" >
+                                <label>Address Line 1</label>
+                                <input type="text" class="form-control" id="address1" >
                             </div>
                             <div class="form-group col-md-6">
-                                
-                                <input type="text" class="form-control" id="address2" placeholder="Address Line 2" >
+                                <label>Address Line 2</label>
+                                <input type="text" class="form-control" id="address2" >
                             </div>
                         </div>
 
 
                         <div class="form-row">
                             <div class="form-group col-md-3">
+                                <label>State</label>
                                 <select id="state" class="form-control">
                                       <option  value="" selected>Select State</option>
                                       <option  value="">Maharashtra</option>
@@ -75,6 +76,7 @@ Orbiter - Form Layouts
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
+                                <label>City</label>
                                 <select id="city" class="form-control">
                                       <option  value="" selected>Select City</option>
                                       <option  value="">Mumbai</option>
@@ -84,17 +86,19 @@ Orbiter - Form Layouts
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <input type="number" class="form-control" id="zip" placeholder="Zip" oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);">
+                                <label>Zip</label>
+                                <input type="number" class="form-control" id="zip">
                             </div>
                             <div class="form-group col-md-3">
-                                <input type="text" class="form-control" id="landmark" placeholder="Landmark" >
+                                <label>Landmark</label>
+                                <input type="text" class="form-control" id="landmark">
                             </div>
                         </div>
 
 
                         <div class="form-row">
                             <div class="form-group col-md-3">
-                               
+                                <label>Property Type</label>
                                 <select id="propertytype" class="form-control">
                                       <option  value="" selected>Select Property Type</option>
                                       <option  value="">Flat</option>
@@ -104,7 +108,7 @@ Orbiter - Form Layouts
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                               
+                                <label>Accommodation Type</label>
                                 <select id="city" class="form-control">
                                       <option  value="" selected>Select Accommodation Type</option>
                                       <option  value="">....</option>
@@ -114,7 +118,7 @@ Orbiter - Form Layouts
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                               
+                                <label>Select User</label>
                                 <select id="user" class="form-control">
                                       <option  value="" selected>Select User</option>
                                       <option  value="">User 1</option>
@@ -124,6 +128,7 @@ Orbiter - Form Layouts
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
+                                <label>Gender</label>
                                 <select id="gender" class="form-control">
                                       <option  value="" selected>Select Gender</option>
                                       <option  value="">Male</option>

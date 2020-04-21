@@ -24,13 +24,15 @@ class AdminPropertyController extends Controller
     }
 
 
-    function editget(Request $req) // { id } 
+    function editget(Request $req) // for id 
     {
-       	return view('admin-properties-edit-table'); 
+       	return view('admin-properties-add-table'); 
+        return view('admin-properties-edit-table'); 
     }
 
-    function editpost(Request $req) // { id } 
+    function editpost(Request $req) // updated fields
     {
+        return view('admin-properties-add-table'); 
         return view('admin-properties-edit-table'); 
     }
 

@@ -1,13 +1,17 @@
 @section('title') 
-Tenant - Properties
+Tenant - Business
 @endsection 
-@extends('layouts.main')
-@section('style')
 
+
+@extends('layouts.main')
+
+
+@section('style')
 <!-- Datepicker css -->
 <link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
-
 @endsection 
+
+
 @section('rightbar-content')
 
 
@@ -27,6 +31,7 @@ Tenant - Properties
 
 </style>
 
+
 <!-- Start Contentbar -->    
 <div class="contentbar breadcrumbbar" >                
     <!-- Start row -->
@@ -41,10 +46,10 @@ Tenant - Properties
 
                   <div style="margin-bottom: 25px;">
 
-                    <h5 class="card-title" style="display:inline-block; float: left">Properties</h5>
+                    <h5 class="card-title" style="display:inline-block; float: left">Guest</h5>
 
-                    <button   href="javascript:void(0)" onclick="javascript: window.location = '/addproperty';" style="display:inline-block; float: right;" class="btn btn-primary-rgba" > 
-                      <i class="feather icon-plus mr-2"></i>Add Properties
+                    <button href="javascript:void(0)" onclick="javascript: window.location = '/addguest';" style="display:inline-block; float: right;" class="btn btn-primary-rgba" > 
+                      <i class="feather icon-plus mr-2"></i>Add Guest
                     </button>
 
 
@@ -57,84 +62,150 @@ Tenant - Properties
                             <thead>
                               <tr>
                                 <th>No</th>
+                                <th>Guest Name</th>
+                                <th>Mobile No.</th>
                                 <th>Property Name</th>
-                                <th>User Name</th>
-                                <th>Mobile</th>
-                                <th>City</th>                                                
-                                <th>No. Of Beds</th>                                                   
-                                <th></th>                                                   
+                                <th>Room No.</th>
+                                <th>Bed No.</th>             
+                                <th>Rent Amount</th>
+                                <th>Deposit Amount</th>
+                                <th>Check In Time / Check Out Time</th>          
+                                <th>Gender</th>          
+                                <th>Company / School / College / Organisation</th>        
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
                             <tbody>
+
+
+
                               <tr>
                                   <td>1</td>
+                                  <td>Mrudul Addipalli</td>
+                                  <td>8446184884</td>
                                   <td>Girnar Accord</td>
-                                  <td>Mrudul Addipalli</td>
-                                  <td>8446184884</td>
-                                  <td>Vasai</td>                               
-                                  <td>20</td>                               
-                                  <td></td> 
+                                  <td>G01</td>                               
+                                  <td>1</td>                               
+                                  <td>5000/-</td>                               
+                                  <td>2000/-</td>                               
+                                  <td>May 15, 2020 12:00 PM / May 16, 2020 05:00 PM</td>
+                                  <td>Male</td>                               
+                                  <td>Universal College Of Engineering</td>    
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" onclick="javascript: window.location = '/editproperty?id=1'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
+
+                      <button type="button" href="javascript:void(0)" onclick="javascript:window.location='/editguest?id=1';" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <span class="ti-pencil"></span>
+                      </button>
+
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-trash"></span>
                           </button>
                                     </div>
+
                                   </td>
+
                               </tr>
 
 
 
-                             <tr>
+
+
+                               <tr>
                                   <td>2</td>
-                                  <td>Everest Tower</td>
                                   <td>Mrudul Addipalli</td>
                                   <td>8446184884</td>
-                                  <td>Vasai</td>                               
-                                  <td>20</td>                               
-                                  <td></td> 
+                                  <td>Girnar Accord</td>
+                                  <td>G01</td>                               
+                                  <td>1</td>                               
+                                  <td>5000/-</td>                               
+                                  <td>2000/-</td>                               
+                                  <td>May 15, 2020 12:00 PM / May 16, 2020 05:00 PM</td>
+                                  <td>Male</td>                               
+                                  <td>Universal College Of Engineering</td>    
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" onclick="javascript: window.location = '/editproperty?id=2'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
+
+                      <button type="button" href="javascript:void(0)" onclick="javascript:window.location='/editguest?id=2';" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <span class="ti-pencil"></span>
+                      </button>
+
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-trash"></span>
                           </button>
                                     </div>
+
                                   </td>
+
                               </tr>
+
+
 
 
 
                               <tr>
-                                  <td>1</td>
-                                  <td>Trinity</td>
+                                  <td>3</td>
                                   <td>Mrudul Addipalli</td>
                                   <td>8446184884</td>
-                                  <td>Vasai</td>                               
-                                  <td>20</td>                               
-                                  <td></td> 
+                                  <td>Girnar Accord</td>
+                                  <td>G01</td>                               
+                                  <td>1</td>                               
+                                  <td>5000/-</td>                               
+                                  <td>2000/-</td>                               
+                                  <td>May 15, 2020 12:00 PM / May 16, 2020 05:00 PM</td>
+                                  <td>Male</td>                               
+                                  <td>Universal College Of Engineering</td>    
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" onclick="javascript: window.location = '/editproperty?id=3'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
+
+                      <button type="button" href="javascript:void(0)" onclick="javascript:window.location='/editguest?id=3';" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <span class="ti-pencil"></span>
+                      </button>
+
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-trash"></span>
                           </button>
                                     </div>
+
                                   </td>
+
                               </tr>
 
 
+
+
+
+                              <tr>
+                                  <td>4</td>
+                                  <td>Mrudul Addipalli</td>
+                                  <td>8446184884</td>
+                                  <td>Girnar Accord</td>
+                                  <td>G01</td>                               
+                                  <td>1</td>                               
+                                  <td>5000/-</td>                               
+                                  <td>2000/-</td>                               
+                                  <td>May 15, 2020 12:00 PM / May 16, 2020 05:00 PM</td>
+                                  <td>Male</td>                               
+                                  <td>Universal College Of Engineering</td>    
+                                  <td>
+                                    
+                                    <div class="btn-group btn-group-sm" style="float: none;">
+
+                      <button type="button" href="javascript:void(0)" onclick="javascript:window.location='/editguest?id=4';" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <span class="ti-pencil"></span>
+                      </button>
+
+                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                              <span class="ti-trash"></span>
+                          </button>
+                                    </div>
+
+                                  </td>
+
+                              </tr>
 
                              
                             </tbody>
@@ -176,7 +247,6 @@ Tenant - Properties
 
             </div>
         </div>
-
         <!-- End col -->
 
     </div>
@@ -187,50 +257,10 @@ Tenant - Properties
 
 
 
+
 @endsection 
 @section('script')
 <!-- Tabledit js -->
-<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
 <!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
-
-
-<!-- <script type="text/javascript">
-
-    function date() 
-    {
-     $('#datepicker').datepicker({
-      "format": "mm-dd-yy",
-      "startDate": "-5d",
-      "endDate": "09-15-2017",
-      "keyboardNavigation": false
-     }); 
-
-   }
-
-    </script> -->
-
-
-
-
-    <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
-
-<script type="text/javascript">
-
-    function date() 
-    {
-     $('#autoclose-date').datepicker({
-      "format": "mm-dd-yy",
-      "startDate": "-5d",
-      "endDate": "09-15-2017",
-      "keyboardNavigation": false
-     }); 
-
-   }
-
-    </script>
-
 
 @endsection 

@@ -154,7 +154,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
 
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -190,7 +190,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open2" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -228,7 +228,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button" href="javascript:void(0)"  id="infobar-edituser-open3" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button" href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -266,7 +266,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open4" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -306,7 +306,7 @@ input:checked + .slider:before {
                                     <div class="btn-group btn-group-sm" style="float: none;">
 
                                        
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open5" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -341,7 +341,7 @@ input:checked + .slider:before {
                                       </a>
                                     </li>
                                     <li class="paginate_button page-item active">
-                                      <a href="#" aria-controls="default-datatable" class="page-link">1</a>
+                                      <a href="#" aria-controls="default-datatable" style="z-index: 0;" class="page-link">1</a>
                                     </li> 
                                     <li class="paginate_button page-item">
                                       <a href="#" aria-controls="default-datatable" class="page-link">2</a>
@@ -450,10 +450,8 @@ input:checked + .slider:before {
                                       </div>
 
 
+                                    </form>
                                 </div>
-
-
-                              </form>
 
 
                             </div>
@@ -547,15 +545,12 @@ input:checked + .slider:before {
                                       </div>
 
 
+                                    </form>
                                 </div>
 
 
-                              </form>
 
 
-
-
-                                </div>
                             </div>
                         </div>
 
@@ -574,8 +569,8 @@ input:checked + .slider:before {
 @section('script')
 <!-- Tabledit js -->
 <!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
-<script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
-
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
+ -->
 
 <!-- <script type="text/javascript">
 

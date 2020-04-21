@@ -30,6 +30,11 @@ $(document).ready(function() {
     });
 
 
+
+
+
+
+
      $("#infobar-adduser-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
@@ -54,6 +59,11 @@ $(document).ready(function() {
     });    
 
 
+
+
+
+
+
     $("#infobar-addbusiness-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
@@ -64,6 +74,138 @@ $(document).ready(function() {
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
         $("#infobar-addbusiness-sidebar").removeClass("sidebarshow");
     });
+
+
+     $(".infobar-editbusiness-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-editbusiness-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-editbusiness-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-editbusiness-sidebar").removeClass("sidebarshow");
+    }); 
+
+
+
+
+
+
+
+     $("#infobar-add-block-floor-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-add-block-floor-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-add-block-floor-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-add-block-floor-sidebar").removeClass("sidebarshow");
+    });
+
+
+     $(".infobar-edit-block-floor-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edit-block-floor-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edit-block-floor-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edit-block-floor-sidebar").removeClass("sidebarshow");
+    }); 
+
+
+
+
+
+     $("#infobar-add-room-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-add-room-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-add-room-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-add-room-sidebar").removeClass("sidebarshow");
+    });
+
+
+     $(".infobar-edit-room-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edit-room-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edit-room-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edit-room-sidebar").removeClass("sidebarshow");
+    }); 
+
+
+
+
+
+
+   $("#infobar-add-bed-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-add-bed-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-add-bed-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-add-bed-sidebar").removeClass("sidebarshow");
+    });
+
+
+     $(".infobar-edit-bed-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edit-bed-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edit-bed-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edit-bed-sidebar").removeClass("sidebarshow");
+    }); 
+
+
+
+
+
+
+    $("#infobar-add-charges-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-add-charges-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-add-charges-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-add-charges-sidebar").removeClass("sidebarshow");
+    });
+
+
+     $(".infobar-edit-charges-open").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        $("#infobar-edit-charges-sidebar").addClass("sidebarshow");
+    }); 
+    $("#infobar-edit-charges-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-edit-charges-sidebar").removeClass("sidebarshow");
+    }); 
+
+    //for editor
+    $('.note-insert').hide();
+    $('.note-icon-code').hide();
+    //$('html,body').scrollTop(0); // editor is making page to scroll to down , also autofocus of field 1 is changed to editor
+    document.getElementById("propertyname").focus();  // editor is making page to scroll to down , also autofocus of field 1 is changed to editor
+
+
 
 
 

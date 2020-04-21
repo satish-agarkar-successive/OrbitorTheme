@@ -83,7 +83,7 @@ Tenant - Business
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-editbusiness-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -110,7 +110,7 @@ Tenant - Business
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-editbusiness-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -135,7 +135,7 @@ Tenant - Business
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-editbusiness-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -160,7 +160,7 @@ Tenant - Business
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)"  id="infobar-edituser-open1" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
+                          <button type="button"  href="javascript:void(0)" class=" infobar-editbusiness-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
                               <span class="ti-pencil"></span>
                           </button>
                           <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
@@ -193,7 +193,7 @@ Tenant - Business
                                       </a>
                                     </li>
                                     <li class="paginate_button page-item active">
-                                      <a href="#" aria-controls="default-datatable" class="page-link">1</a>
+                                      <a href="#" aria-controls="default-datatable" style="z-index: 0;" class="page-link">1</a>
                                     </li> 
                                     <li class="paginate_button page-item">
                                       <a href="#" aria-controls="default-datatable" class="page-link">2</a>
@@ -294,7 +294,9 @@ Tenant - Business
                                                  <i class="feather icon-upload"></i> Upload Logo
                                           </label>
 
-                                          <label id="imagelable" style="color: #007bff; margin:2%; display: none;">You Can Replace This Image By Re-Uploading New Image</label>
+                                          <!-- <label id="imagelable" style="color: #007bff; margin:2%; display: none;">You Can Replace This Image By Re-Uploading New Image</label> -->
+                                          
+                                          <label id="imagename" style=" float:center;  color: #007bff; margin:2%; display: none;"></label>
 
                                           <img id="uploadPreview" style=" float:center margin:2%; width: 100%; height: 100%; display: none;" />
                                           
@@ -318,7 +320,7 @@ Tenant - Business
 
 
                                       <div class="row align-items-center pb-3">                                
-                                            <input name="estyear" type="number" id="autoclose-date" class="form-control" placeholder="Year Of Establishment [ YYYY ]" oninput="javascript: if (this.value.length > 4) this.value = this.value.slice(0, 4);" required />
+                                            <input name="estyear" type="number" class="form-control" placeholder="Year Of Establishment [ YYYY ]" oninput="javascript: if (this.value.length > 4) this.value = this.value.slice(0, 4);" required />
                                       </div>
 
 
@@ -354,10 +356,9 @@ Tenant - Business
                                       </div>
 
 
+                                    </form>
+                                    
                                 </div>
-
-
-                              </form>
 
 
                             </div>
@@ -376,9 +377,9 @@ Tenant - Business
  <!-- sidebar for editing user -->
 
 
-                        <div id="infobar-edituser-sidebar" class="infobar-settings-sidebar">
+                        <div id="infobar-editbusiness-sidebar" class="infobar-settings-sidebar">
                             <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
-                                <h4>Edit Business</h4><a href="javascript:void(0)" id="infobar-edituser-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
+                                <h4>Edit Business</h4><a href="javascript:void(0)" id="infobar-editbusiness-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
                             </div>
                             <div class="infobar-settings-sidebar-body">
                                 <div class="custom-mode-setting">
@@ -444,7 +445,7 @@ Tenant - Business
                                                  <i class="feather icon-upload"></i> Upload Logo
                                           </label>
 
-                                          <label id="imagelable" style="color: #007bff; margin:2%; display: none;">You Can Replace This Image By Re-Uploading New Image</label>
+                                          <!-- <label id="imagelable" style="color: #007bff; margin:2%; display: none;">You Can Replace This Image By Re-Uploading New Image</label> -->
 
                                           <img id="uploadPreview" style=" float:center margin:2%; width: 100%; height: 100%; display: none;" />
                                           
@@ -468,7 +469,7 @@ Tenant - Business
 
 
                                       <div class="row align-items-center pb-3">                                
-                                            <input name="estyear" type="number" id="autoclose-date" class="form-control" placeholder="Year Of Establishment [ YYYY ]" oninput="javascript: if (this.value.length > 4) this.value = this.value.slice(0, 4);" required />
+                                            <input name="estyear" type="number" class="form-control" placeholder="Year Of Establishment [ YYYY ]" oninput="javascript: if (this.value.length > 4) this.value = this.value.slice(0, 4);" required />
                                       </div>
 
 
@@ -504,15 +505,10 @@ Tenant - Business
                                       </div>
 
 
+                                    </form>
+                                    
                                 </div>
 
-
-                              </form>
-
-
-
-
-                                </div>
                             </div>
                         </div>
 
@@ -530,7 +526,7 @@ Tenant - Business
 @endsection 
 @section('script')
 <!-- Tabledit js -->
-<script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
 
     <!-- Datepicker JS -->
 <script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
@@ -560,7 +556,12 @@ Tenant - Business
         };
 
         $('#uploadPreview').show();
-        $('#imagelable').show();
+        //$('#imagelable').show();
+        $('#imagename').text("").hide();
+        $('#imagename').text( "[ " + $('input[type=file]')[0].files[0].name + " ] , You Can Replace This Image By Re-Uploading New Image").show();
+
+
+
     };
 
 </script>

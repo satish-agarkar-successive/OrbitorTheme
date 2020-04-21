@@ -9,6 +9,24 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 
+Route::get('/c', function (){
+
+    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+    $encrypted = $encrypter->encrypt("Ab123123");
+    dd($encrypted);
+
+});
+
+Route::get('/d', function (){
+
+    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+    $decrypted = $encrypter->decrypt($req['text']);
+    dd( Crypt::decrypt( $decrypted ) );
+
+});
+
+
+
 
 Route::get('/login', 'LoginLogoutController@index')->name('login');
 Route::post('/login', 'LoginLogoutController@login');
@@ -29,13 +47,64 @@ Route::get('/adminuser', 'AdminUserController@index')->middleware('auth');
 
 Route::get('/adminbusiness', 'AdminBusinessController@index')->middleware('auth');
 
-Route::get('/adminproperties', 'AdminPropertyController@index')->middleware('auth');
-Route::get('/addproperties', 'AdminPropertyController@addget')->middleware('auth');
+Route::get('/adminproperty', 'AdminPropertyController@index')->middleware('auth');
+
+Route::get('/adminguest', 'AdminGuestController@index')->middleware('auth');
+
+
+Route::get('/addproperty', 'AdminPropertyController@addget')->middleware('auth');
+Route::post('/addproperty', 'AdminPropertyController@addpost')->middleware('auth');
 Route::get('/editproperty', 'AdminPropertyController@editget')->middleware('auth');
-
-
-Route::post('/addproperties', 'AdminPropertyController@addpost')->middleware('auth');
 Route::post('/editproperty', 'AdminPropertyController@editpost')->middleware('auth');
+
+
+Route::get('/addguest', 'AdminGuestController@addget')->middleware('auth');
+Route::post('/addguest', 'AdminGuestController@addpost')->middleware('auth');
+Route::get('/editguest', 'AdminGuestController@editget')->middleware('auth');
+Route::post('/editguest', 'AdminGuestController@editpost')->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Route::get('/advanced-ui-kits-image-crop', function () {

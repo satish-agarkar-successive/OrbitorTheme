@@ -281,7 +281,7 @@ Tenant - Users
                                       </a>
                                     </li>
                                     <li class="paginate_button page-item active">
-                                      <a href="#" aria-controls="default-datatable" class="page-link">1</a>
+                                      <a href="#" aria-controls="default-datatable" style="z-index: 0;" class="page-link">1</a>
                                     </li> 
                                     <li class="paginate_button page-item">
                                       <a href="#" aria-controls="default-datatable" class="page-link">2</a>
@@ -390,10 +390,8 @@ Tenant - Users
                                       </div>
 
 
+                                    </form>
                                 </div>
-
-
-                              </form>
 
 
                             </div>
@@ -487,10 +485,8 @@ Tenant - Users
                                       </div>
 
 
+                                    </form>
                                 </div>
-
-
-                              </form>
 
 
 
@@ -514,7 +510,7 @@ Tenant - Users
 @section('script')
 <!-- Tabledit js -->
 <!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
-<script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
 
 
 <!-- <script type="text/javascript">
