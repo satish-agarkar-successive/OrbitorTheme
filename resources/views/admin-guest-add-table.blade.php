@@ -2,13 +2,14 @@
 Tenant - Users
 @endsection 
 @extends('layouts.main')
+
+
 @section('style')
 
 <!-- Datepicker css -->
 <link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
-@section('rightbar-content')
 
 
 <style type="text/css">
@@ -27,6 +28,144 @@ Tenant - Users
 
 
 </style>
+
+
+
+@section('script')
+<!-- Tabledit js -->
+<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
+
+
+<!-- <script type="text/javascript">
+
+    function date() 
+    {
+     $('#datepicker').datepicker({
+      "format": "mm-dd-yy",
+      "startDate": "-5d",
+      "endDate": "09-15-2017",
+      "keyboardNavigation": false
+     }); 
+
+   }
+
+    </script> -->
+
+
+
+
+    <!-- Datepicker JS -->
+<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
+<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
+
+<script type="text/javascript">
+
+    function date() 
+    {
+       $('#autoclose-date').datepicker({
+        "format": "mm-dd-yy",
+        "startDate": "-5d",
+        "endDate": "09-15-2017",
+        "keyboardNavigation": false
+       }); 
+   }
+
+   function aadharupdatelist() 
+   {
+
+        $('#aadharuploadname').hide();
+        $('#aadharuploadname').empty();
+
+
+        var input = document.getElementById('aadharuploadid');
+        var output = document.getElementById('aadharuploadname');
+        
+        //var children = "Selected Files For Aadhar";
+      
+        for (var i = 0; i < input.files.length; ++i) {
+            // children += '<li>' + input.files.item(i).name + '</li>';
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
+                      '#aadharuploadname');
+                }
+                reader.readAsDataURL(input.files[i]);
+        }
+
+
+        //output.innerHTML = '<ul>'+children+'</ul>';
+
+        $('#aadharuploadname').show();
+   }
+
+
+
+   function idupdatelist() 
+   {
+        $('#iduploadname').hide();
+        $('#iduploadname').empty();
+
+        var input = document.getElementById('iduploadid');
+        var output = document.getElementById('iduploadname');
+        var children = "Selected Files For ID";
+        for (var i = 0; i < input.files.length; ++i) {
+            
+            // children += '<li>' + input.files.item(i).name + '</li>';
+
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
+                      '#iduploadname');
+                }
+                reader.readAsDataURL(input.files[i]);
+        }
+
+        //output.innerHTML = '<ul>'+children+'</ul>';
+        $('#iduploadname').show();
+   }
+
+
+   function selfieupdatelist() 
+   {
+         
+        $('#selfieuploadname').hide();
+        $('#selfieuploadname').empty();
+
+
+        var input = document.getElementById('selfieuploadid');
+        var output = document.getElementById('selfieuploadname');
+        
+        //var children = "Selected Files For selfie";
+      
+        for (var i = 0; i < input.files.length; ++i) {
+            // children += '<li>' + input.files.item(i).name + '</li>';
+                var reader = new FileReader();
+                reader.onload = function(event) {
+                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
+                      '#selfieuploadname');
+                }
+                reader.readAsDataURL(input.files[i]);
+        }
+
+
+        //output.innerHTML = '<ul>'+children+'</ul>';
+
+        $('#selfieuploadname').show();
+   }
+
+
+
+</script>
+
+
+@endsection 
+
+
+
+
+@section('rightbar-content')
 
 
 <!-- Start Contentbar -->    
@@ -289,136 +428,6 @@ Tenant - Users
 
 
 
-
-
-@endsection 
-@section('script')
-<!-- Tabledit js -->
-<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
-<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
-
-
-<!-- <script type="text/javascript">
-
-    function date() 
-    {
-     $('#datepicker').datepicker({
-      "format": "mm-dd-yy",
-      "startDate": "-5d",
-      "endDate": "09-15-2017",
-      "keyboardNavigation": false
-     }); 
-
-   }
-
-    </script> -->
-
-
-
-
-    <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
-
-<script type="text/javascript">
-
-    function date() 
-    {
-       $('#autoclose-date').datepicker({
-        "format": "mm-dd-yy",
-        "startDate": "-5d",
-        "endDate": "09-15-2017",
-        "keyboardNavigation": false
-       }); 
-   }
-
-   function aadharupdatelist() 
-   {
-
-        $('#aadharuploadname').hide();
-        $('#aadharuploadname').empty();
-
-
-        var input = document.getElementById('aadharuploadid');
-        var output = document.getElementById('aadharuploadname');
-        
-        //var children = "Selected Files For Aadhar";
-      
-        for (var i = 0; i < input.files.length; ++i) {
-            // children += '<li>' + input.files.item(i).name + '</li>';
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
-                      '#aadharuploadname');
-                }
-                reader.readAsDataURL(input.files[i]);
-        }
-
-
-        //output.innerHTML = '<ul>'+children+'</ul>';
-
-        $('#aadharuploadname').show();
-   }
-
-
-
-   function idupdatelist() 
-   {
-        $('#iduploadname').hide();
-        $('#iduploadname').empty();
-
-        var input = document.getElementById('iduploadid');
-        var output = document.getElementById('iduploadname');
-        var children = "Selected Files For ID";
-        for (var i = 0; i < input.files.length; ++i) {
-            
-            // children += '<li>' + input.files.item(i).name + '</li>';
-
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
-                      '#iduploadname');
-                }
-                reader.readAsDataURL(input.files[i]);
-        }
-
-        //output.innerHTML = '<ul>'+children+'</ul>';
-        $('#iduploadname').show();
-   }
-
-
-   function selfieupdatelist() 
-   {
-         
-        $('#selfieuploadname').hide();
-        $('#selfieuploadname').empty();
-
-
-        var input = document.getElementById('selfieuploadid');
-        var output = document.getElementById('selfieuploadname');
-        
-        //var children = "Selected Files For selfie";
-      
-        for (var i = 0; i < input.files.length; ++i) {
-            // children += '<li>' + input.files.item(i).name + '</li>';
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
-                      '#selfieuploadname');
-                }
-                reader.readAsDataURL(input.files[i]);
-        }
-
-
-        //output.innerHTML = '<ul>'+children+'</ul>';
-
-        $('#selfieuploadname').show();
-   }
-
-
-
-</script>
 
 
 @endsection 

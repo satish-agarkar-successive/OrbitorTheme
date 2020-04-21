@@ -18,6 +18,10 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css">
     <!-- End CSS -->
 
+
+
+
+
     <style type="text/css">
         /* Chrome, Safari, Edge, Opera */
         input::-webkit-outer-spin-button,
@@ -32,6 +36,84 @@
         }
 
     </style>
+
+
+
+
+    <script type="text/javascript">
+
+    var noerror = false;
+
+    function phoneOnInput() 
+    {
+        if (document.getElementById('phone').value.length > 10) 
+        {
+            document.getElementById('phone').value = document.getElementById('phone').value.slice(0, 10);
+        }
+
+    }
+    
+    function submitfun() 
+    {
+        noerror = false;
+        
+        $("#errors").empty().hide();
+        $("#errors").append("<ul>");
+        
+        if( $('#phone').val() == "" ) 
+        {  $("#errors").append("<li>Enter Phone Number And It Should Be Numeric.</li>").show(); noerror = true; }
+        
+        else if( $('#phone').val().length < 10 ) 
+        { $("#errors").append("<li>Phone Number Should Be 10 Digits Long.</li>").show();  noerror = true; }
+        
+        if( $('#password').val() == "" )
+        {  $("#errors").append("<li>Enter Password.</li>").show();  noerror = true; }
+        
+        else if( $('#password').val().length < 8 ) 
+        {  $("#errors").append("<li>Password Should be 8 Characters Long.</li>").show();  noerror = true; }
+        
+        $("#errors").append("</ul>");
+        if(  noerror == false ) { submitajax();  document.getElementById("login").disabled = true; $("#login").html("Please Wait...."); }    
+    }
+
+    function submitajax()
+    {
+          document.getElementById("login").disabled = true;
+          $("#login").html("Please Wait....");
+
+          $.ajax({
+          type: "POST",
+          url: "login",
+          data: new FormData($('#form')[0]),
+          dataType:"json",
+          cache:false,
+          processData:false,
+          contentType:false,
+          success: function(result) { window.location = "/home"; },
+          error: function(json) 
+          {
+             document.getElementById("login").disabled = false;
+             $("#login").html("Log in");
+
+              if(json.status === 422) 
+                {
+                    $("#errors").empty();
+                    $("#errors").append("<ul>");
+
+                    var errors = json.responseJSON;
+
+                    $.each(errors['errors'], function (key, value) {  $("#errors").append("<li>"+value+"</li>");  });
+
+                    $("#errors").append("</ul>").show();
+
+                } 
+                else { $("#errors").hide();  }
+          }
+       });
+
+    }
+
+</script>
 
 
 </head>
@@ -115,76 +197,3 @@
 </html>
 
 
-<script type="text/javascript">
-
-    var noerror = false;
-
-    function phoneOnInput() 
-    {
-        if (document.getElementById('phone').value.length > 10) 
-        {
-            document.getElementById('phone').value = document.getElementById('phone').value.slice(0, 10);
-        }
-
-    }
-    
-    function submitfun() 
-    {
-        noerror = false;
-        
-        $("#errors").empty().hide();
-        $("#errors").append("<ul>");
-        if( $('#phone').val() == "" ) 
-        {  $("#errors").append("<li>Enter Phone Number And It Should Be Numeric.</li>").show(); noerror = true; }
-        
-        else if( $('#phone').val().length < 10 ) 
-        { $("#errors").append("<li>Phone Number Should Be 10 Digits Long.</li>").show();  noerror = true; }
-        
-        if( $('#password').val() == "" )
-        {  $("#errors").append("<li>Enter Password.</li>").show();  noerror = true; }
-        
-        else if( $('#password').val().length < 8 ) 
-        {  $("#errors").append("<li>Password Should be 8 Characters Long.</li>").show();  noerror = true; }
-        
-        $("#errors").append("</ul>");
-        if(  noerror == false ) { submitajax(); } ;   
-    }
-
-    function submitajax()
-    {
-          document.getElementById("login").disabled = true;
-          $("#login").html("Please Wait....");
-
-          $.ajax({
-          type: "POST",
-          url: "login",
-          data: new FormData($('#form')[0]),
-          dataType:"json",
-          cache:false,
-          processData:false,
-          contentType:false,
-          success: function(result) { window.location = "/home"; },
-          error: function(json) 
-          {
-             document.getElementById("login").disabled = false;
-             $("#login").html("Log in");
-
-              if(json.status === 422) 
-                {
-                    $("#errors").empty();
-                    $("#errors").append("<ul>");
-
-                    var errors = json.responseJSON;
-
-                    $.each(errors['errors'], function (key, value) {  $("#errors").append("<li>"+value+"</li>");  });
-
-                    $("#errors").append("</ul>").show();
-
-                } 
-                else { $("#errors").hide();  }
-          }
-       });
-
-    }
-
-</script>

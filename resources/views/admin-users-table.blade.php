@@ -2,13 +2,15 @@
 Tenant - Users
 @endsection 
 @extends('layouts.main')
+
+
 @section('style')
 
 <!-- Datepicker css -->
 <link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
-@section('rightbar-content')
+
 
 
 <style type="text/css">
@@ -87,6 +89,60 @@ input:checked + .slider:before {
 
 
 </style>
+
+
+
+
+
+@section('script')
+<!-- Tabledit js -->
+<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
+ -->
+
+<!-- <script type="text/javascript">
+
+    function date() 
+    {
+     $('#datepicker').datepicker({
+      "format": "mm-dd-yy",
+      "startDate": "-5d",
+      "endDate": "09-15-2017",
+      "keyboardNavigation": false
+     }); 
+
+   }
+
+    </script> -->
+
+
+
+
+    <!-- Datepicker JS -->
+<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
+<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
+
+<script type="text/javascript">
+
+    function date() 
+    {
+     $('#autoclose-date').datepicker({
+      "format": "mm-dd-yy",
+      "startDate": "-5d",
+      "endDate": "09-15-2017",
+      "keyboardNavigation": false
+     }); 
+
+   }
+
+    </script>
+
+
+@endsection 
+
+
+@section('rightbar-content')
 
 <!-- Start Contentbar -->    
 <div class="contentbar breadcrumbbar" >                
@@ -563,52 +619,6 @@ input:checked + .slider:before {
 
 
 
-
-
-@endsection 
-@section('script')
-<!-- Tabledit js -->
-<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
-<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script>
- -->
-
-<!-- <script type="text/javascript">
-
-    function date() 
-    {
-     $('#datepicker').datepicker({
-      "format": "mm-dd-yy",
-      "startDate": "-5d",
-      "endDate": "09-15-2017",
-      "keyboardNavigation": false
-     }); 
-
-   }
-
-    </script> -->
-
-
-
-
-    <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
-
-<script type="text/javascript">
-
-    function date() 
-    {
-     $('#autoclose-date').datepicker({
-      "format": "mm-dd-yy",
-      "startDate": "-5d",
-      "endDate": "09-15-2017",
-      "keyboardNavigation": false
-     }); 
-
-   }
-
-    </script>
 
 
 @endsection 
