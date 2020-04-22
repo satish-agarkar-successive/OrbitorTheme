@@ -52,10 +52,14 @@ Route::get('/adminproperty', 'AdminPropertyController@index')->middleware('auth'
 Route::get('/adminguest', 'AdminGuestController@index')->middleware('auth');
 
 
-Route::get('/addproperty', 'AdminPropertyController@addget')->middleware('auth');
-Route::post('/addproperty', 'AdminPropertyController@addpost')->middleware('auth');
-Route::get('/editproperty', 'AdminPropertyController@editget')->middleware('auth');
-Route::post('/editproperty', 'AdminPropertyController@editpost')->middleware('auth');
+Route::get('/addproperty', 'AdminPropertyController@addpropertyget')->middleware('auth');
+Route::post('/addproperty', 'AdminPropertyController@addpropertypost')->middleware('auth');
+Route::get('/editproperty', 'AdminPropertyController@editpropertyget')->middleware('auth');
+Route::post('/editproperty', 'AdminPropertyController@editpropertypost')->middleware('auth');
+
+
+Route::get('/propertydetails', 'AdminPropertyController@propertydetailsget')->middleware('auth');
+Route::post('/propertydetails', 'AdminPropertyController@propertydetailspost')->middleware('auth');
 
 
 Route::get('/addguest', 'AdminGuestController@addget')->middleware('auth');

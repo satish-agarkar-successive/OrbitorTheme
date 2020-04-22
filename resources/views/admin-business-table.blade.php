@@ -281,7 +281,7 @@ Tenant - Business
 
 
                                       <div class="row align-items-center pb-3">
-                                            <input name="pincode" type="email" class="form-control" placeholder="000000" oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);" required />
+                                            <input name="pincode" type="number" class="form-control" placeholder="Pincode [ 6 Digits ]" oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);" required />
                                       </div>
 
 

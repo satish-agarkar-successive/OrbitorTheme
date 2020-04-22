@@ -202,17 +202,9 @@ $(document).ready(function() {
     //for editor
     $('.note-insert').hide();
     $('.note-icon-code').hide();
-    //$('html,body').scrollTop(0); // editor is making page to scroll to down , also autofocus of field 1 is changed to editor
-     document.getElementById("propertyname").focus();  // editor is making page to scroll to down , also autofocus of field 1 is changed to editor
+
+
     
-    setInterval(function()
-    {
-       document.getElementById("propertyname").focus();  // editor is making page to scroll to down , also autofocus of field 1 is changed to editor
-    }, 100);
-
-
-
-
 
     /* -- Menu Hamburger -- */
     $(".menu-hamburger").on("click", function(e) {

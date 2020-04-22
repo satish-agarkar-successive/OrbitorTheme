@@ -7,31 +7,43 @@ use Illuminate\Http\Request;
 class AdminPropertyController extends Controller
 {
 
+
     function index()
     {
        	return view('admin-properties-table'); 
     }
 
-    function addget()
-    {
-        return view('admin-properties-add-table');
-    }
 
-    function addpost(Request $req)
+    function addpropertyget()
+    {
+        return view('admin-properties-add');
+    }
+    function addpropertypost(Request $req)
     {
         dd($req);
-        return view('admin-properties-add-table');
+        return view('admin-properties-add');
     }
-
-
-    function editget(Request $req) // for id 
+    function editpropertyget() // for id 
     {
-        return view('admin-properties-edit-table'); 
+        return view('admin-properties-edit'); 
+    }
+    function editpropertypost(Request $req) // updated fields
+    {
+        return view('admin-properties-edit');  
     }
 
-    function editpost(Request $req) // updated fields
+
+
+    function propertydetailsget()
     {
-        return view('admin-properties-edit-table');  
+        return view('admin-properties-details-add-edit');
     }
+    function propertydetailspost(Request $req)
+    {
+        dd($req);
+        return view('admin-properties-details-add-edit');
+    }
+
+
 
 }

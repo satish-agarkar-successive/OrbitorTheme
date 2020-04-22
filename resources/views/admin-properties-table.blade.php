@@ -28,6 +28,10 @@ Tenant - Properties
     -moz-appearance: textfield;
   }
 
+  .custom
+  { margin-right: 10px; } 
+
+
 </style>
 
 
@@ -56,7 +60,7 @@ Tenant - Properties
                     <h5 class="card-title" style="display:inline-block; float: left">Properties</h5>
 
                     <button   href="javascript:void(0)" onclick="javascript: window.location = '/addproperty';" style="display:inline-block; float: right;" class="btn btn-primary-rgba" > 
-                      <i class="feather icon-plus mr-2"></i>Add Properties
+                      <i class="feather icon-plus mr-2"></i>Add Property
                     </button>
 
 
@@ -74,7 +78,7 @@ Tenant - Properties
                                 <th>Mobile</th>
                                 <th>City</th>                                                
                                 <th>No. Of Beds</th>                                                   
-                                <th></th>                                                   
+                                <th>Details</th>                                                   
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
@@ -85,8 +89,11 @@ Tenant - Properties
                                   <td>Mrudul Addipalli</td>
                                   <td>8446184884</td>
                                   <td>Vasai</td>                               
-                                  <td>20</td>                               
-                                  <td></td> 
+                                  <td>0</td>                               
+                                  <td>
+                                       <button type="button" onclick="javascript: window.location = '/propertydetails?id=1'; " class="btn btn-warning"> <span class="custom ti-pencil"></span>Add</button>
+                                      
+                                  </td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -109,7 +116,9 @@ Tenant - Properties
                                   <td>8446184884</td>
                                   <td>Vasai</td>                               
                                   <td>20</td>                               
-                                  <td></td> 
+                                  <td>
+                                       <button type="button" onclick="javascript: window.location = '/propertydetails?id=2'; " class="btn btn-info"> <span class="custom ti-pencil"></span>Edit</button>
+                                  </td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -132,7 +141,9 @@ Tenant - Properties
                                   <td>8446184884</td>
                                   <td>Vasai</td>                               
                                   <td>20</td>                               
-                                  <td></td> 
+                                  <td>
+                                        <button type="button" onclick="javascript: window.location = '/propertydetails?id=3'; " class="btn btn-info"> <span class="custom ti-pencil"></span>Edit</button>
+                                  </td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
