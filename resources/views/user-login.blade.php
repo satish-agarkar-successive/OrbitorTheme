@@ -67,7 +67,7 @@
                                         <h4 class="text-primary my-4">Log in !</h4>
                                         
                                         <div class="form-group">
-                                            <input type="number" id="phone" class="form-control"  name="phone" placeholder="Enter Mobile Number here" oninput="phoneOnInput();" required>
+                                            <input type="number" id="phone" class=" phone form-control"  name="phone" placeholder="Enter Mobile Number here"  oninput="javascript:if (this.value.length > 10) { this.value = this.value.slice(0, 10); }" required>
                                         </div>
 
                                         <div class="form-group">
@@ -88,8 +88,9 @@
                                         </div>              
 
 
-<!-- error messages -->
-<div class="alert alert-danger" align="left" id="errors" style = "display: none;"> </div>
+                                        <!-- error messages -->
+                                        <div class="alert alert-danger" align="left" id="errors" style = "display: none;"> </div>
+                                        
 
                                       <button type="button" onclick="submitfun();" id="login" class="btn btn-success btn-lg btn-block font-18">Log in</button>
                                     </form>
@@ -126,15 +127,6 @@
     <script type="text/javascript">
 
     var noerror = false;
-
-    function phoneOnInput() 
-    {
-        if (document.getElementById('phone').value.length > 10) 
-        {
-            document.getElementById('phone').value = document.getElementById('phone').value.slice(0, 10);
-        }
-
-    }
     
     function submitfun() 
     {

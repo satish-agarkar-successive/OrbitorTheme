@@ -64,7 +64,7 @@
                                         </div> 
                                         <h4 class="text-primary my-4">Sign Up !</h4>
                                         <div class="form-group">
-                                            <input type="text" class=" onlyalphaspace form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Enter Username" oninput="javascript: if (this.value.length > 200) this.value = this.value.slice(0, 200);" required> 
+                                            <input type="text" class=" onlyalphaspace form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Enter Username" required> 
                                         </div>
                                         <div class="form-group">
 

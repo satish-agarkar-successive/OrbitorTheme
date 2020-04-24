@@ -492,10 +492,10 @@ input:checked + .slider:before {
 
 @section('script')
 <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<!-- <script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
 <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script>
-
+ -->
 
 
 
