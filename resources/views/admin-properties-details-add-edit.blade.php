@@ -209,6 +209,8 @@ Tenant - Add Properties
                                 <th>Block Name</th>
                                 <th>Floor</th>                                                  
                                 <th>Room Number</th>                                          
+                                <th>Room Type</th>                                          
+                                <th>Sharing Type</th>                                          
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
@@ -218,6 +220,8 @@ Tenant - Add Properties
                                   <td>Block A</td>
                                   <td>Basement</td>                              
                                   <td>B01</td>      
+                                  <td>Deluxe</td>      
+                                  <td>2</td>      
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -239,7 +243,9 @@ Tenant - Add Properties
                                   <td>2</td>
                                   <td>Block A</td>
                                   <td>Basement</td>                              
-                                  <td>B02</td>   
+                                  <td>B02</td>         
+                                  <td>Semi - Deluxe</td>      
+                                  <td>2</td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -260,7 +266,9 @@ Tenant - Add Properties
                                   <td>3</td>
                                   <td>Block A</td>
                                   <td>6</td>                              
-                                  <td>601</td>  
+                                  <td>601</td>        
+                                  <td>Luxury</td>      
+                                  <td>2</td> 
                                   <td>
                                     
                                     <div class="btn-group btn-group-sm" style="float: none;">
@@ -951,11 +959,34 @@ Tenant - Add Properties
                                       </div>
 
 
+                                      <div class="row align-items-center pb-3">
+                                            <select name="roomtype" class="form-control"   >
+                                                  <option  value="" selected>Room Type</option>
+                                                  <option  value="">Deluxe</option>
+                                                  <option  value="">Semi - Deluxe</option>
+                                                  <option  value="">Luxury</option>
+                                                  <option  value="">General</option>
+                                            </select>
+                                      </div>
+
+
+                                      <div class="row align-items-center pb-3">
+                                            <select name="sharing" class="form-control"   >
+                                                  <option  value="" selected>Sharing Type</option>
+                                                  <option  value="">1</option>
+                                                  <option  value="">2</option>
+                                                  <option  value="">3</option>
+                                                  <option  value="">4</option>
+                                                  <option  value="">5</option>
+                                            </select>
+                                      </div>
+
+
+
 
                                      <div class="row align-items-center pb-3">
                                             <input name="room" type="text" class="form-control" placeholder="Room Number"  />
                                       </div>
-
                                      
 
                                       <div class="row align-items-center pb-5 pull-right">
@@ -1026,6 +1057,29 @@ Tenant - Add Properties
                                             </select>
                                       </div>
 
+
+
+                                      <div class="row align-items-center pb-3">
+                                            <select name="roomtype" class="form-control"   >
+                                                  <option  value="" selected>Room Type</option>
+                                                  <option  value="">Deluxe</option>
+                                                  <option  value="">Semi - Deluxe</option>
+                                                  <option  value="">Luxury</option>
+                                                  <option  value="">General</option>
+                                            </select>
+                                      </div>
+
+
+                                      <div class="row align-items-center pb-3">
+                                            <select name="sharing" class="form-control"   >
+                                                  <option  value="" selected>Sharing Type</option>
+                                                  <option  value="">1</option>
+                                                  <option  value="">2</option>
+                                                  <option  value="">3</option>
+                                                  <option  value="">4</option>
+                                                  <option  value="">5</option>
+                                            </select>
+                                      </div>
 
 
                                      <div class="row align-items-center pb-3">

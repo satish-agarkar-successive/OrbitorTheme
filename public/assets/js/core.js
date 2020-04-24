@@ -6,6 +6,14 @@
  */
 "use strict";
 $(document).ready(function() {
+
+
+    //made blur in style.css - search .infobar-settings-sidebar-overlay{}
+    $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+
+
+
+
     /* -- Menu js -- */
     $(function() {
         for (var a = window.location, abc = $(".horizontal-menu a").filter(function() {
@@ -47,6 +55,9 @@ $(document).ready(function() {
     });
 
 
+
+    //$(".edit").on("click", function(e) 
+    //this add class is happining
     $(".infobar-edituser-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
@@ -59,6 +70,48 @@ $(document).ready(function() {
     });    
 
 
+
+    $(".edit").on("click", function(e) 
+     {
+        //alert($(this).data("id"));
+        //ajax call;
+        getuserdetails($(this).data("id")); // this function is in respective view
+
+        e.preventDefault();
+
+        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        
+        //below lines are added in function getuserdetails() inside success
+        // $("#infobar-edituser-sidebar").addClass("sidebarshow");
+
+     }); 
+
+
+
+
+
+
+
+     $(".switchery").on("click", function(e) 
+     {
+        e.preventDefault();
+        if( confirm("Are You Sure , \nYou Want To Change Status Of User "+$(this).data("id")+" ?") )
+        { 
+            window.location=$(this).data("url")+"?action="+$(this).data("action")+"&id="+$(this).data("id")+"&value="+$(this).data("value");
+            $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"}); 
+        }
+     }); 
+
+
+     $(".delete").on("click", function(e) 
+     {
+        e.preventDefault();
+        if( confirm("Are You Sure , \nYou Want To Delete User "+$(this).data("id")+" ?") )
+        { 
+            window.location=$(this).data("url")+"?action="+$(this).data("action")+"&id="+$(this).data("id")+"&value="+$(this).data("value");
+            $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"}); 
+        }
+     }); 
 
 
 
@@ -199,9 +252,90 @@ $(document).ready(function() {
         $("#infobar-edit-charges-sidebar").removeClass("sidebarshow");
     }); 
 
+
+
+
     //for editor
     $('.note-insert').hide();
     $('.note-icon-code').hide();
+
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+     if(dd<10){
+            dd='0'+dd
+        } 
+        if(mm<10){
+            mm='0'+mm
+        } 
+
+    today = yyyy+'-'+mm+'-'+dd;
+
+    //for add sliders only    
+    $(".date").attr("min",today);
+    $(".date").attr("value",today);
+
+
+
+    $('.onlyalphaspace').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z \s]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) { return true;} else { e.preventDefault(); return false;}
+        if (this.value.length > 199) { this.value = this.value.slice(0, 199); }
+    });
+
+
+      $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);} });  
+
+      $('.gender').append('<option  value="" selected>Select Gender</option><option  value="Male">Male</option><option  value="Female">Female</option><option  value="Other">Other</option>) ');
+      
+      $('.state').append('<option  value="" selected>Select State</option><option  value="Maharashtra">Maharashtra</option><option  value="Andhra Pradesh">Andhra Pradesh</option><option  value="Gujurat">Gujurat</option><option  value="Karnataka">Karnataka</option>');
+
+      $('.address').keypress(function (e) { if (this.value.length > 299) { this.value = this.value.slice(0, 299); }    });  
+
+      $('.city').keypress(function (e) { if (this.value.length > 49) { this.value = this.value.slice(0, 49); }        });
+
+      $('.zip').keypress(function (e) { if (this.value.length > 5) { this.value = this.value.slice(0, 5); }         }); 
+      
+      $('.dealvalue').keypress(function (e) { if (this.value.length > 7) { this.value = this.value.slice(0, 7); }         }); 
+
+
+     
+
+
+
+     //$('.dateformat').text(  this.text()+"efefe" );
+
+    // $("[class]").each(function()
+    // {
+    //     if($(this).attr("class")=="dateformat")
+    //     {
+    //         var ymd =  $(this).text();
+    //         var res = ymd.split("-");
+    //         if(res[1]=="01"){res[1]="Jan";}
+    //         if(res[1]=="02"){res[1]="Feb";}
+    //         if(res[1]=="03"){res[1]="Mar";}
+    //         if(res[1]=="04"){res[1]="Apr";}
+    //         if(res[1]=="05"){res[1]="May";}
+    //         if(res[1]=="06"){res[1]="Jun";}
+    //         if(res[1]=="07"){res[1]="Jul";}
+    //         if(res[1]=="08"){res[1]="Aug";}
+    //         if(res[1]=="09"){res[1]="Sept";}
+    //         if(res[1]=="10"){res[1]="Oct";}
+    //         if(res[1]=="11"){res[1]="Nov";}
+    //         if(res[1]=="12"){res[1]="Dec";}
+    //         var dmy =res[2]+'-'+res[1]+'-'+res[0];
+    //         dmy = dmy.replace(/ /g,'');
+
+    //         $(this).text( dmy );
+    //     }
+    // });
+
+
+
+
 
 
     

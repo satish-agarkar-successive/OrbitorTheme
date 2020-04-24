@@ -125,12 +125,10 @@ input:checked + .slider:before {
                             <thead>
                               <tr>
                                 <th>No</th>
-                                <th>Username</th>
-                                <th>Mobile</th>
-                                <th>Email</th>                                                 
+                                <th>Username , Mobile , Email</th>                                                 
                                 <th>Activation Date</th>                                                   
                                 <th>Renewal Date</th>                                                   
-                                <th>Deal Value</th>                                                   
+                                <th>Deal Value [Rupees]</th>   
                                 <th>No. Of Properties</th>                                                   
                                 <th>Status</th>                                                   
                                 <th>Action</th>                                        
@@ -146,12 +144,10 @@ input:checked + .slider:before {
 <tr>
 
 <td>{{ $u -> user_id }} </td>
-<td>{{ $u -> user_name }} </td>
-<td>{{ $u -> user_mobile }} </td>
-<td>{{ $u -> user_email }} </td>
+<td>{{ $u -> user_name }}<br>{{ $u -> user_mobile }}<br>{{ $u -> user_email }} </td>
 <td class="dateformat" >{{ $u -> user_activation_date }} </td>
 <td class="dateformat" >{{ $u -> user_renewal_date }} </td>
-<td>{{ $u -> user_deal_value }} </td>
+<td><i class="fa fa-inr" style="margin: 5px;"></i>{{ $u -> user_deal_value }}</td>
 <td>{{ $u -> prop_count }} </td>
 
 <td>
@@ -165,9 +161,9 @@ input:checked + .slider:before {
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
             
-            <button type="button" data-id="{{$u->user_id}}"   href="javascript:void(0)" class=" edit  tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            <button type="button"  href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
             
-            <button type="button"  data-url="/adminuser" data-action="delete" data-id="{{$u->user_id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+            <button type="button"  href="/deleteuser?id={{$u->user_id}}" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
 </td>
 
@@ -318,7 +314,7 @@ input:checked + .slider:before {
                                         <span class="input-group-text">Renewal Date</span>
                                         </div>
 
-                                        <input type="date" name="renewal_date" id="add_renewal_date"  class=" date form-control" required />
+                                        <input type="date" name="renewal_date" id="add_renewal_date"  class="form-control" required />
 
                                         <div class="input-group-append">
                                         <span class="input-group-text" ><i class="feather icon-calendar"></i></span>
@@ -388,11 +384,7 @@ input:checked + .slider:before {
                                       {{ csrf_field() }}
 
                                      <div class="row align-items-center pb-3">
-
-                                            <input name="user_id" id="edit_user_id" type="text" hidden />
-
                                             <input name="username" id="edit_username" type="text" class=" onlyalphaspace form-control" placeholder="User Name" required />
-
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -511,41 +503,25 @@ input:checked + .slider:before {
 <script type="text/javascript">
 
 
-//this call is happening in core.js for edit[class]  button click listener 
-function getuserdetails(id) 
-{
-
-       $.ajax({
-          type: "GET",
-          url: '/edituser',
-          data: { 'id':id },
-          dataType:"json",
-          success: function(result) 
-          { 
+// $(document).ready(function() 
+// {
+//      $(".switchery").on("click", function(e) 
+//      {
+//         e.preventDefault();
+//         r = confirm(" Are You Sure , \nYou Want To Change Status ?");
+//         if(r==true)
+//         { 
+//             window.location=$(this).data("url")+"?action="+$(this).data("action")+"&id="+$(this).data("id");
             
-              var user = result.data;
-
-              $('#edit_user_id').val(user.user_id);
-              $('#edit_username').val(user.user_name);
-              $('#edit_phone').val(user.user_mobile);
-              $('#edit_email').val(user.user_email);
-              $('#edit_gender').val(user.user_gender);
-              $('#edit_address').val(user.user_address);
-              $('#edit_state').val(user.user_state);
-              $('#edit_city').val(user.user_city);
-              $('#edit_zip').val(user.zip);
-              //$("#edit_renewal_date").attr("min",user.user_renewal_date);
-              $("#edit_renewal_date").attr("value",user.user_renewal_date);
-              $('#edit_dealvalue').val(user.user_deal_value);
+//             //toggle_user_status ( $(this).data("id") );
+//             //window.location="/adminuser?action=toogle&id="+$(this).data("id");
+            
+//             $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"}); 
+//         }
+//      }); 
+// });
 
 
-              $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-              $("#infobar-edituser-sidebar").addClass("sidebarshow");
-
-          }
-       });
-
-}
 
 
 

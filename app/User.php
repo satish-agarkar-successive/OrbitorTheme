@@ -12,7 +12,7 @@ class User extends Authenticatable
 
     public $timestamps = false;
     
-    protected $table = 'login';
+    protected $table = 'adminlogin';
     protected $primaryKey = 'id';
 
     /**

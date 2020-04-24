@@ -10,6 +10,7 @@ use Redirect;
 
 use App;
 
+
 class RegisterController extends Controller
 {
 	
@@ -22,10 +23,9 @@ class RegisterController extends Controller
     function register(Request $request)
     {
 
-
 	    $rules = [
-	    	'name' => ['required', 'regex:/^[\pL\-]+\s?[\pL\-]+\s?[\pL\-]*$/u', 'max:200'],
-            'phone' => ['required','numeric','digits:10','unique:login'],
+            'name' => ['required', 'regex:/^[a-zA-Z\s]*$/', 'max:100'],
+            'phone' => ['required','numeric','digits:10','unique:adminlogin'],
             'password' => 'required|string|min:8|confirmed',
             'password_confirmation' => 'required|string|min:8',
             'term'=> 'required',
@@ -34,8 +34,8 @@ class RegisterController extends Controller
 	    $customMessages = [
 
             'name.required' => 'User Name Required',
-            'name.regex' => 'User Name Should Not Contain Numeric Value. Only Three Words Allowed Seperated By Space',
-            'name.max' => 'User Name Should Contain Max 200 Characters only.',
+            'name.regex' => 'User Name Should Not Contain Numeric Value',
+            'name.max' => 'User Name Should Contain Max 100 Characters only.',
             
             'phone.required' => 'Phone Number Required And Should Be Numeric.',
             'phone.numeric' => 'Phone Number Should Be Numeric.',
@@ -54,24 +54,12 @@ class RegisterController extends Controller
 
 	    if( $this->validate($request, $rules, $customMessages) )
 	    {
-
 	    	$user = new App\User;
 			$user->name = $request['name'];
 			$user->phone = $request['phone'];
 			$user->password = bcrypt( $request['password'] );
 			$user->save();
-
-
-             $user_data = array(
-              'phone'  => $request->get('phone'),
-              'password' => $request->get('password')
-             );
-
-
             return Response::json(array('status' => 'success' ),200 );
-             
-
-
 	    	//return redirect("/home"); // it will directly open login page since auth is not created
 
 	    }

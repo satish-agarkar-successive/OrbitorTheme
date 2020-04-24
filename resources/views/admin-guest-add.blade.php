@@ -118,9 +118,9 @@ Tenant - Add Guest
                             <div class="form-group col-md-6">
                                 <select id="booktype" class="form-control">
                                       <option  value="" selected>Select Type Of Booking</option>
-                                      <option  value="">Booking 1</option>
-                                      <option  value="">Booking 2</option>
-                                      <option  value="">Booking 3</option>
+                                      <option  value="">Tentative</option>
+                                      <option  value="">Confirmed</option>
+                                      <option  value="">Waitlist</option>
                                 </select>
                             </div>
                         </div>
@@ -207,27 +207,35 @@ Tenant - Add Guest
 
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                  <input type="number" id="dicount" class="form-control" placeholder="Dicount Amount" />
+
+
+                           <div class="form-group col-md-6">
+                                  <input type="number" id="maintenancecharge" class="form-control" placeholder="Maintenance Charges" />
                             </div>
+
+
                             <div class="form-group col-md-6">
-                                 <select id="vehicle" class="form-control">
-                                      <option  value="" selected>Select Vehicle</option>
-                                      <option  value="">Bike</option>
-                                      <option  value="">Car</option>
-                                      <option  value="">Scooty</option>
-                                      <option  value="">No Vehicle</option>
-                                  </select>
+                                  <input type="number" id="discount" class="form-control" placeholder="Discount Amount" />
                             </div>
+
+                            
                         </div>
 
 
                         <div class="form-row">
+
+                          <div class="form-group col-md-6">
+                                 <select id="vehicle" class="form-control">
+                                      <option  value="" selected>Select Vehicle</option>
+                                      <option  value="">Two Wheeler</option>
+                                      <option  value="">Three Wheeler</option>
+                                      <option  value="">Four Wheeler</option>
+                                      <option  value="">No Vehicle</option>
+                                  </select>
+                            </div>
+
                             <div class="form-group col-md-6">
                                   <input type="text" id="vehiclenumber" class="form-control" placeholder="Vehicle Number" />
-                            </div>
-                            <div class="form-group col-md-6">
-                                  <input type="number" id="maintenancecharge" class="form-control" placeholder="Maintenance Charges" />
                             </div>
                         </div>
 
@@ -237,7 +245,7 @@ Tenant - Add Guest
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <select id="gender" class="form-control">
-                                      <option  value="" selected>Select Gender</option>
+                                      <option  value="" selected>Select Guest Gender</option>
                                       <option  value="">Male</option>
                                       <option  value="">Female</option>
                                       <option  value="">Other</option>

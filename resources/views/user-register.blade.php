@@ -40,19 +40,112 @@
 
 
 
+<body class="vertical-layout">
+    <!-- Start Containerbar -->
+    <div id="containerbar" class="containerbar authenticate-bg">
+        <!-- Start Container -->
+        <div class="container">
+            <div class="auth-box register-box">
+                <!-- Start row -->
+                <div class="row no-gutters align-items-center justify-content-center">
+                    <!-- Start col -->
+                    <div class="col-md-6 col-lg-5">
+                        <!-- Start Auth Box -->
+                        <div class="auth-box-right">
+                            <div class="card">
+                                <div class="card-body">
+                                    <form method="POST" action="{{url('/')}}/register" id="form">
+
+                                        {{ csrf_field() }}
+
+
+                                        <div class="form-head">
+                                            <a href="{{url('/')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
+                                        </div> 
+                                        <h4 class="text-primary my-4">Sign Up !</h4>
+                                        <div class="form-group">
+                                            <input type="text" class=" onlyalphaspace form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Enter Username" oninput="javascript: if (this.value.length > 200) this.value = this.value.slice(0, 200);" required> 
+                                        </div>
+                                        <div class="form-group">
+
+                                            <input type="number" id="phone" class="form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number" oninput="javascript: if (this.value.length > 10) this.value = this.value.slice(0, 10);"  required>
+
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-Type Password" required>
+                                        </div>
+                                        <div class="form-row mb-3">
+                                            <div class="col-sm-12">
+                                                <div class="custom-control custom-checkbox text-left">
+                                                    <input type="checkbox" class="custom-control-input" id="terms" name="term" >
+                                                    <label class="custom-control-label font-14" for="terms">I Agree to Terms & Conditions of Orbiter</label>
+                                                </div>                                
+                                            </div>
+                                        </div>                      
+ 
+
+                                        <!-- error messages -->
+                                        <div class="alert alert-danger" align="left" id="errors" style = "display: none;"> </div>
+
+
+
+                                      <button type="button" id="register" onclick="submitfun();" class="btn btn-success btn-lg btn-block font-18">Register</button>
+                                    </form>
+                                    <p class="mb-0 mt-3">Already have an account? <a href="{{url('/')}}">Log in</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Auth Box -->
+                    </div>
+                    <!-- End col -->
+                </div>
+                <!-- End row -->
+            </div>
+        </div>
+        <!-- End Container -->
+    </div>
+    <!-- End Containerbar -->
+    <!-- Start JS -->        
+    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
+    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+    <script src="{{ asset('assets/js/detect.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
+    <!-- End js -->
+</body>
+</html>
+
+
+
+
 <script type="text/javascript">
+
+
+
+
+
+        $('.onlyalphaspace').keypress(function (e) {
+        var regex = new RegExp("^[a-zA-Z \s]+$");
+        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+        if (regex.test(str)) {
+            return true;
+        }
+        else
+        {
+        e.preventDefault();
+        return false;
+        }
+      });
+
+
+
 
     var  noerror = false;
 
-    function phoneOnInput() 
-    {
-        if (document.getElementById('phone').value.length > 10) 
-        {
-            document.getElementById('phone').value = document.getElementById('phone').value.slice(0, 10);
-        }
-
-    }
-    
     function submitfun() 
     {
         noerror = false;
@@ -67,11 +160,14 @@
         else if( $('#name').val().length > 200 ) 
             { $("#errors").append("<li>User Name Should Contain Max 200 Characters Only.</li>").show();  noerror = true; }
 
+        
+
         if( $('#phone').val() == "" ) 
             {  $("#errors").append("<li>Enter Phone Number And It Should Be Numeric.</li>").show();  noerror = true; }
-        
+
         else if( $('#phone').val().length < 10 ) 
             { $("#errors").append("<li>Phone Number Should Be 10 Digits Long.</li>").show();  noerror = true; }
+
 
         if( $('#password').val() == "" ) {  $("#errors").append("<li>Enter Password.</li>").show();  noerror = true; }
         
@@ -135,82 +231,3 @@
     }
 
 </script>
-
-
-<body class="vertical-layout">
-    <!-- Start Containerbar -->
-    <div id="containerbar" class="containerbar authenticate-bg">
-        <!-- Start Container -->
-        <div class="container">
-            <div class="auth-box register-box">
-                <!-- Start row -->
-                <div class="row no-gutters align-items-center justify-content-center">
-                    <!-- Start col -->
-                    <div class="col-md-6 col-lg-5">
-                        <!-- Start Auth Box -->
-                        <div class="auth-box-right">
-                            <div class="card">
-                                <div class="card-body">
-                                    <form method="POST" action="{{url('/')}}/register" id="form">
-
-                                        {{ csrf_field() }}
-
-
-                                        <div class="form-head">
-                                            <a href="{{url('/')}}" class="logo"><img src="assets/images/logo.svg" class="img-fluid" alt="logo"></a>
-                                        </div> 
-                                        <h4 class="text-primary my-4">Sign Up !</h4>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Enter Username here" required> 
-                                        </div>
-                                        <div class="form-group">
-
-                                            <input type="number" id="phone" class="form-control" value="{{ old('phone') }}"  name="phone" placeholder="Enter Mobile Number here" oninput="phoneOnInput();" required>
-
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password here" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" placeholder="Re-Type Password" required>
-                                        </div>
-                                        <div class="form-row mb-3">
-                                            <div class="col-sm-12">
-                                                <div class="custom-control custom-checkbox text-left">
-                                                    <input type="checkbox" class="custom-control-input" id="terms" name="term" >
-                                                    <label class="custom-control-label font-14" for="terms">I Agree to Terms & Conditions of Orbiter</label>
-                                                </div>                                
-                                            </div>
-                                        </div>                      
- 
-<!-- error messages -->
-<div class="alert alert-danger" align="left" id="errors" style = "display: none;"> </div>
-
-
-                                      <button type="button" id="register" onclick="submitfun();" class="btn btn-success btn-lg btn-block font-18">Register</button>
-                                    </form>
-                                    <p class="mb-0 mt-3">Already have an account? <a href="{{url('/')}}">Log in</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Auth Box -->
-                    </div>
-                    <!-- End col -->
-                </div>
-                <!-- End row -->
-            </div>
-        </div>
-        <!-- End Container -->
-    </div>
-    <!-- End Containerbar -->
-    <!-- Start JS -->        
-    <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('assets/js/modernizr.min.js') }}"></script>
-    <script src="{{ asset('assets/js/detect.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery.slimscroll.js') }}"></script>
-    <!-- End js -->
-</body>
-</html>
-

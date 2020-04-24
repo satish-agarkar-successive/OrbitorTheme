@@ -129,11 +129,13 @@ Tenant - Edit Properties
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <select name="gender" class="form-control">
-                                      <option  value="" selected>Select Gender</option>
+                                <select name="propgender" class="form-control">
+                                      <option  value="" selected>Select Property Gender</option>
                                       <option  value="">Male</option>
                                       <option  value="">Female</option>
-                                      <option  value="">Other</option>
+                                      <option  value="">Co-Head</option>
+                                      <option  value="">Co-Living</option>
+                                      <option  value="">Both</option>
                                 </select>
                             </div>
                         </div>

@@ -44,12 +44,17 @@ Route::get('/', function () {    return redirect('/home'); });
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Route::get('/adminuser', 'AdminUserController@index')->middleware('auth');
-
+Route::get('/adminuser1', 'AdminUserController@index1')->middleware('auth');
 Route::get('/adminbusiness', 'AdminBusinessController@index')->middleware('auth');
-
 Route::get('/adminproperty', 'AdminPropertyController@index')->middleware('auth');
-
 Route::get('/adminguest', 'AdminGuestController@index')->middleware('auth');
+
+
+
+Route::post('/adduser', 'AdminUserController@adduserpost')->middleware('auth');
+
+Route::get('/edituser', 'AdminUserController@edituserget')->middleware('auth');
+Route::post('/edituser', 'AdminUserController@edituserpost')->middleware('auth');
 
 
 Route::get('/addproperty', 'AdminPropertyController@addpropertyget')->middleware('auth');

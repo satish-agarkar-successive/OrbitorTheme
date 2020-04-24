@@ -1,5 +1,5 @@
 @section('title') 
-Tenant - Edit Guest
+Tenant - Add Guest
 @endsection 
 @extends('layouts.main')
 @section('style')
@@ -8,7 +8,6 @@ Tenant - Edit Guest
 <link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
-
 
 
 <style type="text/css">
@@ -25,8 +24,16 @@ Tenant - Edit Guest
     -moz-appearance: textfield;
   }
 
+  .uploads { height:100px; margin:10px; }
+
+
+
+
+
+
 
 </style>
+
 
 
 
@@ -50,7 +57,7 @@ Tenant - Edit Guest
                 <div class="card-body" style="margin-bottom: 25px;">
 
 
-                    <form method="POST" action="{{url('/')}}/addguest" >
+                    <form method="POST" action="{{url('/')}}/addguest" enctype="multipart/form-data" >
 
                         {{ csrf_field() }}
 
@@ -111,9 +118,9 @@ Tenant - Edit Guest
                             <div class="form-group col-md-6">
                                 <select id="booktype" class="form-control">
                                       <option  value="" selected>Select Type Of Booking</option>
-                                      <option  value="">Booking 1</option>
-                                      <option  value="">Booking 2</option>
-                                      <option  value="">Booking 3</option>
+                                      <option  value="">Tentative</option>
+                                      <option  value="">Confirmed</option>
+                                      <option  value="">Waitlist</option>
                                 </select>
                             </div>
                         </div>
@@ -146,7 +153,7 @@ Tenant - Edit Guest
                                 <input type="text" class="form-control" id="address" placeholder="Permanent Guest Address" >
                             </div>
                             <div class="form-group col-md-6">
-                                    <input type="number" class="form-control" placeholder="Aadhar Number [ 12 Digit ]" oninput="javascript: if (this.value.length > 12) this.value = this.value.slice(0, 12);" required />
+                                    <input type="number" class="form-control" placeholder="Aadhar Number [ 12 Digit ]" oninput="javascript: if (this.value.length > 12) this.value = this.value.slice(0, 12);" />
                               </div>
                         </div>
 
@@ -173,7 +180,7 @@ Tenant - Edit Guest
                                 <input type="text" onfocus="(this.type='date')" class="form-control" id="bookdate" placeholder="Booking Date" >
                             </div>
                             <div class="form-group col-md-6">
-                                    <input type="number" class="form-control" id="bookamount" placeholder="Booking Amount" required />
+                                    <input type="number" class="form-control" id="bookamount" placeholder="Booking Amount" />
                               </div>
                         </div>
 
@@ -190,37 +197,45 @@ Tenant - Edit Guest
 
                          <div class="form-row">
                             <div class="form-group col-md-6">
-                                  <input type="number" id="rent" class="form-control" placeholder="Rent Amount" required />
+                                  <input type="number" id="rent" class="form-control" placeholder="Rent Amount" />
                             </div>
                             <div class="form-group col-md-6">
-                                  <input type="number" id="deposit" class="form-control" placeholder="Deposit Amount" required />
+                                  <input type="number" id="deposit" class="form-control" placeholder="Deposit Amount" />
                             </div>
                         </div>
 
 
 
                         <div class="form-row">
-                            <div class="form-group col-md-6">
-                                  <input type="number" id="dicount" class="form-control" placeholder="Dicount Amount" required />
+
+
+                           <div class="form-group col-md-6">
+                                  <input type="number" id="maintenancecharge" class="form-control" placeholder="Maintenance Charges" />
                             </div>
+
+
                             <div class="form-group col-md-6">
+                                  <input type="number" id="discount" class="form-control" placeholder="Discount Amount" />
+                            </div>
+
+                            
+                        </div>
+
+
+                        <div class="form-row">
+
+                          <div class="form-group col-md-6">
                                  <select id="vehicle" class="form-control">
                                       <option  value="" selected>Select Vehicle</option>
-                                      <option  value="">Bike</option>
-                                      <option  value="">Car</option>
-                                      <option  value="">Scooty</option>
+                                      <option  value="">Two Wheeler</option>
+                                      <option  value="">Three Wheeler</option>
+                                      <option  value="">Four Wheeler</option>
                                       <option  value="">No Vehicle</option>
                                   </select>
                             </div>
-                        </div>
 
-
-                        <div class="form-row">
                             <div class="form-group col-md-6">
-                                  <input type="text" id="vehiclenumber" class="form-control" placeholder="Vehicle Number" required />
-                            </div>
-                            <div class="form-group col-md-6">
-                                  <input type="number" id="maintenancecharge" class="form-control" placeholder="Maintenance Charges" required />
+                                  <input type="text" id="vehiclenumber" class="form-control" placeholder="Vehicle Number" />
                             </div>
                         </div>
 
@@ -230,7 +245,7 @@ Tenant - Edit Guest
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <select id="gender" class="form-control">
-                                      <option  value="" selected>Select Gender</option>
+                                      <option  value="" selected>Select Guest Gender</option>
                                       <option  value="">Male</option>
                                       <option  value="">Female</option>
                                       <option  value="">Other</option>
@@ -246,8 +261,8 @@ Tenant - Edit Guest
 
                             <div class="form-group col-md-6">
                                 <label class="btn btn-primary-rgba btn-block" >            
-                                      <input name='aadharuploads' type="file" id="aadharuploadid" accept="image/*" oninput="aadharupdatelist()" style="display: none; " multiple/>
-                                      <i class="feather icon-upload"></i> Upload Aadhar
+                                      <input name='aadharuploads[]' type="file" id="aadharuploadid" accept="image/*" oninput="aadharupdatelist()" style="display: none; " multiple/>
+                                      <i class="feather icon-upload"></i> Upload Aadhar [ Max 10 MB. ]
                                 </label>
                                 <label id="aadharuploadname" style=" float:center;  color: #007bff; margin:2%; display: none;"></label>
 
@@ -258,15 +273,15 @@ Tenant - Edit Guest
                         <div class="form-row">
                             <div class="form-group col-md-6">
                                 <label class="btn btn-primary-rgba btn-block" >            
-                                      <input name='iduploads' type="file" id="iduploadid" accept="image/*" oninput="idupdatelist()" style="display: none; " multiple/>
-                                      <i class="feather icon-upload"></i> Upload ID
+                                      <input name='iduploads[]' type="file" id="iduploadid" accept="image/*" oninput="idupdatelist()" style="display: none; " multiple/>
+                                      <i class="feather icon-upload"></i> Upload ID [ Max 10 MB. ]
                                 </label>
                                 <label id="iduploadname" style=" float:center;  color: #007bff; margin:2%; display: none;"></label>
                             </div>
                             <div class="form-group col-md-6">
                                  <label class="btn btn-primary-rgba btn-block" >            
-                                      <input name='selfieuploads' type="file" id="selfieuploadid" accept="image/*" oninput="selfieupdatelist()" style="display: none; " multiple/>
-                                      <i class="feather icon-upload"></i> Upload Selfie
+                                      <input name='selfieuploads[]' type="file" id="selfieuploadid" accept="image/*" oninput="selfieupdatelist()" style="display: none; " multiple/>
+                                      <i class="feather icon-upload"></i> Upload Selfie [ Max 10 MB. ]
                                 </label>
                                 <label id="selfieuploadname" style=" float:center;  color: #007bff; margin:2%; display: none;"></label>
                             </div>
@@ -299,127 +314,83 @@ Tenant - Edit Guest
 
 @endsection 
 @section('script')
-<!-- Tabledit js -->
-<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
-<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
-
-
-<!-- <script type="text/javascript">
-
-    function date() 
-    {
-     $('#datepicker').datepicker({
-      "format": "mm-dd-yy",
-      "startDate": "-5d",
-      "endDate": "09-15-2017",
-      "keyboardNavigation": false
-     }); 
-
-   }
-
-    </script> -->
-
-
-
-
-    <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
 
 <script type="text/javascript">
 
-    function date() 
-    {
-       $('#autoclose-date').datepicker({
-        "format": "mm-dd-yy",
-        "startDate": "-5d",
-        "endDate": "09-15-2017",
-        "keyboardNavigation": false
-       }); 
-   }
-
+   
    function aadharupdatelist() 
    {
 
-        $('#aadharuploadname').hide();
-        $('#aadharuploadname').empty();
+
+      if( document.getElementById('aadharuploadid').files.length > 2 ){ alert("Max 2 Images Allowed For Aadhar."); }
+      else
+      {
+              $('#aadharuploadname').hide();
+              $('#aadharuploadname').empty();
+              var input = document.getElementById('aadharuploadid');
+              var output = document.getElementById('aadharuploadname');
+              for (var i = 0; i < input.files.length; ++i) {
+                  // children += '<li>' + input.files.item(i).name + '</li>';
+                      var reader = new FileReader();
+                      reader.onload = function(event) {
+                        $($.parseHTML('<img class="uploads">')).attr('src', event.target.result).appendTo('#aadharuploadname');  }
+                      reader.readAsDataURL(input.files[i]);
+              }
+              $('#aadharuploadname').show();
+      }
 
 
-        var input = document.getElementById('aadharuploadid');
-        var output = document.getElementById('aadharuploadname');
-        
-        //var children = "Selected Files For Aadhar";
-      
-        for (var i = 0; i < input.files.length; ++i) {
-            // children += '<li>' + input.files.item(i).name + '</li>';
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
-                      '#aadharuploadname');
-                }
-                reader.readAsDataURL(input.files[i]);
-        }
-
-
-        //output.innerHTML = '<ul>'+children+'</ul>';
-
-        $('#aadharuploadname').show();
    }
 
 
 
    function idupdatelist() 
    {
-        $('#iduploadname').hide();
-        $('#iduploadname').empty();
 
-        var input = document.getElementById('iduploadid');
-        var output = document.getElementById('iduploadname');
-        var children = "Selected Files For ID";
-        for (var i = 0; i < input.files.length; ++i) {
-            
-            // children += '<li>' + input.files.item(i).name + '</li>';
+      if( document.getElementById('iduploadid').files.length > 1 ){ alert("Max 1 Image Allowed For ID."); }
+      else
+      {
+              $('#iduploadname').hide();
+              $('#iduploadname').empty();
+              var input = document.getElementById('iduploadid');
+              var output = document.getElementById('iduploadname');
+              var children = "Selected Files For ID";
+              for (var i = 0; i < input.files.length; ++i) {
+                   var reader = new FileReader();
+                    reader.onload = function(event) {
+                      $($.parseHTML('<img class="uploads">')).attr('src', event.target.result).appendTo('#iduploadname');
+                    }
+                    reader.readAsDataURL(input.files[i]);
+              }
+              $('#iduploadname').show();
+       }
 
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
-                      '#iduploadname');
-                }
-                reader.readAsDataURL(input.files[i]);
-        }
-
-        //output.innerHTML = '<ul>'+children+'</ul>';
-        $('#iduploadname').show();
-   }
+    }
 
 
    function selfieupdatelist() 
    {
-         
-        $('#selfieuploadname').hide();
-        $('#selfieuploadname').empty();
+
+      if( document.getElementById('selfieuploadid').files.length > 1 ){ alert("Max 1 Image Allowed For Selfie."); }
+      else
+      {
+              $('#selfieuploadname').hide();
+              $('#selfieuploadname').empty();
+              var input = document.getElementById('selfieuploadid');
+              var output = document.getElementById('selfieuploadname');
+              //var children = "Selected Files For selfie";      
+              for (var i = 0; i < input.files.length; ++i) {
+                  // children += '<li>' + input.files.item(i).name + '</li>';
+                      var reader = new FileReader();
+                      reader.onload = function(event) {
+                        $($.parseHTML('<img class="uploads">')).attr('src', event.target.result).appendTo('#selfieuploadname');       
+                      }
+                      reader.readAsDataURL(input.files[i]);
+              }
+              $('#selfieuploadname').show();
+      }
 
 
-        var input = document.getElementById('selfieuploadid');
-        var output = document.getElementById('selfieuploadname');
-        
-        //var children = "Selected Files For selfie";
-      
-        for (var i = 0; i < input.files.length; ++i) {
-            // children += '<li>' + input.files.item(i).name + '</li>';
-                var reader = new FileReader();
-                reader.onload = function(event) {
-                    $($.parseHTML('<img style=" width:20%; height:20%; margin:2%" >')).attr('src', event.target.result).appendTo(
-                      '#selfieuploadname');
-                }
-                reader.readAsDataURL(input.files[i]);
-        }
-
-
-        //output.innerHTML = '<ul>'+children+'</ul>';
-
-        $('#selfieuploadname').show();
    }
 
 
