@@ -191,7 +191,13 @@
                     $("#errors").append("</ul>").show();
 
                 } 
-                else { $("#errors").hide();  }
+                else 
+                { 
+                    $("#errors").empty();
+                    $("#errors").append("<ul>");
+                    $("#errors").append("<li>Server Error</li>");
+                    $("#errors").append("</ul>").show();  
+                }
           }
        });
 

@@ -175,7 +175,7 @@ class AdminUserController extends Controller
 
               $rules = [    
                     'username' => ['required', 'regex:/^[a-zA-Z\s]*$/', 'max:100'],
-                    'user_mobile' => 'required|numeric|digits:10|unique:users',
+                    'user_mobile' => 'required|numeric|digits:10',
                     'email' => 'nullable|email',
                     'user_gender' => 'required',
                     'address' => 'nullable|max:300',
