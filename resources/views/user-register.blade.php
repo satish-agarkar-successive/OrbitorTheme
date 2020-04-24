@@ -223,6 +223,13 @@
                     $("#errors").append("</ul>").show();
 
                 } 
+                if(json.status === 500)
+                { 
+                    $("#errors").empty();
+                    $("#errors").append("<ul>");
+                    $("#errors").append("<li>Server Error Occured.</li>");
+                    $("#errors").append("</ul>").show();  
+                }
                 else { $("#errors").hide();  }
 
           }
