@@ -195,6 +195,10 @@
                     </li>
 
                     <li class="scroll dropdown">
+                        <a href="{{ url('/') }}/adminlead" ><img src="assets/images/svg-icon/collapse.svg" class="img-fluid" alt="layouts"><span>Leads</span></a>
+                    </li>
+
+                    <li class="scroll dropdown">
                         <a href="{{ url('/') }}/adminguest" ><i class="feather icon-briefcase"></i><span>Guest</span></a>
                     </li>
                     

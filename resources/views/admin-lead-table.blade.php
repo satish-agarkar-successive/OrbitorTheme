@@ -109,10 +109,10 @@ input:checked + .slider:before {
 
                   <div style="margin-bottom: 25px;">
 
-                    <h5 class="card-title" style="display:inline-block; float: left">User Details</h5>
+                    <h5 class="card-title" style="display:inline-block; float: left">Lead Details</h5>
 
                     <button href="javascript:void(0)" id="infobar-adduser-open" style="display:inline-block; float: right;" class="btn btn-primary-rgba" > 
-                      <i class="feather icon-plus mr-2"></i>Add User
+                      <i class="feather icon-plus mr-2"></i>Add Lead
                     </button>
 
 
@@ -125,12 +125,10 @@ input:checked + .slider:before {
                             <thead>
                               <tr>
                                 <th>No</th>
-                                <th>Username</th>
-                                <th>Mobile</th>
-                                <th>Email</th>                                                 
+                                <th>Username , Mobile , Email</th>                                                 
                                 <th>Activation Date</th>                                                   
                                 <th>Renewal Date</th>                                                   
-                                <th>Deal Value</th>                                                   
+                                <th>[Rupees] Deal Value</th>   
                                 <th>No. Of Properties</th>                                                   
                                 <th>Status</th>                                                   
                                 <th>Action</th>                                        
@@ -146,12 +144,10 @@ input:checked + .slider:before {
 <tr>
 
 <td>{{ $u -> user_id }} </td>
-<td>{{ $u -> user_name }} </td>
-<td>{{ $u -> user_mobile }} </td>
-<td>{{ $u -> user_email }} </td>
-<td class="dateformat" >{{ $u -> user_activation_date }} </td>
-<td class="dateformat" >{{ $u -> user_renewal_date }} </td>
-<td>{{ $u -> user_deal_value }} </td>
+<td>{{ $u -> user_name }}<br>{{ $u -> user_mobile }}<br>{{ $u -> user_email }} </td>
+<td>{{ $u -> user_activation_date }} </td>
+<td>{{ $u -> user_renewal_date }} </td>
+<td><i class="fa fa-inr" style="margin: 5px;"></i>{{ $u -> user_deal_value }} </td>
 <td>{{ $u -> prop_count }} </td>
 
 <td>
@@ -262,7 +258,7 @@ input:checked + .slider:before {
 
                         <div id="infobar-adduser-sidebar" class="infobar-settings-sidebar">
                             <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
-                                <h4>Add User</h4><a href="javascript:void(0)" id="infobar-adduser-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
+                                <h4>Add Lead</h4><a href="javascript:void(0)" id="infobar-adduser-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
                             </div>
                             <div class="infobar-settings-sidebar-body">
                                 <div class="custom-mode-setting">
@@ -345,7 +341,7 @@ input:checked + .slider:before {
                                       <div class="row align-items-center pb-5 pull-right">
 
                                           <button id="addbtn" type="button" onclick="add();" class="btn btn-primary-rgba" > 
-                                            <i class="feather icon-plus mr-2"></i>Add User Details
+                                            <i class="feather icon-plus mr-2"></i>Add Lead Details
                                           </button>
                                         
                                       </div>
@@ -377,7 +373,7 @@ input:checked + .slider:before {
 
                         <div id="infobar-edituser-sidebar" class="infobar-settings-sidebar">
                             <div class="infobar-settings-sidebar-head d-flex w-100 justify-content-between">
-                                <h4>Edit User</h4><a href="javascript:void(0)" id="infobar-edituser-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
+                                <h4>Edit Lead</h4><a href="javascript:void(0)" id="infobar-edituser-close" class="infobar-settings-close"><img src="assets/images/svg-icon/close.svg" class="img-fluid menu-hamburger-close" alt="close"></a>
                             </div>
                             <div class="infobar-settings-sidebar-body">
                                 <div class="custom-mode-setting">
@@ -465,7 +461,7 @@ input:checked + .slider:before {
                                       <div class="row align-items-center pb-5 pull-right">
 
                                           <button id="editbtn" type="button" onclick="edit();" class="btn btn-primary-rgba" > 
-                                            <i class="feather icon-plus mr-2"></i>Edit User Details
+                                            <i class="feather icon-plus mr-2"></i>Edit Lead Details
                                           </button>
                                         
                                       </div>
@@ -534,7 +530,7 @@ function getuserdetails(id)
               $('#edit_state').val(user.user_state);
               $('#edit_city').val(user.user_city);
               $('#edit_zip').val(user.zip);
-              //$("#edit_renewal_date").attr("min",user.user_renewal_date);
+              $("#edit_renewal_date").attr("min",user.user_activation_date);
               $("#edit_renewal_date").attr("value",user.user_renewal_date);
               $('#edit_dealvalue').val(user.user_deal_value);
 

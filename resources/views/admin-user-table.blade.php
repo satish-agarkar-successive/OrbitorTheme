@@ -128,7 +128,7 @@ input:checked + .slider:before {
                                 <th>Username , Mobile , Email</th>                                                 
                                 <th>Activation Date</th>                                                   
                                 <th>Renewal Date</th>                                                   
-                                <th>Deal Value [Rupees]</th>   
+                                <th>[Rupees] Deal Value</th>   
                                 <th>No. Of Properties</th>                                                   
                                 <th>Status</th>                                                   
                                 <th>Action</th>                                        
@@ -139,15 +139,13 @@ input:checked + .slider:before {
 
 @foreach($user as $u)
 
-
-
 <tr>
 
 <td>{{ $u -> user_id }} </td>
 <td>{{ $u -> user_name }}<br>{{ $u -> user_mobile }}<br>{{ $u -> user_email }} </td>
-<td class="dateformat" >{{ $u -> user_activation_date }} </td>
-<td class="dateformat" >{{ $u -> user_renewal_date }} </td>
-<td><i class="fa fa-inr" style="margin: 5px;"></i>{{ $u -> user_deal_value }}</td>
+<td>{{ $u -> user_activation_date }} </td>
+<td>{{ $u -> user_renewal_date }} </td>
+<td><i class="fa fa-inr" style="margin: 5px;"></i>{{ $u -> user_deal_value }} </td>
 <td>{{ $u -> prop_count }} </td>
 
 <td>
@@ -161,9 +159,9 @@ input:checked + .slider:before {
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
             
-            <button type="button"  href="javascript:void(0)" class=" infobar-edituser-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            <button type="button" data-id="{{$u->user_id}}"   href="javascript:void(0)" class=" edit  tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
             
-            <button type="button"  href="/deleteuser?id={{$u->user_id}}" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+            <button type="button"  data-url="/adminuser" data-action="delete" data-id="{{$u->user_id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
 </td>
 
@@ -174,31 +172,6 @@ input:checked + .slider:before {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                             
                             </tbody>
                         </table>
                     </div>
@@ -206,37 +179,7 @@ input:checked + .slider:before {
                 </div>
 
 
-                <div class="row" style="align-self: center;" >
-                  
-
-                       <!--  <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="default-datatable_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="default-datatable_previous">
-                                      <a href="#" tabindex="0" class="page-link">
-                                        <i class="dripicons-arrow-thin-left"></i>
-                                      </a>
-                                    </li>
-                                    <li class="paginate_button page-item active">
-                                      <a href="#" aria-controls="default-datatable" style="z-index: 0;" class="page-link">1</a>
-                                    </li> 
-                                    <li class="paginate_button page-item">
-                                      <a href="#" aria-controls="default-datatable" class="page-link">2</a>
-                                    </li>
-                                    <li class="paginate_button page-item next" id="default-datatable_next">
-                                      <a href="#" tabindex="0" class="page-link">
-                                        <i class="dripicons-arrow-thin-right"></i>
-                                      </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div> -->
-
-
-                        {{  $user->links() }}
-
-
-                </div>
+                <div class="row" style="align-self: center;" >{{  $user->links() }}</div>
 
 
             </div>
@@ -279,13 +222,10 @@ input:checked + .slider:before {
                                             <input name="email" id="add_email" type="email" class="form-control" placeholder="abc@xyz.com"  required />
                                       </div>
 
-
-
                                       <div class="row align-items-center pb-3">
                                             <select name="user_gender" id="add_gender"  class=" gender form-control"  required  >
                                             </select>
                                       </div>
-
 
                                       <div class="row align-items-center pb-3">
                                             <textarea name="address" id="add_address"  type="text" placeholder="Address" class=" address form-control" style="height:100px;" required /></textarea>
@@ -293,7 +233,7 @@ input:checked + .slider:before {
 
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="state" id="add_state"  class=" state form-control"  required >
+                                            <select name="state_id" id="add_state"  class=" state form-control"  required >
                                             </select>
                                       </div>
 
@@ -314,7 +254,7 @@ input:checked + .slider:before {
                                         <span class="input-group-text">Renewal Date</span>
                                         </div>
 
-                                        <input type="date" name="renewal_date" id="add_renewal_date"  class="form-control" required />
+                                        <input type="date" name="renewal_date" id="add_renewal_date"  class=" date form-control" required />
 
                                         <div class="input-group-append">
                                         <span class="input-group-text" ><i class="feather icon-calendar"></i></span>
@@ -384,7 +324,11 @@ input:checked + .slider:before {
                                       {{ csrf_field() }}
 
                                      <div class="row align-items-center pb-3">
+
+                                            <input name="user_id" id="edit_user_id" type="text" hidden />
+
                                             <input name="username" id="edit_username" type="text" class=" onlyalphaspace form-control" placeholder="User Name" required />
+
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -409,7 +353,7 @@ input:checked + .slider:before {
 
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="state" id="edit_state"  class=" state form-control"  required >
+                                            <select name="state_id" id="edit_state"  class=" state form-control"  required >
                                             </select>
                                       </div>
 
@@ -492,10 +436,10 @@ input:checked + .slider:before {
 
 @section('script')
 <!-- Datepicker JS -->
-<!-- <script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
 <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script>
- -->
+
 
 
 
@@ -503,25 +447,42 @@ input:checked + .slider:before {
 <script type="text/javascript">
 
 
-// $(document).ready(function() 
-// {
-//      $(".switchery").on("click", function(e) 
-//      {
-//         e.preventDefault();
-//         r = confirm(" Are You Sure , \nYou Want To Change Status ?");
-//         if(r==true)
-//         { 
-//             window.location=$(this).data("url")+"?action="+$(this).data("action")+"&id="+$(this).data("id");
+//this call is happening in core.js for edit[class]  button click listener 
+function getdetails(id) 
+{
+
+       $.ajax({
+          type: "GET",
+          url: '/edituser',
+          data: { 'id':id },
+          dataType:"json",
+          success: function(result) 
+          { 
             
-//             //toggle_user_status ( $(this).data("id") );
-//             //window.location="/adminuser?action=toogle&id="+$(this).data("id");
+              $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+              $("#infobar-edituser-sidebar").addClass("sidebarshow");
             
-//             $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"}); 
-//         }
-//      }); 
-// });
+              var user = result.data;
+
+              $('#edit_user_id').val(user.user_id);
+              $('#edit_username').val(user.user_name);
+              $('#edit_phone').val(user.user_mobile);
+              $('#edit_email').val(user.user_email);
+              $('#edit_gender').val(user.user_gender);
+              $('#edit_address').val(user.user_address);
+              $('#edit_state').val(user.state_id);
+              $('#edit_city').val(user.user_city);
+              $('#edit_zip').val(user.zip);
+              $("#edit_renewal_date").attr("min",user.user_activation_date);
+              $("#edit_renewal_date").attr("value",user.user_renewal_date);
+              $('#edit_dealvalue').val(user.user_deal_value);
 
 
+
+          }
+       });
+
+}
 
 
 

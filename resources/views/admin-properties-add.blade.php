@@ -1,5 +1,5 @@
 @section('title') 
-Tenant - Edit Properties
+Tenant - Add Properties
 @endsection 
 @extends('layouts.main')
 @section('style')
@@ -79,13 +79,7 @@ Tenant - Edit Properties
                                 </select>
                             </div>
                             <div class="form-group col-md-3">
-                                <select name="city" class="form-control">
-                                      <option  value="" selected>Select City</option>
-                                      <option  value="">Mumbai</option>
-                                      <option  value="">Hyderabad</option>
-                                      <option  value="">Vasant Nagari</option>
-                                      <option  value="">Ooty</option>
-                                </select>
+                                <input name="city" id="city"  type="text" class=" city form-control" placeholder="City"required />
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="number" class="form-control" name="zip" placeholder="Zip" oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);">
@@ -109,7 +103,7 @@ Tenant - Edit Properties
                             </div>
                             <div class="form-group col-md-3">
                                
-                                <select name="city" class="form-control">
+                                <select name="accommodationtype" class="form-control">
                                       <option  value="" selected>Select Accommodation Type</option>
                                       <option  value="">Guest House</option>
                                       <option  value="">Hostel</option>

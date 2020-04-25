@@ -75,11 +75,11 @@ $(document).ready(function() {
      {
         //alert($(this).data("id"));
         //ajax call;
-        getuserdetails($(this).data("id")); // this function is in respective view
+        getdetails($(this).data("id")); // this function is in respective view
 
         e.preventDefault();
 
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+        //$(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
         
         //below lines are added in function getuserdetails() inside success
         // $("#infobar-edituser-sidebar").addClass("sidebarshow");
@@ -279,59 +279,152 @@ $(document).ready(function() {
 
 
 
-    $('.onlyalphaspace').keypress(function (e) {
-        var regex = new RegExp("^[a-zA-Z \s]+$");
-        var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-        if (regex.test(str)) { return true;} else { e.preventDefault(); return false;}
-        if (this.value.length > 199) { this.value = this.value.slice(0, 199); }
-    });
+        $('.onlyalphaspace').keypress(function (e) {
+            var regex = new RegExp("^[a-zA-Z \s]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) { return true;} else { e.preventDefault(); return false;}
+            //if (this.value.length > 199) { this.value = this.value.slice(0, 199); }
+        });
+
+
+      //all lenght are taken length - 1
 
 
       $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);} });  
+      if ($(".phone").length > 0) 
+        {
+            document.querySelector(".phone").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
+
+
 
       $('.gender').append('<option  value="" selected>Select Gender</option><option  value="Male">Male</option><option  value="Female">Female</option><option  value="Other">Other</option>) ');
-      
-      $('.state').append('<option  value="" selected>Select State</option><option  value="Maharashtra">Maharashtra</option><option  value="Andhra Pradesh">Andhra Pradesh</option><option  value="Gujurat">Gujurat</option><option  value="Karnataka">Karnataka</option>');
+      //$('.address').keypress(function (e) { if (this.value.length > 299) { this.value = this.value.slice(0, 299); }    });  
+    
+       
+       $('.city').keypress(function (e) { if (this.value.length > 49) { this.value = this.value.slice(0, 49); }        });
+       $('.city').keypress(function (e) {
+            var regex = new RegExp("^[a-zA-Z \s]+$");
+            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+            if (regex.test(str)) { return true;} else { e.preventDefault(); return false;}
+        });
 
-      $('.address').keypress(function (e) { if (this.value.length > 299) { this.value = this.value.slice(0, 299); }    });  
 
-      $('.city').keypress(function (e) { if (this.value.length > 49) { this.value = this.value.slice(0, 49); }        });
+      $('.zip').keypress(function (e) { if (this.value.length > 5) { this.value = this.value.slice(0, 5); }         });
+      if ($(".zip").length > 0) 
+        {
+            document.querySelector(".zip").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
 
-      $('.zip').keypress(function (e) { if (this.value.length > 5) { this.value = this.value.slice(0, 5); }         }); 
-      
+
+
       $('.dealvalue').keypress(function (e) { if (this.value.length > 7) { this.value = this.value.slice(0, 7); }         }); 
+      if ($(".dealvalue").length > 0) 
+        {
+            document.querySelector(".dealvalue").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
 
 
-     
+      
+      $('.empcount').keypress(function (e) { if (this.value.length > 3) { this.value = this.value.slice(0, 3); }         });
+      if ($(".empcount").length > 0) 
+        {
+            document.querySelector(".empcount").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
 
 
+      $('.year').keypress(function (e) { if (this.value.length > 3) { this.value = this.value.slice(0, 3); }         }); 
+      if ($(".year").length > 0) 
+        {
+            document.querySelector(".year").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
 
-     //$('.dateformat').text(  this.text()+"efefe" );
 
-    // $("[class]").each(function()
-    // {
-    //     if($(this).attr("class")=="dateformat")
-    //     {
-    //         var ymd =  $(this).text();
-    //         var res = ymd.split("-");
-    //         if(res[1]=="01"){res[1]="Jan";}
-    //         if(res[1]=="02"){res[1]="Feb";}
-    //         if(res[1]=="03"){res[1]="Mar";}
-    //         if(res[1]=="04"){res[1]="Apr";}
-    //         if(res[1]=="05"){res[1]="May";}
-    //         if(res[1]=="06"){res[1]="Jun";}
-    //         if(res[1]=="07"){res[1]="Jul";}
-    //         if(res[1]=="08"){res[1]="Aug";}
-    //         if(res[1]=="09"){res[1]="Sept";}
-    //         if(res[1]=="10"){res[1]="Oct";}
-    //         if(res[1]=="11"){res[1]="Nov";}
-    //         if(res[1]=="12"){res[1]="Dec";}
-    //         var dmy =res[2]+'-'+res[1]+'-'+res[0];
-    //         dmy = dmy.replace(/ /g,'');
+      $('.gst').keypress(function (e) { if (this.value.length > 14) { this.value = this.value.slice(0, 14); }         }); 
+      if ($(".gst").length > 0) 
+        {
+            document.querySelector(".gst").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
 
-    //         $(this).text( dmy );
-    //     }
-    // });
+
+      $('.pan').keypress(function (e) { if (this.value.length > 9) { this.value = this.value.slice(0, 9); }         }); 
+      if ($(".pan").length > 0) 
+        {
+            document.querySelector(".pan").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        }
+
+
+      $('.fssai').keypress(function (e) { if (this.value.length > 13) { this.value = this.value.slice(0, 13); }         });
+      if ($(".fssai").length > 0) 
+        {
+            document.querySelector(".fssai").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+        } 
+      
+
+
+        //state fieids
+        if ($(".state").length > 0) 
+        {
+              $.ajax({
+                  type: "GET",
+                  url: '/state',
+                  dataType:"json",
+                  success: function(result) 
+                  {   
+                        var state = result.state;
+                        var i;
+                        $('.state').append('<option  value="" selected>Select State</option>');
+                        for(i=0;i<state.length;i++)
+                        {
+                            $('.state').append('<option  value='+state[i]['state_id']+'>'+state[i]['state']+'</option>');
+                        }    
+                  }
+               });
+        }
+
+
+        //user fieids
+        if ($(".user").length > 0) 
+        {
+              $.ajax({
+                  type: "GET",
+                  url: '/user',
+                  dataType:"json",
+                  success: function(result) 
+                  {   
+                        var user = result.user; var i;
+                        $('.user').append('<option  value="" selected>Select User</option>');
+                        for(i=0;i<user.length;i++) { $('.user').append('<option  value='+user[i]['user_id']+'>'+user[i]['user_name']+' [ ' + user[i]['user_id']+' - '+user[i]['user_mobile'] + ' ]</option>'); }    
+                  }
+               });
+        }
+
+
+        //business type fieids
+        if ($(".businesstype").length > 0) 
+        {
+              $.ajax({
+                  type: "GET",
+                  url: '/btype',
+                  dataType:"json",
+                  success: function(result) 
+                  {   
+                        var btype = result.btype; var i;
+                        $('.businesstype').append('<option  value="" selected>Select Type Of Business</option>');
+                        for(i=0;i<btype.length;i++) { $('.businesstype').append('<option  value='+btype[i]['business_type_id']+'>'+btype[i]['type']+'</option>'); }    
+                  }
+               });
+        }
+
+
 
 
 

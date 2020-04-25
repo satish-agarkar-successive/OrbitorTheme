@@ -1,17 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\DB;
+
 use Response;
-use DateTime;
-use DatePeriod;
-use DateIntercal;
-use Carbon\Carbon;
 
 use App\Models\Users;
 
-class AdminUserController extends Controller
+use DateTime;
+use DatePeriod;
+use DateIntercal;
+
+use Carbon\Carbon;
+
+class AdminLeadController extends Controller
 {
 
 
@@ -46,7 +51,7 @@ class AdminUserController extends Controller
         else
         {
 
-            $users = Users::orderBy('user_id', 'desc')->paginate(10);
+            $users = Users::paginate(10);
             for($i=0;$i<count($users);$i++)
             {
                 $users[$i]['user_activation_date'] = Carbon::parse( $users[$i]['user_activation_date'] )->format('F j\\, Y');
@@ -54,7 +59,7 @@ class AdminUserController extends Controller
                 $users[$i]['user_deal_value'] = preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,",$users[$i]['user_deal_value']);
             }
             $data = array('user' => $users);
-            return view('admin-user-table',$data);
+            return view('admin-lead-table',$data);
 
         }
 
@@ -68,12 +73,12 @@ class AdminUserController extends Controller
     {
       
         $rules = [    
-            'username' => ['required', 'regex:/^[a-zA-Z\s]*$/'],
+            'username' => ['required', 'regex:/^[a-zA-Z\s]*$/', 'max:100'],
             'user_mobile' => 'required|numeric|digits:10|unique:users',
             'email' => 'nullable|email',
             'user_gender' => 'required',
-            'address' => 'nullable',
-            'state_id' => 'required',
+            'address' => 'nullable|max:300',
+            'state' => 'required',
             'city' => 'required|max:50',
             'zip' => 'required|digits:6',
             'renewal_date' => 'required',
@@ -94,7 +99,7 @@ class AdminUserController extends Controller
             'email.email' => 'Email Address Is Not Valid',            
             'user_gender.required' => 'Gender Required',
             'address.max' => 'Address Should Have Max 300 Characters.',
-            'state_id.required' => 'State Required',
+            'state.required' => 'State Required',
             
             'city.required' => 'State Required',
             'city.max' => 'State Should Be Max 50 Characters',
@@ -105,12 +110,13 @@ class AdminUserController extends Controller
             'renewal_date.required' => 'Renewal Date Required',
 
             'dealvalue.numeric' => 'Deal Value Required',
-            'dealvalue.digits_between' => 'Deal Value Should Be Between 1-8 Digits',
+            'dealvalue.digits' => 'Deal Value Should Be Between 1-8 Digits',
 
 	    ];
 
 	    if( $this->validate($req, $rules, $customMessages) )
 	    {
+
             // $r = explode( "-" , strip_tags( $req['renewal_date'] )  );
             // $renewal_date = $r[2].'-'.$r[1].'-'.$r[0];
 
@@ -128,21 +134,17 @@ class AdminUserController extends Controller
                 'user_email' => strip_tags( $req['email'] ) ,
                 'user_gender' => strip_tags( $req['user_gender'] ) ,
                 'user_address' => strip_tags( $req['address'] ) ,
-                'state_id' => strip_tags( $req['state_id'] ),
+                'user_state' => strip_tags( $req['state'] ) ,
                 'user_city' => strip_tags( $req['city'] ) ,
                 'zip' => strip_tags( $req['zip'] ) ,
-                'user_activation_date' => $activation_date ,
+                'user_activation_date' => $activation_date , 
+                //'user_renewal_date' => $renewal_date ,
                 'user_renewal_date' => strip_tags( $req['renewal_date'] ) ,
                 'user_deal_value' => strip_tags( $req['dealvalue'] ) ,
                 'user_status' => 1 ,
             );
-        
-            $user_id =  DB::table('users')->insertgetID($user_data);
 
-            //not working
-            //$user_id = Users::create($user_data)->user_id;
-
-            //dd("assac");
+            $user_id = Users::create($user_data)->user_id;
 
             return Response::json(array('status' => 'success' ),200 );
 	    	
@@ -164,12 +166,12 @@ class AdminUserController extends Controller
     {
 
               $rules = [    
-                    'username' => ['required', 'regex:/^[a-zA-Z\s]*$/'],
+                    'username' => ['required', 'regex:/^[a-zA-Z\s]*$/', 'max:100'],
                     'user_mobile' => 'required|numeric|digits:10',
                     'email' => 'nullable|email',
                     'user_gender' => 'required',
-                    'address' => 'nullable',
-                    'state_id' => 'required',
+                    'address' => 'nullable|max:300',
+                    'state' => 'required',
                     'city' => 'required|max:50',
                     'zip' => 'required|digits:6',
                     'renewal_date' => 'required',
@@ -190,7 +192,7 @@ class AdminUserController extends Controller
                     'email.email' => 'Email Address Is Not Valid',            
                     'user_gender.required' => 'Gender Required',
                     'address.max' => 'Address Should Have Max 300 Characters.',
-                    'state_id.required' => 'State Required',
+                    'state.required' => 'State Required',
                     
                     'city.required' => 'State Required',
                     'city.max' => 'State Should Be Max 50 Characters',
@@ -201,7 +203,7 @@ class AdminUserController extends Controller
                     'renewal_date.required' => 'Renewal Date Required',
 
                     'dealvalue.numeric' => 'Deal Value Required',
-                    'dealvalue.digits_between' => 'Deal Value Should Be Between 1-8 Digits',
+                    'dealvalue.digits' => 'Deal Value Should Be Between 1-8 Digits',
 
                 ];
 
@@ -219,7 +221,7 @@ class AdminUserController extends Controller
                         'user_email' => strip_tags( $req['email'] ) ,
                         'user_gender' => strip_tags( $req['user_gender'] ) ,
                         'user_address' => strip_tags( $req['address'] ) ,
-                        'state_id' => strip_tags( $req['state_id'] ) ,
+                        'user_state' => strip_tags( $req['state'] ) ,
                         'user_city' => strip_tags( $req['city'] ) ,
                         'zip' => strip_tags( $req['zip'] ) ,
                         'user_renewal_date' => strip_tags( $req['renewal_date'] ) ,

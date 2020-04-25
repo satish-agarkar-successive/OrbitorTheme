@@ -9,24 +9,6 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 
-Route::get('/c', function (){
-
-    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
-    $encrypted = $encrypter->encrypt("Ab123123");
-    dd($encrypted);
-
-});
-
-Route::get('/d', function (){
-
-    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
-    $decrypted = $encrypter->decrypt($req['text']);
-    dd( Crypt::decrypt( $decrypted ) );
-
-});
-
-
-
 
 Route::get('/login', 'LoginLogoutController@index')->name('login');
 Route::post('/login', 'LoginLogoutController@login');
@@ -38,23 +20,32 @@ Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@register');
 
 
-// this middleware calls http / middleware / authenticate controller
-Route::get('/', function () {    return redirect('/home'); });  
 
+//select option ajax routes
+Route::get('/state', 'HomeController@state')->middleware('auth');
+Route::get('/user', 'HomeController@user')->middleware('auth');
+Route::get('/btype', 'HomeController@btype')->middleware('auth');
+
+
+
+Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
 Route::get('/adminuser', 'AdminUserController@index')->middleware('auth');
-Route::get('/adminuser1', 'AdminUserController@index1')->middleware('auth');
 Route::get('/adminbusiness', 'AdminBusinessController@index')->middleware('auth');
 Route::get('/adminproperty', 'AdminPropertyController@index')->middleware('auth');
 Route::get('/adminguest', 'AdminGuestController@index')->middleware('auth');
-
+Route::get('/adminlead', 'AdminLeadController@index')->middleware('auth');
 
 
 Route::post('/adduser', 'AdminUserController@adduserpost')->middleware('auth');
-
 Route::get('/edituser', 'AdminUserController@edituserget')->middleware('auth');
 Route::post('/edituser', 'AdminUserController@edituserpost')->middleware('auth');
+
+
+Route::post('/addbusiness', 'AdminBusinessController@addbusinesspost')->middleware('auth');
+Route::get('/editbusiness', 'AdminBusinessController@editbusinessget')->middleware('auth');
+Route::post('/editbusiness', 'AdminBusinessController@editbusinesspost')->middleware('auth');
 
 
 Route::get('/addproperty', 'AdminPropertyController@addpropertyget')->middleware('auth');
@@ -72,6 +63,26 @@ Route::post('/addguest', 'AdminGuestController@addpost')->middleware('auth');
 Route::get('/editguest', 'AdminGuestController@editget')->middleware('auth');
 Route::post('/editguest', 'AdminGuestController@editpost')->middleware('auth');
 
+
+
+
+
+
+Route::get('/c', function (){
+
+    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+    $encrypted = $encrypter->encrypt("Ab123123");
+    dd($encrypted);
+
+});
+
+Route::get('/d', function (){
+
+    $encrypter = app('Illuminate\Contracts\Encryption\Encrypter');
+    $decrypted = $encrypter->decrypt($req['text']);
+    dd( Crypt::decrypt( $decrypted ) );
+
+});
 
 
 
