@@ -219,14 +219,32 @@ input:checked + .slider:before {
                                      <div class="row align-items-center pb-3">
                                             <input name="business_name" type="text" class=" onlyalphaspace form-control" placeholder="Name Of Business" required />
                                       </div>
-
+                                      
                                       <div class="row align-items-center pb-3">
-                                            <select name="user_id" class=" user form-control"  required  >
+                                            <select name="business_type_id" class=" businesstype form-control" required  >
+                                                 <option  value="" selected>Select Business Type</option>
+                                                 @foreach($btypes as $b)
+                                                      <option value='{{ $b->id }}'>{{$b->type}}</option>
+                                                 @endforeach
                                             </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="state_id" class=" state form-control" required  ></select>
+                                            <select name="user_id" class=" user form-control"  required  >
+                                                <option  value="" selected>Select User</option>
+                                                @foreach($users as $u)
+<option  value='{{$u->id}}'> {{$u->user_name}} [  {{$u->id}} - {{$u->user_mobile}} ]</option>
+                                                @endforeach
+                                            </select>
+                                      </div>
+
+                                      <div class="row align-items-center pb-3">
+                                            <select name="state_id" class=" state form-control" required  >
+                                                 <option  value="" selected>Select State</option>
+                                                 @foreach($states as $s)
+                                                      <option value='{{ $s->id }}'>{{$s->state}}</option>
+                                                 @endforeach
+                                            </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -249,10 +267,6 @@ input:checked + .slider:before {
                                           <img id="uploadPreview" style=" float:center margin:2%; width: 100%; height: 100%; display: none;" />
                                       </div>
 
-                                      <div class="row align-items-center pb-3">
-                                            <select name="business_type_id" class=" businesstype form-control" required  >
-                                            </select>
-                                      </div>
 
                                       <div class="row align-items-center pb-3">
                                             <input name="business_employee_count" type="number" class=" empcount form-control" placeholder="Number Of Employees" required />
@@ -340,12 +354,31 @@ input:checked + .slider:before {
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <select id="edit_user_id" name="user_id" class=" user form-control"  required  >
+                                            <select id="edit_business_type_id" name="business_type_id" class=" businesstype form-control" required  >
+                                                <option  value="" selected>Select Business Type</option>
+                                                 @foreach($btypes as $b)
+                                                      <option value='{{ $b->id }}'>{{$b->type}}</option>
+                                                 @endforeach
+                                            </select>
+                                      </div>
+
+
+                                      <div class="row align-items-center pb-3">
+                                            <select id="edit_user_id" name="user_id" class=" user form-control" required>
+                                                <option  value="" selected>Select User</option>
+                                                @foreach($users as $u)
+<option  value='{{$u->id}}'>{{$u->user_name}} [  {{$u->id}} - {{$u->user_mobile}} ]</option>
+                                                @endforeach
                                             </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <select id="edit_state_id" name="state_id" class=" state form-control" required  ></select>
+                                            <select id="edit_state_id" name="state_id" class=" state form-control" required  >
+                                                 <option  value="" selected>Select State</option>
+                                                 @foreach($states as $s)
+                                                      <option value='{{ $s->id }}'>{{$s->state}}</option>
+                                                 @endforeach
+                                            </select>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -368,10 +401,6 @@ input:checked + .slider:before {
                                           <img id="edit_uploadPreview" style=" float:center margin:2%; width: 100%; height: 100%; display: none;" />
                                       </div>
 
-                                      <div class="row align-items-center pb-3">
-                                            <select id="edit_business_type_id" name="business_type_id" class=" businesstype form-control" required  >
-                                            </select>
-                                      </div>
 
                                       <div class="row align-items-center pb-3">
                                             <input id="edit_business_employee_count" name="business_employee_count" type="number" class=" empcount form-control" placeholder="Number Of Employees" required />
@@ -456,7 +485,6 @@ function getdetails(id)
           success: function(result) 
           { 
 
-              $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
               $("#infobar-editbusiness-sidebar").addClass("sidebarshow");
 
               console.log(result.data);

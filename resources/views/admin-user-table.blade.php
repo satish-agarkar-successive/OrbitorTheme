@@ -159,7 +159,7 @@ input:checked + .slider:before {
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
             
-            <button type="button" data-id="{{$u->id}}" onclick="getdetails( {{$b->id}} )" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            <button type="button" data-id="{{$u->id}}" onclick="getdetails( {{$u->id}} )" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
             
             <button type="button"  data-url="/adminuser" data-action="delete" data-id="{{$u->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
@@ -234,6 +234,10 @@ input:checked + .slider:before {
 
                                       <div class="row align-items-center pb-3">
                                             <select name="state_id" id="add_state"  class=" state form-control"  required >
+                                              <option  value="" selected>Select State</option>
+                                                 @foreach($states as $s)
+                                                      <option value='{{ $s->id }}'>{{$s->state}}</option>
+                                                 @endforeach
                                             </select>
                                       </div>
 
@@ -354,6 +358,10 @@ input:checked + .slider:before {
 
                                       <div class="row align-items-center pb-3">
                                             <select name="state_id" id="edit_state"  class=" state form-control"  required >
+                                              <option  value="" selected>Select State</option>
+                                                 @foreach($states as $s)
+                                                     <option value='{{ $s->id }}'>{{$s->state}}</option>
+                                                 @endforeach
                                             </select>
                                       </div>
 
@@ -462,8 +470,6 @@ function getdetails(id)
           success: function(result) 
           { 
             
-              $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-              $("#infobar-edituser-sidebar").addClass("sidebarshow");
             
               var user = result.data;
 
@@ -480,7 +486,8 @@ function getdetails(id)
               $("#edit_renewal_date").attr("value",user.user_renewal_date);
               $('#edit_dealvalue').val(user.user_deal_value);
 
-
+              
+              $("#infobar-edituser-sidebar").addClass("sidebarshow");
 
           }
        });

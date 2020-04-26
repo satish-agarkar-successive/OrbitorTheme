@@ -114,7 +114,14 @@ class AdminBusinessController extends Controller
                 $business_list['data'][$i]->business_est_year = Carbon::parse( $business_list['data'][$i]->business_est_year )->format('F j\\, Y');
             }
 
-            $data = array('business' => $business_list['data']);
+
+            $states=DB::table('state')->select('id','state')->get();
+            $users=DB::table('users')->select('id','user_name','user_mobile')->get();
+            $business_types=DB::table('business_type')->select('id','type')->get();
+
+
+
+            $data = array('business' => $business_list['data'] , 'states' => $states , 'users' => $users, 'btypes' => $business_types);
             return view('admin-business-table',$data);
 
         }

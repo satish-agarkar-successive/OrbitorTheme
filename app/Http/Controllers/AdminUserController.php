@@ -53,7 +53,11 @@ class AdminUserController extends Controller
                 $users[$i]['user_renewal_date'] = Carbon::parse( $users[$i]['user_renewal_date'] )->format('F j\\, Y');
                 $users[$i]['user_deal_value'] = preg_replace("/(\d+?)(?=(\d\d)+(\d)(?!\d))(\.\d+)?/i", "$1,",$users[$i]['user_deal_value']);
             }
-            $data = array('user' => $users);
+
+
+            $states=DB::table('state')->select('id','state')->get();
+
+            $data = array('user' => $users ,'states' => $states);
             return view('admin-user-table',$data);
 
         }

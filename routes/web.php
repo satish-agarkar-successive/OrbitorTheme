@@ -21,13 +21,13 @@ Route::post('/register', 'RegisterController@register');
 
 
 
-//select option ajax routes
-Route::get('/state', 'HomeController@state')->middleware('auth');
-Route::get('/user', 'HomeController@user')->middleware('auth');
-Route::get('/btype', 'HomeController@btype')->middleware('auth');
+// //select option ajax routes
+// Route::get('/state', 'HomeController@state')->middleware('auth');
+// Route::get('/user', 'HomeController@user')->middleware('auth');
+// Route::get('/btype', 'HomeController@btype')->middleware('auth');
 
 
-Route::get('/all_select', 'HomeController@all')->middleware('auth');
+// Route::get('/all_select', 'HomeController@all');
 
 
 
