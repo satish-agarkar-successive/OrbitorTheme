@@ -158,16 +158,21 @@ Tenant - Leads
 <script type="text/javascript">
   //this call is happening in core.js for edit[class]  button click listener 
   function getdetails(id) {
+
+
+    $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+
+
     $.ajax({
       type: "GET",
       url: '/viewlead',
+      async:'false',
       data: {
         'id': id
       },
       dataType: "json",
       success: function(result) {
 
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)","position": "fixed"});
         $("#infobar-viewlead-sidebar").addClass("sidebarshow");
 
         var user = result.data;
