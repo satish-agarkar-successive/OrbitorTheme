@@ -4,8 +4,8 @@ Tenant - Add Properties
 @extends('layouts.main')
 @section('style')
 
-<link href="{{ asset('public/assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
-<link href="{{ asset('public/assets/plugins/code-mirror/codemirror.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/code-mirror/codemirror.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
 
@@ -452,8 +452,8 @@ Tenant - Add Properties
 @endsection 
 @section('script')
 
-<script src="{{ asset('public/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<script src="{{ asset('public/assets/js/custom/custom-form-editor.js') }}"></script>
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-editor.js') }}"></script>
 
 <script type="text/javascript">
 

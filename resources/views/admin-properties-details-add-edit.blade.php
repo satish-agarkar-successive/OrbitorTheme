@@ -9,9 +9,9 @@ Tenant - Add Properties
 
 
 <!-- Summernote css -->
-<link href="{{ asset('public/assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
 <!-- Code Mirror css -->
-<link href="{{ asset('public/assets/plugins/code-mirror/codemirror.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/code-mirror/codemirror.css') }}" rel="stylesheet" type="text/css">
 
 
 <!-- For Editor -->
@@ -1596,24 +1596,24 @@ Tenant - Add Properties
 <!-- For Editor -->
 
 <!-- Wysiwig js -->
-<!-- <script src="{{ asset('public/assets/plugins/tinymce/tinymce.min.js') }}"></script> -->
+<!-- <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script> -->
 <!-- Wysiwig js -->
 
 
 <!-- Summernote JS -->
-<script src="{{ asset('public/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
 <!-- Summernote JS -->
 
 
 <!-- Code Mirror JS -->
-<!-- <script src="{{ asset('public/assets/plugins/code-mirror/codemirror.js') }}"></script>
-<script src="{{ asset('public/assets/plugins/code-mirror/htmlmixed.js') }}"></script>
-<script src="{{ asset('public/assets/plugins/code-mirror/css.js') }}"></script>
-<script src="{{ asset('public/assets/plugins/code-mirror/javascript.js') }}"></script>
-<script src="{{ asset('public/assets/plugins/code-mirror/xml.js') }}"></script> -->
+<!-- <script src="{{ asset('assets/plugins/code-mirror/codemirror.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/htmlmixed.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/css.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/javascript.js') }}"></script>
+<script src="{{ asset('assets/plugins/code-mirror/xml.js') }}"></script> -->
 <!-- Code Mirror JS -->
 
-<script src="{{ asset('public/assets/js/custom/custom-form-editor.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-form-editor.js') }}"></script>
 
 <!-- For Editor -->
 

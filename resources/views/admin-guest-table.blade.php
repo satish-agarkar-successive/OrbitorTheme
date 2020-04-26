@@ -8,7 +8,7 @@ Tenant - Guest
 
 @section('style')
 <!-- Datepicker css -->
-<link href="{{ asset('public/assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 @endsection 
 
 
@@ -263,6 +263,6 @@ Tenant - Guest
 @endsection 
 @section('script')
 <!-- Tabledit js -->
-<!-- <script src="{{ asset('public/assets/js/custom/custom-table-editable.js') }}"></script> -->
+<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
 
 @endsection 

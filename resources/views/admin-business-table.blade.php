@@ -5,7 +5,7 @@ Tenant - Business
 @section('style')
 
 <!-- Datepicker css -->
-<link href="{{ asset('publicassets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
 
@@ -473,7 +473,7 @@ function getdetails(id)
               $('#edit_business_url').val(business.business_url);
 
 
-              $url = "{{ URL::asset('BusinessLogos/') }}/"+business.business_logo;
+              $url = "{{ URL::asset('/BusinessLogos/') }}/"+business.business_logo;
 
               if(business.business_logo!=null)
               {
