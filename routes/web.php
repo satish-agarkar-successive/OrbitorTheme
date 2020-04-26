@@ -27,6 +27,9 @@ Route::get('/user', 'HomeController@user')->middleware('auth');
 Route::get('/btype', 'HomeController@btype')->middleware('auth');
 
 
+Route::get('/all_select', 'HomeController@all')->middleware('auth');
+
+
 
 Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');

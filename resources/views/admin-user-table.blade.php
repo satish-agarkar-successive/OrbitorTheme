@@ -141,8 +141,8 @@ input:checked + .slider:before {
 
 <tr>
 
-<td>{{ $u -> user_id }} </td>
-<td>{{ $u -> user_name }}<br>{{ $u -> user_mobile }}<br>{{ $u -> user_email }} </td>
+<td>{{ $u -> id }} </td>
+<td>{{ $u -> user_name }}<br> <a href="tel:{{$u->user_mobile}}">{{$u->user_mobile}}</a> <br> <a href="mailto:{{$u->user_email}}?Subject=Tenant Management" target="_top">{{ $u -> user_email }} </a> </td>
 <td>{{ $u -> user_activation_date }} </td>
 <td>{{ $u -> user_renewal_date }} </td>
 <td><i class="fa fa-inr" style="margin: 5px;"></i>{{ $u -> user_deal_value }} </td>
@@ -150,18 +150,18 @@ input:checked + .slider:before {
 
 <td>
     @if( $u->user_status == 1)
-         <label class="switch"><input data-url="/adminuser" data-action="toggle" data-id="{{$u->user_id}}" data-value="0" type="checkbox" class="switchery" checked><span class="slider round"></span></label>
+         <label class="switch"><input data-url="/adminuser" data-action="toggle" data-id="{{$u->id}}" data-value="0" type="checkbox" class="switchery" checked><span class="slider round"></span></label>
     @else
-         <label class="switch"><input data-url="/adminuser" data-action="toggle" data-id="{{$u->user_id}}" data-value="1" type="checkbox" class="switchery" ><span class="slider round"></span></label>
+         <label class="switch"><input data-url="/adminuser" data-action="toggle" data-id="{{$u->id}}" data-value="1" type="checkbox" class="switchery" ><span class="slider round"></span></label>
     @endif
 </td>
 
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
             
-            <button type="button" data-id="{{$u->user_id}}"   href="javascript:void(0)" class=" edit  tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            <button type="button" data-id="{{$u->id}}"   href="javascript:void(0)" class=" edit  tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
             
-            <button type="button"  data-url="/adminuser" data-action="delete" data-id="{{$u->user_id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+            <button type="button"  data-url="/adminuser" data-action="delete" data-id="{{$u->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
 </td>
 
@@ -325,7 +325,7 @@ input:checked + .slider:before {
 
                                      <div class="row align-items-center pb-3">
 
-                                            <input name="user_id" id="edit_user_id" type="text" hidden />
+                                            <input name="id" id="edit_user_id" type="text" hidden />
 
                                             <input name="username" id="edit_username" type="text" class=" onlyalphaspace form-control" placeholder="User Name" required />
 
@@ -436,9 +436,9 @@ input:checked + .slider:before {
 
 @section('script')
 <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script>
+<script src="{{ asset('public/assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<script src="{{ asset('public/assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
+<script src="{{ asset('public/assets/js/custom/custom-form-datepicker.js') }}"></script>
 
 
 
@@ -464,7 +464,7 @@ function getdetails(id)
             
               var user = result.data;
 
-              $('#edit_user_id').val(user.user_id);
+              $('#edit_user_id').val(user.id);
               $('#edit_username').val(user.user_name);
               $('#edit_phone').val(user.user_mobile);
               $('#edit_email').val(user.user_email);

@@ -46,7 +46,7 @@ class AdminUserController extends Controller
         else
         {
 
-            $users = Users::orderBy('user_id', 'desc')->paginate(10);
+            $users = Users::orderBy('id', 'desc')->paginate(10);
             for($i=0;$i<count($users);$i++)
             {
                 $users[$i]['user_activation_date'] = Carbon::parse( $users[$i]['user_activation_date'] )->format('F j\\, Y');
@@ -137,10 +137,10 @@ class AdminUserController extends Controller
                 'user_status' => 1 ,
             );
         
-            $user_id =  DB::table('users')->insertgetID($user_data);
+            $id =  DB::table('users')->insertgetID($user_data);
 
             //not working
-            //$user_id = Users::create($user_data)->user_id;
+            //$id = Users::create($user_data)->id;
 
             //dd("assac");
 
@@ -228,7 +228,7 @@ class AdminUserController extends Controller
                     );
 
 
-                    $id= strip_tags( $req['user_id'] );
+                    $id= strip_tags( $req['id'] );
                     $update = Users::find($id)->update($user_data);
                     return Response::json(array('status' => 'success' ),200 );
                     

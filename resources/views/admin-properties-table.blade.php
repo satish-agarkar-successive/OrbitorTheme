@@ -7,7 +7,7 @@ Tenant - Properties
 @section('style')
 
 <!-- Datepicker css -->
-<link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('public/assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
 
@@ -216,8 +216,8 @@ Tenant - Properties
 
 @section('script')
 <!-- Tabledit js -->
-<!-- <script src="{{ asset('assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
-<!-- <script src="{{ asset('assets/js/custom/custom-table-editable.js') }}"></script> -->
+<!-- <script src="{{ asset('public/assets/plugins/tabledit/jquery.tabledit.js') }}"></script>      -->
+<!-- <script src="{{ asset('public/assets/js/custom/custom-table-editable.js') }}"></script> -->
 
 
 <!-- <script type="text/javascript">
@@ -239,9 +239,9 @@ Tenant - Properties
 
 
     <!-- Datepicker JS -->
-<script src="{{ asset('assets/plugins/datepicker/datepicker.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
-<!-- <script src="{{ asset('assets/js/custom/custom-form-datepicker.js') }}"></script> -->
+<script src="{{ asset('public/assets/plugins/datepicker/datepicker.min.js') }}"></script>
+<script src="{{ asset('public/assets/plugins/datepicker/i18n/datepicker.en.js') }}"></script>
+<!-- <script src="{{ asset('public/assets/js/custom/custom-form-datepicker.js') }}"></script> -->
 
 <script type="text/javascript">
 

@@ -5,7 +5,7 @@ Tenant - Add Guest
 @section('style')
 
 <!-- Datepicker css -->
-<link href="{{ asset('assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
+<link href="{{ asset('public/assets/plugins/datepicker/datepicker.min.css') }}" rel="stylesheet" type="text/css">
 
 @endsection 
 
