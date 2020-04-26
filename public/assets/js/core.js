@@ -457,13 +457,11 @@ $(document).ready(function() {
         // }
 
 
-
-
-
  $.ajax({
 type: "GET",
 url: '/all_select',
 dataType:"json",
+
 success: function(result) 
 {  
   
