@@ -75,20 +75,20 @@ $(document).ready(function() {
 
 
 
-    $(".edit").on("click", function(e) 
-     {
-        //alert($(this).data("id"));
-        //ajax call;
-        getdetails($(this).data("id")); // this function is in respective view
+    // $(".edit").on("click", function(e) 
+    //  {
+    //     //alert($(this).data("id"));
+    //     //ajax call;
+    //     getdetails($(this).data("id")); // this function is in respective view
 
-        e.preventDefault();
+    //     e.preventDefault();
 
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+    //     $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
         
-        //below lines are added in function getuserdetails() inside success
-        // $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    //     //below lines are added in function getuserdetails() inside success
+    //     // $("#infobar-edituser-sidebar").addClass("sidebarshow");
 
-     }); 
+    //  }); 
 
 
 
