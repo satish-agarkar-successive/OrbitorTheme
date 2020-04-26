@@ -461,7 +461,7 @@ $(document).ready(function() {
 type: "GET",
 url: '/all_select',
 dataType:"json",
-
+async:'false',
 success: function(result) 
 {  
   
