@@ -10,7 +10,6 @@
 "use strict";
 $(document).ready(function() {
 
-
     //made blur in style.css - search .infobar-settings-sidebar-overlay{}
     // moved below line after appending options
      $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
@@ -255,6 +254,18 @@ $(document).ready(function() {
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
         $("#infobar-edit-charges-sidebar").removeClass("sidebarshow");
     }); 
+
+
+    
+
+    $("#infobar-viewlead-close").on("click", function(e) {
+        e.preventDefault();
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-viewlead-sidebar").removeClass("sidebarshow");
+    });  
+
+
+
 
 
 

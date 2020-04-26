@@ -30,6 +30,12 @@ Route::get('/adminguest', 'AdminGuestController@index')->middleware('auth');
 Route::get('/adminlead', 'AdminLeadController@index')->middleware('auth');
 
 
+//satish work
+Route::get('/adminlead', 'AdminLeadController@index')->middleware('auth');
+Route::get('/viewlead', 'AdminLeadController@viewleadget')->middleware('auth');
+
+
+
 Route::post('/adduser', 'AdminUserController@adduserpost')->middleware('auth');
 Route::get('/edituser', 'AdminUserController@edituserget')->middleware('auth');
 Route::post('/edituser', 'AdminUserController@edituserpost')->middleware('auth');
