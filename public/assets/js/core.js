@@ -294,11 +294,7 @@ $(document).ready(function() {
       //all lenght are taken length - 1
 
 
-      $('.phone').keypress(function (e) 
-        { 
-          if (this.value.length > 9) {this.value = this.value.slice(0, 9);} 
-          // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-        });  
+      $('.phone').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);}  });  
       if ($(".phone").length > 0) 
         {
             document.querySelector(".phone").addEventListener("keypress", function (evt) 
@@ -319,11 +315,7 @@ $(document).ready(function() {
        });
 
 
-      $('.zip').keypress(function (e) 
-      {
-       if (this.value.length > 5) { this.value = this.value.slice(0, 5); } 
-       // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-      });
+      $('.zip').keypress(function (e) {  if (this.value.length > 5) { this.value = this.value.slice(0, 5); }   });
       if ($(".zip").length > 0) 
         {
             document.querySelector(".zip").addEventListener("keypress", function (evt) 
@@ -332,11 +324,7 @@ $(document).ready(function() {
 
 
 
-      $('.dealvalue').keypress(function (e) 
-      { 
-        if (this.value.length > 7) { this.value = this.value.slice(0, 7); }
-        // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-      }); 
+      $('.dealvalue').keypress(function (e) { if (this.value.length > 7) { this.value = this.value.slice(0, 7); }   }); 
       if ($(".dealvalue").length > 0) 
         {
             document.querySelector(".dealvalue").addEventListener("keypress", function (evt) 
@@ -345,11 +333,7 @@ $(document).ready(function() {
 
 
       
-      $('.empcount').keypress(function (
-        e) {
-       if (this.value.length > 3) { this.value = this.value.slice(0, 3); } 
-       // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-     });
+      $('.empcount').keypress(function (e) {  if (this.value.length > 3) { this.value = this.value.slice(0, 3); }  });
       if ($(".empcount").length > 0) 
         {
             document.querySelector(".empcount").addEventListener("keypress", function (evt) 
@@ -357,11 +341,7 @@ $(document).ready(function() {
         }
 
 
-      $('.year').keypress(function (e) 
-      { 
-        if (this.value.length > 3) { this.value = this.value.slice(0, 3); }
-        // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-      }); 
+      $('.year').keypress(function (e) {  if (this.value.length > 3) { this.value = this.value.slice(0, 3); }    }); 
       if ($(".year").length > 0) 
         {
             document.querySelector(".year").addEventListener("keypress", function (evt) 
@@ -369,11 +349,7 @@ $(document).ready(function() {
         }
 
 
-      $('.gst').keypress(function (e) 
-      { 
-        if (this.value.length > 14) { this.value = this.value.slice(0, 14); }
-        // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-      }); 
+      $('.gst').keypress(function (e) { if (this.value.length > 14) { this.value = this.value.slice(0, 14); }  }); 
       if ($(".gst").length > 0) 
         {
             document.querySelector(".gst").addEventListener("keypress", function (evt) 
@@ -381,11 +357,7 @@ $(document).ready(function() {
         }
 
 
-      $('.pan').keypress(function (e) 
-      { 
-        if (this.value.length > 9) { this.value = this.value.slice(0, 9); }
-        // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-      }); 
+      $('.pan').keypress(function (e) { if (this.value.length > 9) { this.value = this.value.slice(0, 9); }   }); 
       if ($(".pan").length > 0) 
         {
             document.querySelector(".pan").addEventListener("keypress", function (evt) 
@@ -393,11 +365,7 @@ $(document).ready(function() {
         }
 
 
-      $('.fssai').keypress(function (
-        e) {
-       if (this.value.length > 13) { this.value = this.value.slice(0, 13); } 
-       // if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }
-     });
+      $('.fssai').keypress(function (e) { if (this.value.length > 13) { this.value = this.value.slice(0, 13); }   });
       if ($(".fssai").length > 0) 
         {
             document.querySelector(".fssai").addEventListener("keypress", function (evt) 
@@ -405,105 +373,6 @@ $(document).ready(function() {
         } 
       
 
-
-        // //state fieids
-        // if ($(".state").length > 0) 
-        // {
-        //       $.ajax({
-        //           type: "GET",
-        //           url: '/state',
-        //           dataType:"json",
-        //           success: function(result) 
-        //           {   
-        //                 var state = result.state; var i;
-        //                 $('.state').append('<option  value="" selected>Select State</option>');
-        //                 for(i=0;i<state.length;i++) {  $('.state').append('<option  value='+state[i]['id']+'>'+state[i]['state']+'</option>'); }
-        //           }
-        //        });
-        // }
-
-
-        // //user fieids
-        // if ($(".user").length > 0) 
-        // {
-        //       $.ajax({
-        //           type: "GET",
-        //           url: '/user',
-        //           dataType:"json",
-        //           success: function(result) 
-        //           {   
-        //                 var user = result.user; var i;
-        //                 $('.user').append('<option  value="" selected>Select User</option>');
-        //                 for(i=0;i<user.length;i++) { $('.user').append('<option  value='+user[i]['id']+'>'+user[i]['user_name']+' [ ' + user[i]['id']+' - '+user[i]['user_mobile'] + ' ]</option>'); }    
-        //           }
-        //        });
-        // }
-
-
-        // //business type fieids
-        // if ($(".businesstype").length > 0) 
-        // {
-        //       $.ajax({
-        //           type: "GET",
-        //           url: '/btype',
-        //           dataType:"json",
-        //           success: function(result) 
-        //           {   
-        //                 var btype = result.btype; var i;
-        //                 $('.businesstype').append('<option  value="" selected>Select Type Of Business</option>');
-        //                 for(i=0;i<btype.length;i++) { $('.businesstype').append('<option  value='+btype[i]['id']+'>'+btype[i]['type']+'</option>'); }    
-        //           }
-        //        });
-        // }
-
-
-//  $.ajax({
-// type: "GET",
-// url: '/all_select',
-// dataType:"json",
-// async:'false',
-// success: function(result) 
-// {  
-  
-//   ajax_result = result;
-//       //state fieids
-//         if ($(".state").length > 0) 
-//         {
-//             state = ajax_result.states; var i;  
-//             $('.state').append('<option  value="" selected>Select State</option>');
-//             for(i=0;i<state.length;i++) {  $('.state').append('<option  value='+state[i]['id']+'>'+state[i]['state']+'</option>'); }
-//         }
-
-//         //user fieids
-//         if ($(".user").length > 0) 
-//         {
-//               var user = ajax_result.users; var i;
-//               $('.user').append('<option  value="" selected>Select User</option>');
-//               for(i=0;i<user.length;i++) { $('.user').append('<option  value='+user[i]['id']+'>'+user[i]['user_name']+' [ ' + user[i]['id']+' - '+user[i]['user_mobile'] + ' ]</option>'); }    
-//         }
-
-
-//         //business type fieids
-//         if ($(".businesstype").length > 0) 
-//         {
-//               var btype = ajax_result.btypes; var i;
-//               $('.businesstype').append('<option  value="" selected>Select Type Of Business</option>');
-//               for(i=0;i<btype.length;i++) { $('.businesstype').append('<option  value='+btype[i]['id']+'>'+btype[i]['type']+'</option>'); }    
-//         }
-
-
-
-//               $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-
-
-// },
-// error:function(json)
-// {
-//   alert("Error Receiving Select Option");
-// }
-
-
-// });
 
 
 

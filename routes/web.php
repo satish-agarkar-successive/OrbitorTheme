@@ -20,17 +20,6 @@ Route::get('/register', 'RegisterController@index');
 Route::post('/register', 'RegisterController@register');
 
 
-
-// //select option ajax routes
-// Route::get('/state', 'HomeController@state')->middleware('auth');
-// Route::get('/user', 'HomeController@user')->middleware('auth');
-// Route::get('/btype', 'HomeController@btype')->middleware('auth');
-
-
-// Route::get('/all_select', 'HomeController@all');
-
-
-
 Route::get('/', 'HomeController@index')->middleware('auth');
 Route::get('/home', 'HomeController@index')->middleware('auth');
 
