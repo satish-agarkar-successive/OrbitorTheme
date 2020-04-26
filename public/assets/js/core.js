@@ -259,7 +259,7 @@ $(document).ready(function() {
     
 
     $("#infobar-viewlead-close").on("click", function(e) {
-        e.preventDefault();
+        //e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
         $("#infobar-viewlead-sidebar").removeClass("sidebarshow");
     });  

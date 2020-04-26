@@ -156,6 +156,14 @@ Tenant - Leads
 @section('script')
 
 <script type="text/javascript">
+
+
+  $("#infobar-viewlead-close").on("click", function(e) {
+        $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+        $("#infobar-viewlead-sidebar").removeClass("sidebarshow");
+    });  
+
+
   //this call is happening in core.js for edit[class]  button click listener 
   function getdetails(id) {
 
