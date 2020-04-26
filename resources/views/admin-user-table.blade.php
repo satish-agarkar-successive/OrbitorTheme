@@ -159,7 +159,7 @@ input:checked + .slider:before {
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
             
-            <button type="button" data-id="{{$u->id}}"   href="javascript:void(0)" class=" edit  tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            <button type="button" data-id="{{$u->id}}" onclick="getdetails( {{$b->id}} )" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
             
             <button type="button"  data-url="/adminuser" data-action="delete" data-id="{{$u->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
@@ -451,11 +451,14 @@ input:checked + .slider:before {
 function getdetails(id) 
 {
 
+      $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+
        $.ajax({
           type: "GET",
           url: '/edituser',
           data: { 'id':id },
           dataType:"json",
+          async:'false',
           success: function(result) 
           { 
             
