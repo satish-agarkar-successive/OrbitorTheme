@@ -60,7 +60,7 @@ $(document).ready(function() {
 
 
     //$(".edit").on("click", function(e) 
-    //this add class is happining
+    //this addclass() is happining
     $(".infobar-edituser-open").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
