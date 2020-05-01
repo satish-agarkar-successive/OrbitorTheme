@@ -8,7 +8,7 @@ class APIController extends Controller
 {
     function testsmsget ()
     {
-        dd( $this->SEND_SMS('8698257457','Your One Time Password To Log Into GuestT : '.mt_rand(100000, 999999).' , Please Never Share This OPT') );
+        // dd( $this->SEND_SMS('8698257457','Your One Time Password To Log Into GuestT : '.mt_rand(100000, 999999).' , Please Never Share This OPT') );
 
        	return view('api');  //crm index view
     }
