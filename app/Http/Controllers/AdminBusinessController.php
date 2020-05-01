@@ -107,11 +107,11 @@ class AdminBusinessController extends Controller
 
                 // dd($business_list);
 
-             //dd($business_list['data'][0]->business_est_year);
+             //dd($business_list[0]->business_est_year);
 
-            for($i=0;$i<count($business_list['data']);$i++)
+            for($i=0;$i<count($business_list);$i++)
             {
-                $business_list['data'][$i]->business_est_year = Carbon::parse( $business_list['data'][$i]->business_est_year )->format('F j\\, Y');
+                $business_list[$i]->business_est_year = Carbon::parse( $business_list[$i]->business_est_year )->format('F j\\, Y');
             }
 
 
