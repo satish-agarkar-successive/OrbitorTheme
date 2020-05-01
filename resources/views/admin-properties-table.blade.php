@@ -73,93 +73,55 @@ Tenant - Properties
                             <thead>
                               <tr>
                                 <th>No</th>
-                                <th>Property Name</th>
-                                <th>User Name</th>
-                                <th>Mobile</th>
-                                <th>City</th>                                                
-                                <th>No. Of Beds</th>                                                   
+                                <th>Property Name , Building Name</th>
+                                <th>User Name , Mobile</th>
+                                <th>Property Type , Property Gender</th>
+                                <th>Property Address , State , City , Pincode</th>
+                                <th>Property Amenities</th>
+                                <th>No. Of Bed</th>                
                                 <th>Details</th>                                                   
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Girnar Accord</td>
-                                  <td>Mrudul Addipalli</td>
-                                  <td>8446184884</td>
-                                  <td>Vasai</td>                               
-                                  <td>0</td>                               
-                                  <td>
-                                       <button type="button" onclick="javascript: window.location = '/propertydetails?id=1'; " class="btn btn-warning"> <span class="custom ti-pencil"></span>Add</button>
-                                      
-                                  </td> 
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" onclick="javascript: window.location = '/editproperty?id=1'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
-                                  </td>
-                              </tr>
+
+@foreach($property as $p)
+<tr>
+<td>{{ $p -> id }} </td>
+<td>{{ $p -> property_name }}<br>{{ $p -> building_name }}</td>
+<td>{{ $p -> user_name }}<br>  <a href="tel:{{$p->user_mobile}}"> {{ $p -> user_mobile }} </a></td>
+<td>{{ $p -> type }}<br>{{ $p -> gender }}</td>
+<td>{{ $p -> property_address_1 }}<br>{{ $p -> property_address_2 }}<br>{{ $p -> state }}<br>{{ $p -> city }}<br>{{ $p -> property_pincode }}</td>
+<td>{{ $p -> property_amenities }} </td>
+<td>{{  $p->bedcount }}</td>
+
+<td>
+    @if( $p->bedcount == 0)
+        <button type="button" onclick="javascript: window.location = '/propertydetails?id={{$p->id}}'; " class="btn btn-warning"> <span class="custom ti-pencil"></span>Add</button>
+    @else
+         <button type="button" onclick="javascript: window.location = '/propertydetails?id={{$p->id}}'; " class="btn btn-info"> <span class="custom ti-pencil"></span>Edit</button>
+    @endif
+</td>
+
+<td>
+      <div class="btn-group btn-group-sm" style="float: none;">                             
+            
+            <button type="button" onclick="javascript: window.location = '/editproperty?id={{$p->id}}'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            
+            <button type="button"  data-url="/adminproperty" data-action="delete" data-id="{{$p->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+      </div>
+</td>
 
 
+</tr>
+  
+@endforeach
 
-                             <tr>
-                                  <td>2</td>
-                                  <td>Everest Tower</td>
-                                  <td>Mrudul Addipalli</td>
-                                  <td>8446184884</td>
-                                  <td>Vasai</td>                               
-                                  <td>20</td>                               
-                                  <td>
-                                       <button type="button" onclick="javascript: window.location = '/propertydetails?id=2'; " class="btn btn-info"> <span class="custom ti-pencil"></span>Edit</button>
-                                  </td> 
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" onclick="javascript: window.location = '/editproperty?id=2'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
-                                  </td>
-                              </tr>
-
-
-
-                              <tr>
-                                  <td>1</td>
-                                  <td>Trinity</td>
-                                  <td>Mrudul Addipalli</td>
-                                  <td>8446184884</td>
-                                  <td>Vasai</td>                               
-                                  <td>20</td>                               
-                                  <td>
-                                        <button type="button" onclick="javascript: window.location = '/propertydetails?id=3'; " class="btn btn-info"> <span class="custom ti-pencil"></span>Edit</button>
-                                  </td> 
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" onclick="javascript: window.location = '/editproperty?id=3'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
-                                  </td>
-                              </tr>
 
 
 
                              
+                            
                             </tbody>
                         </table>
                     </div>
@@ -167,46 +129,17 @@ Tenant - Properties
                 </div>
 
 
-                <div class="row" style="align-self: center;" >
-                  
-
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="default-datatable_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="default-datatable_previous">
-                                      <a href="#" tabindex="0" class="page-link">
-                                        <i class="dripicons-arrow-thin-left"></i>
-                                      </a>
-                                    </li>
-                                    <li class="paginate_button page-item active">
-                                      <a href="#" aria-controls="default-datatable" style="z-index: 0;" class="page-link">1</a>
-                                    </li> 
-                                    <li class="paginate_button page-item">
-                                      <a href="#" aria-controls="default-datatable" class="page-link">2</a>
-                                    </li>
-                                    <li class="paginate_button page-item next" id="default-datatable_next">
-                                      <a href="#" tabindex="0" class="page-link">
-                                        <i class="dripicons-arrow-thin-right"></i>
-                                      </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                </div>
+                <div class="row" style="align-self: center;" >{{  $property->links() }}</div>
 
 
             </div>
         </div>
-
         <!-- End col -->
 
     </div>
     <!-- End row -->
 </div>
 <!-- End Contentbar -->
-
 
 
 

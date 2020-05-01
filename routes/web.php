@@ -51,6 +51,9 @@ Route::post('/addproperty', 'AdminPropertyController@addpropertypost')->middlewa
 Route::get('/editproperty', 'AdminPropertyController@editpropertyget')->middleware('auth');
 Route::post('/editproperty', 'AdminPropertyController@editpropertypost')->middleware('auth');
 
+Route::post('/deleteoldimage', 'AdminPropertyController@deleteoldimagepost')->middleware('auth');
+
+
 
 Route::get('/propertydetails', 'AdminPropertyController@propertydetailsget')->middleware('auth');
 Route::post('/propertydetails', 'AdminPropertyController@propertydetailspost')->middleware('auth');
@@ -61,6 +64,13 @@ Route::post('/addguest', 'AdminGuestController@addpost')->middleware('auth');
 Route::get('/editguest', 'AdminGuestController@editget')->middleware('auth');
 Route::post('/editguest', 'AdminGuestController@editpost')->middleware('auth');
 
+
+
+
+
+
+Route::get('/api', 'APIController@testsmsget')->middleware('auth');
+Route::post('/api', 'APIController@sendsms')->middleware('auth');
 
 
 

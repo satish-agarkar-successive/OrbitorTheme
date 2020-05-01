@@ -172,6 +172,7 @@ input:checked + .slider:before {
 
 
                              
+                            
                             </tbody>
                         </table>
                     </div>
@@ -179,10 +180,7 @@ input:checked + .slider:before {
                 </div>
 
 
-                <div class="row" style="align-self: center;" >
-                  
-
-                </div>
+                <div class="row" style="align-self: center;" >{{  $business->links() }}</div>
 
 
             </div>

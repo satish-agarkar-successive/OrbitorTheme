@@ -102,7 +102,7 @@ class AdminBusinessController extends Controller
                 ->join('business_type', 'business_type.id', '=', 'business.business_type_id')
                 ->select('business.id','business.business_name','business.user_id','user_name','user_mobile','business.state_id','state.state','user_city','business.business_type_id','business_type.type','business.business_employee_count','business.business_est_year','business.business_gst','business.business_pan','business.business_fssai','business.business_status','zip','business_url','business_logo')
                 ->orderBy('id', 'desc')
-                ->paginate(10)->ToArray();
+                ->paginate(10);
 
 
                 // dd($business_list);
@@ -121,7 +121,8 @@ class AdminBusinessController extends Controller
 
 
 
-            $data = array('business' => $business_list['data'] , 'states' => $states , 'users' => $users, 'btypes' => $business_types);
+            $data = array('business' => $business_list , 'states' => $states , 'users' => $users, 'btypes' => $business_types);
+
             return view('admin-business-table',$data);
 
         }

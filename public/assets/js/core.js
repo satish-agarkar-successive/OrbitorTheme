@@ -12,9 +12,9 @@ $(document).ready(function() {
 
     //made blur in style.css - search .infobar-settings-sidebar-overlay{}
     // moved below line after appending options
-     $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-
-
+    
+    $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
+    setTimeout(function() {  $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});  }, 2000);
 
 
     /* -- Menu js -- */
@@ -275,22 +275,35 @@ $(document).ready(function() {
     $('.note-icon-code').hide();
 
 
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-     if(dd<10){
-            dd='0'+dd
-        } 
-        if(mm<10){
-            mm='0'+mm
-        } 
 
-    today = yyyy+'-'+mm+'-'+dd;
+    setTimeout(function()
+    {  
+        $('#mceu_36').hide();
+        $('#mceu_37').hide();
+    }, 5000);
 
-    //for add sliders only    
-    $(".date").attr("min",today);
-    $(".date").attr("value",today);
+
+    if ($(".date").length > 0) 
+    {
+        
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth()+1; //January is 0!
+        var yyyy = today.getFullYear();
+         if(dd<10){
+                dd='0'+dd
+            } 
+            if(mm<10){
+                mm='0'+mm
+            } 
+
+        today = yyyy+'-'+mm+'-'+dd;
+
+        //for add sliders only    
+        $(".date").attr("min",today);
+        $(".date").attr("value",today);
+
+    }
 
 
 

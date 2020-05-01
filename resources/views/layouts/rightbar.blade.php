@@ -201,6 +201,11 @@
                     <li class="scroll dropdown">
                         <a href="{{ url('/') }}/adminguest" ><i class="feather icon-briefcase"></i><span>Guest</span></a>
                     </li>
+
+
+                     <li class="scroll dropdown">
+                        <a href="{{ url('/') }}/api" ><span>API Test</span></a>
+                    </li>
                     
                                              
                    
