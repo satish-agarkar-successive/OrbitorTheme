@@ -22,16 +22,6 @@ class AdminBusinessController extends Controller
     function index()
     {
 
-// Sl. No
-// Name of the Business
-// Username
-// User Mobile
-// City
-// Type of Business
-// Number of Employees
-// Year of Establishment
-// GST Number
-
 
     	// for status toggle and delete
         if(   ( isset($_GET['action']) && isset($_GET['id']) ) || ( isset($_GET['value']) )    )
