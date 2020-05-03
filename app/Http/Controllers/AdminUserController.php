@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Response;
 use DateTime;
 use DatePeriod;
@@ -32,13 +33,13 @@ class AdminUserController extends Controller
                 $Users = Users::find($id);
                 $Users->user_status = $value;
                 $Users->save();
-                return redirect('/adminuser');
+                return Redirect::back();
             }
 
             if(  $action == "delete" && $id!="" ) // $value != "" for toggle status
             {
                 $Users = Users::destroy($id);
-                return redirect('/adminuser');
+                return Redirect::back();
             }
 
         }

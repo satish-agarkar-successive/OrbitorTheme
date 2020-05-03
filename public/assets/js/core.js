@@ -14,7 +14,7 @@ $(document).ready(function() {
     // moved below line after appending options
     
     $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
-    setTimeout(function() {  $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});  }, 2000);
+    //setTimeout(function() {  $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});  }, 2000);
 
 
     /* -- Menu js -- */
@@ -58,37 +58,16 @@ $(document).ready(function() {
     });
 
 
-
-    //$(".edit").on("click", function(e) 
-    //this addclass() is happining
-    $(".infobar-edituser-open").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-edituser-sidebar").addClass("sidebarshow");
-    }); 
+    // $(".infobar-edituser-open").on("click", function(e) {
+    //     e.preventDefault();
+    //     $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+    //     $("#infobar-edituser-sidebar").addClass("sidebarshow");
+    // }); 
     $("#infobar-edituser-close").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
         $("#infobar-edituser-sidebar").removeClass("sidebarshow");
     });    
-
-
-
-    // $(".edit").on("click", function(e) 
-    //  {
-    //     //alert($(this).data("id"));
-    //     //ajax call;
-    //     getdetails($(this).data("id")); // this function is in respective view
-
-    //     e.preventDefault();
-
-    //     $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        
-    //     //below lines are added in function getuserdetails() inside success
-    //     // $("#infobar-edituser-sidebar").addClass("sidebarshow");
-
-    //  }); 
-
 
 
 
@@ -109,7 +88,7 @@ $(document).ready(function() {
      $(".delete").on("click", function(e) 
      {
         e.preventDefault();
-        if( confirm("Are You Sure , \nYou Want To Delete User "+$(this).data("id")+" ?") )
+        if( confirm("Are You Sure , \nYou Want To Delete Content With ID "+$(this).data("id")+" ?") )
         { 
             window.location=$(this).data("url")+"?action="+$(this).data("action")+"&id="+$(this).data("id")+"&value="+$(this).data("value");
             $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"}); 
@@ -132,11 +111,11 @@ $(document).ready(function() {
     });
 
 
-     $(".infobar-editbusiness-open").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-editbusiness-sidebar").addClass("sidebarshow");
-    }); 
+    //  $(".infobar-editbusiness-open").on("click", function(e) {
+    //     e.preventDefault();
+    //     $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+    //     $("#infobar-editbusiness-sidebar").addClass("sidebarshow");
+    // }); 
     $("#infobar-editbusiness-close").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
@@ -161,11 +140,11 @@ $(document).ready(function() {
     });
 
 
-     $(".infobar-edit-block-floor-open").on("click", function(e) {
-        e.preventDefault();
-        $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-        $("#infobar-edit-block-floor-sidebar").addClass("sidebarshow");
-    }); 
+    //  $(".infobar-edit-block-floor-open").on("click", function(e) {
+    //     e.preventDefault();
+    //     $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+    //     $("#infobar-edit-block-floor-sidebar").addClass("sidebarshow");
+    // }); 
     $("#infobar-edit-block-floor-close").on("click", function(e) {
         e.preventDefault();
         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"});
@@ -322,6 +301,14 @@ $(document).ready(function() {
       if ($(".phone").length > 0) 
         {
             document.querySelector(".phone").addEventListener("keypress", function (evt) 
+            {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
+      }
+
+
+      $('.floor').keypress(function (e) { if (this.value.length > 9) {this.value = this.value.slice(0, 9);}  });  
+      if ($(".floor").length > 0) 
+        {
+            document.querySelector(".floor").addEventListener("keypress", function (evt) 
             {if (evt.which != 8 && evt.which != 0 && evt.which < 48 || evt.which > 57) {  evt.preventDefault(); }   });
       }
 

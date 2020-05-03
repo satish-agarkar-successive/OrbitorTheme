@@ -55,15 +55,24 @@ Route::post('/deleteoldimage', 'AdminPropertyController@deleteoldimagepost')->mi
 
 
 
-Route::get('/propertydetails', 'AdminPropertyController@propertydetailsget')->middleware('auth');
-Route::post('/propertydetails', 'AdminPropertyController@propertydetailspost')->middleware('auth');
+Route::get('/propertyinventory', 'AdminInventoryController@propertyinventoryget')->middleware('auth');
+
+
+Route::get('/deleteblockfloor', 'AdminInventoryController@deleteblockfloor')->middleware('auth');
+Route::post('/addblockfloor', 'AdminInventoryController@addblockfloorpost')->middleware('auth');
+Route::get('/editblockfloor', 'AdminInventoryController@editblockfloorget')->middleware('auth');
+Route::post('/editblockfloor', 'AdminInventoryController@editblockfloorpost')->middleware('auth');
+
+
+
+
+
 
 
 Route::get('/addguest', 'AdminGuestController@addget')->middleware('auth');
 Route::post('/addguest', 'AdminGuestController@addpost')->middleware('auth');
 Route::get('/editguest', 'AdminGuestController@editget')->middleware('auth');
 Route::post('/editguest', 'AdminGuestController@editpost')->middleware('auth');
-
 
 
 

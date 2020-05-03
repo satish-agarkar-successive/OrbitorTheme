@@ -4,20 +4,22 @@ Tenant - Add Properties
 @extends('layouts.main')
 @section('style')
 
-
-<!-- For Editor -->
-
-
-<!-- Summernote css -->
-<link href="{{ asset('assets/plugins/summernote/summernote-bs4.css') }}" rel="stylesheet" type="text/css">
-<!-- Code Mirror css -->
-<link href="{{ asset('assets/plugins/code-mirror/codemirror.css') }}" rel="stylesheet" type="text/css">
-
-
-<!-- For Editor -->
-
-
+<!-- DataTables css -->
+<link href="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
+<!-- Responsive Datatable css -->
+<link href="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection 
+
+
+<style type="text/css">
+  
+
+ .dataTables_filter,.dataTables_length
+ { display: none; }
+
+
+</style>
 
 
 
@@ -51,7 +53,7 @@ Tenant - Add Properties
                   </div>
 
                     <div class="table-responsive">
-                        <table class="table table-striped table-bordered" id="edit-btn">
+                        <table class="table table-striped table-bordered" id="block_floor">
                             <thead>
                               <tr>
                                 <th>No</th>
@@ -61,109 +63,41 @@ Tenant - Add Properties
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
-                            <tbody>
-                              <tr>
-                                  <td>1</td>
-                                  <td>Block A</td>
-                                  <td>Basement + 6 + Terace</td>                              
-                                  <td></td>      
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" class=" infobar-edit-block-floor-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
-
-                                  </td>
-
-                              </tr>
+                            <tbody id="body_block_floor">
 
 
+@foreach($blockfloors as $b_f)
 
-                               <tr>
-                                  <td>2</td>
-                                  <td>Block B</td>
-                                  <td>Basement + 7 + Terace</td>                              
-                                  <td></td>      
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" class=" infobar-edit-block-floor-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
+<tr>
 
-                                  </td>
+<td>{{ $b_f -> id }} </td>
+<td>{{ $b_f -> block_name }}</td>
+<td>{{ $b_f -> floor_count }} </td>
 
-                              </tr>
+<td> </td>
+
+<td>
+      
+<div class="btn-group btn-group-sm" style="float: none;">                                         
+<button type="button" data-id="{{$b_f->id}}" onclick="getblockfloor('{{$b_f->id}}')" class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
+            
+<button type="button"  data-url="/deleteblockfloor" data-action="delete" data-id="{{$b_f->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
+</div>
+
+</td>
 
 
-                               <tr>
-                                  <td>3</td>
-                                  <td>Block C</td>
-                                  <td>Basement + 6 + Terace</td>                              
-                                  <td></td>      
-                                  <td>
-                                    
-                                    <div class="btn-group btn-group-sm" style="float: none;">
-                          <button type="button"  href="javascript:void(0)" class=" infobar-edit-block-floor-open tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-pencil"></span>
-                          </button>
-                          <button type="button" class="tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;">
-                              <span class="ti-trash"></span>
-                          </button>
-                                    </div>
+</tr>
+  
+@endforeach
 
-                                  </td>
-
-                              </tr>
-
-                              
-
-                             
                             </tbody>
                         </table>
                     </div>
 
                 </div>
 
-
-                <div class="row" style="align-self: center;" >
-                  
-
-                        <div class="col-sm-12 col-md-7">
-                            <div class="dataTables_paginate paging_simple_numbers" id="default-datatable_paginate">
-                                <ul class="pagination">
-                                    <li class="paginate_button page-item previous disabled" id="default-datatable_previous">
-                                      <a href="#" tabindex="0" class="page-link">
-                                        <i class="dripicons-arrow-thin-left"></i>
-                                      </a>
-                                    </li>
-                                    <li class="paginate_button page-item active">
-                                      <a href="#" aria-controls="default-datatable" style="z-index: 0;" class="page-link">1</a>
-                                    </li> 
-                                    <li class="paginate_button page-item">
-                                      <a href="#" aria-controls="default-datatable" class="page-link">2</a>
-                                    </li>
-                                    <li class="paginate_button page-item next" id="default-datatable_next">
-                                      <a href="#" tabindex="0" class="page-link">
-                                        <i class="dripicons-arrow-thin-right"></i>
-                                      </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-
-                </div>
-
+                <!-- pagination -->
 
             </div>
         </div>
@@ -701,19 +635,18 @@ Tenant - Add Properties
                                 <div class="custom-mode-setting">
                                     
 
-                                   <form id="add_block_floor" >
+                                   <form id="add_block_floor_form" >
 
 
                                     {{ csrf_field() }}
 
 
                                      <div class="row align-items-center pb-3">
-                                            <input name="blockname" type="text" class="form-control" placeholder="Block Name"  />
+                                            <input name="blockname" id="blockname" type="text" class=" onlyalphaspace form-control" placeholder="Block Name"  />
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <input name="floorcount" type="number" class="form-control" placeholder="No. Of Floor" 
-                                            oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);" />
+                                            <input name="floorcount" id="floorcount" type="number" class=" floor form-control" placeholder="No. Of Floor" />
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -722,22 +655,28 @@ Tenant - Add Properties
 
                                       <div class="row align-items-center pb-3">
                                              <div class="custom-control custom-checkbox ">
-                                                <input type="checkbox" class="custom-control-input" id="basement" name="basement">
+                                                <input type="checkbox" class=" basement custom-control-input" id="basement" name="basement">
                                                 <label class="custom-control-label" for="basement">Basement</label>
                                             </div>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
                                              <div class="custom-control custom-checkbox ">
-                                                <input type="checkbox" class="custom-control-input" id="terace" name="terace">
-                                                <label class="custom-control-label" for="terace">Terace</label>
+                                                <input type="checkbox" class="custom-control-input" id="terrace" name="terrace">
+                                                <label class="custom-control-label" for="terrace">Terrace</label>
                                             </div>
+                                      </div>
+
+
+                                      <div class="row align-items-center pb-3">
+                                        <div class="alert alert-danger" align="left" id="add_block_floor_errors" style="display: none;"> 
+                                          </div>
                                       </div>
                                       
 
                                       <div class="row align-items-center pb-5 pull-right">
 
-                                          <button type="submit" class="btn btn-primary-rgba" > 
+                                          <button type="button" id="add_block_floor" onclick="add_block_floor_click();" class="btn btn-primary-rgba" > 
                                             <i class="feather icon-plus mr-2"></i>Add Block And Floor
                                           </button>
                                         
@@ -775,19 +714,21 @@ Tenant - Add Properties
                                 <div class="custom-mode-setting">
                                     
 
-                                   <form id="edit_block_floor" >
+                                   <form id="edit_block_floor_form" >
 
 
                                     {{ csrf_field() }}
 
 
                                      <div class="row align-items-center pb-3">
-                                            <input name="blockname" type="text" class="form-control" placeholder="Block Name"  />
+
+                                      <input name="id" id="blockfloor_id" type="text" hidden  />
+
+                                            <input name="blockname" id="oldblockname" type="text" class=" onlyalphaspace form-control" placeholder="Block Name"  />
                                       </div>
 
                                       <div class="row align-items-center pb-3">
-                                            <input name="floorcount" type="number" class="form-control" placeholder="No. Of Floor" 
-                                            oninput="javascript: if (this.value.length > 6) this.value = this.value.slice(0, 6);" />
+                                            <input name="floorcount" id="oldfloorcount" type="number" class=" floor form-control" placeholder="No. Of Floor" />
                                       </div>
 
                                       <div class="row align-items-center pb-3">
@@ -796,23 +737,29 @@ Tenant - Add Properties
 
                                       <div class="row align-items-center pb-3">
                                              <div class="custom-control custom-checkbox ">
-                                                <input type="checkbox" class="custom-control-input" id="basement" name="basement">
-                                                <label class="custom-control-label" for="basement">Basement</label>
+                                                <input type="checkbox" class="custom-control-input" id="oldbasement" name="basement">
+                                                <label class="custom-control-label" for="oldbasement">Basement</label>
                                             </div>
                                       </div>
 
                                       <div class="row align-items-center pb-3">
                                              <div class="custom-control custom-checkbox ">
-                                                <input type="checkbox" class="custom-control-input" id="terace" name="terace">
-                                                <label class="custom-control-label" for="terace">Terace</label>
+                                                <input type="checkbox" class="custom-control-input" id="oldterrace" name="terrace">
+                                                <label class="custom-control-label" for="oldterrace">Terrace</label>
                                             </div>
+                                      </div>
+                                      
+
+                                      <div class="row align-items-center pb-3">
+                                        <div class="alert alert-danger" align="left" id="edit_block_floor_errors" style="display: none;"> 
+                                          </div>
                                       </div>
                                       
 
                                       <div class="row align-items-center pb-5 pull-right">
 
-                                          <button type="submit" class="btn btn-primary-rgba" > 
-                                            <i class="feather icon-plus mr-2"></i>Edit Details
+                                          <button type="button" id="edit_block_floor" onclick="edit_block_floor_click();" class="btn btn-primary-rgba" > 
+                                            <i class="feather icon-plus mr-2"></i>Edit Block And Floor
                                           </button>
                                         
                                       </div>
@@ -922,59 +869,48 @@ Tenant - Add Properties
 
 
                                      <div class="row align-items-center pb-3">
-                                            <select name="block" class="form-control"   >
+                                            <select name="block" class=" blockchange form-control" >
                                                   <option  value="" selected>Select Block</option>
-                                                  <option  value="">Block A</option>
-                                                  <option  value="">Block B</option>
-                                                  <option  value="">Block C</option>
+                                                            @foreach($blockfloors as $b_f)
+                                                            <option value='{{ $b_f->id }}'>{{ $b_f -> block_name }}</option>
+                                                            @endforeach
+                                            </select>
+                                      </div>
+
+
+                                      <div class="row align-items-center pb-3" id="floorchange_div" style="display: none;" >
+                                            <select name="floor" class=" floorchange form-control"  >
                                             </select>
                                       </div>
 
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="floor" class="form-control"   >
-                                                  <option  value="" selected>Select Floor</option>
-                                                  <option  value="">Basement</option>
-                                                  <option  value="">1</option>
-                                                  <option  value="">2</option>
-                                                  <option  value="">3</option>
-                                                  <option  value="">4</option>
-                                                  <option  value="">5</option>
-                                                  <option  value="">Terace</option>
-                                            </select>
-                                      </div>
-
-
-                                      <div class="row align-items-center pb-3">
-                                            <select name="roomtype" class="form-control"   >
+                                            <select name="room_gender_type" class="form-control"   >
                                                   <option  value="" selected>Room Gender</option>
-                                                  <option  value="">Male</option>
-                                                  <option  value="">Female</option>
-                                                  <option  value="">Co-Living</option>
+                                                            @foreach($room_gender_type as $g_t)
+                                                            <option value='{{ $g_t->id }}'>{{ $g_t -> gender }}</option>
+                                                            @endforeach
                                             </select>
                                       </div>
 
 
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="roomtype" class="form-control"   >
+                                            <select name="room_type" class="form-control"   >
                                                   <option  value="" selected>Room Type</option>
-                                                  <option  value="">Deluxe</option>
-                                                  <option  value="">Semi - Deluxe</option>
-                                                  <option  value="">Luxury</option>
-                                                  <option  value="">General</option>
+                                                            @foreach($room_type as $r_t)
+                                                            <option value='{{ $r_t->id }}'>{{ $r_t -> type }}</option>
+                                                            @endforeach
                                             </select>
                                       </div>
 
 
                                       <div class="row align-items-center pb-3">
-                                            <select name="sharing" class="form-control"   >
+                                            <select name="room_sharing_type" class="form-control"   >
                                                   <option  value="" selected>Sharing Type</option>
-                                                  <option  value="">1</option>
-                                                  <option  value="">2</option>
-                                                  <option  value="">3</option>
-                                                  <option  value="">4</option>
-                                                  <option  value="">5</option>
+                                                            @foreach($room_sharing_type as $s_t)
+                                                            <option value='{{ $s_t->id }}'>{{ $s_t -> sharing }}</option>
+                                                            @endforeach
                                             </select>
                                       </div>
 
@@ -1773,86 +1709,291 @@ Tenant - Add Properties
 @endsection 
 @section('script')
 
+<!-- Datatable js -->
+<script src="{{ asset('assets/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.buttons.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/jszip.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/pdfmake.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/vfs_fonts.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.html5.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.print.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/buttons.colVis.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/dataTables.responsive.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/datatables/responsive.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/js/custom/custom-table-datatable.js') }}"></script>
+
+<script type="text/javascript"> 
+
+
+  // var blockfloor = <?= $blockfloors; ?> ;
+  // console.log(blockfloor);
+
+
+$(document).ready(function() {
+
+  var blockfloor = $('#block_floor').DataTable({
+        "ordering": true,
+        "responsive" : true,
+        "searching": true,
+        "info"     : true,
+        "bFilter": true,
+        "pageLength":5,
+        "drawCallback": function( settings ) {},
+        "order": [[ 0, "desc" ]],
+      });
+
+});
+
+function getblockfloor(id) 
+{
+
+      $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+
+       $.ajax({
+          type: "GET",
+          url: '/editblockfloor',
+          data: { 'id':id },
+          dataType:"json",
+          async:'false',
+          success: function(result) 
+          { 
+            
+              var blockfloor = result.data;
+
+              $('#blockfloor_id').val(blockfloor.id);
+
+              if(blockfloor.have_basement == 1){ $('#oldbasement').prop('checked', true); }
+              else{ $('#oldbasement').prop('checked', false); }
+
+              if(blockfloor.have_terrace == 1){ $('#oldterrace').prop('checked', true); }
+              else{ $('#oldterrace').prop('checked', false); }
+
+              $('#oldblockname').val(blockfloor.block_name);
+              $('#oldfloorcount').val(blockfloor.floor_count);
+
+              $("#infobar-edit-block-floor-sidebar").addClass("sidebarshow");
+
+          }
+       });
+
+}
+
+function add_block_floor_click()
+{
+    var add_block_floor_error = false;
+        
+        $("#add_block_floor_errors").empty().hide();
+        $("#add_block_floor_errors").append("<ul>");
+        if( $('#blockname').val() == "" ) 
+            {  $("#add_block_floor_errors").append("<li>Enter Block Name.</li>").show();  add_block_floor_error = true; }
+        if( $('#floorcount').val() == "" ) 
+            {  $("#add_block_floor_errors").append("<li>Enter Number Of Floor And It Should Be Numeric.</li>").show();  add_block_floor_error = true; }
+        $("#add_block_floor_errors").append("</ul>");
+        if( add_block_floor_error == false ) 
+          { 
+            block_floor_ajax('add'); 
+
+          } 
+
+}
+
+function edit_block_floor_click()
+{
+    var edit_block_floor_error = false;
+        
+        $("#edit_block_floor_errors").empty().hide();
+        $("#edit_block_floor_errors").append("<ul>");
+        if( $('#oldblockname').val() == "" ) 
+            {  $("#edit_block_floor_errors").append("<li>Enter Block Name.</li>").show();  edit_block_floor_error = true; }
+        if( $('#oldfloorcount').val() == "" ) 
+            {  $("#edit_block_floor_errors").append("<li>Enter Number Of Floor And It Should Be Numeric.</li>").show();  edit_block_floor_error = true; }
+        $("#edit_block_floor_errors").append("</ul>");
+        if( edit_block_floor_error == false ) 
+          { 
+            block_floor_ajax('edit'); 
+            
+          } 
+
+}
 
 
 
-<!-- For Editor -->
-
-<!-- Wysiwig js -->
-<!-- <script src="{{ asset('assets/plugins/tinymce/tinymce.min.js') }}"></script> -->
-<!-- Wysiwig js -->
-
-
-<!-- Summernote JS -->
-<script src="{{ asset('assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
-<!-- Summernote JS -->
-
-
-<!-- Code Mirror JS -->
-<!-- <script src="{{ asset('assets/plugins/code-mirror/codemirror.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/htmlmixed.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/css.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/javascript.js') }}"></script>
-<script src="{{ asset('assets/plugins/code-mirror/xml.js') }}"></script> -->
-<!-- Code Mirror JS -->
-
-<script src="{{ asset('assets/js/custom/custom-form-editor.js') }}"></script>
-
-<!-- For Editor -->
-
-
-
-
-
-<script type="text/javascript">
-
-    function Submit1() 
+function block_floor_ajax(type)
     {
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
 
-    function Submit2() 
-    {
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
-
-    function Submit3() 
-    {
-         
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
+      var urlx = new URL(window.location.href);
+      var idx = urlx.searchParams.get("id");
+      var PostURL;
+      var Formdata;
+      var have_basement;
+      var have_terrace
 
 
-    function Submit4() 
-    {
+          if(type=="add")
+          {
+             if( $('#basement').prop('checked') == true ){ have_basement = 1; } else { have_basement = 0; };
+             if( $('#terrace').prop('checked') == true ){ have_terrace = 1; } else { have_terrace = 0; };
 
-         alert( $('.note-editable').text() );
+              document.getElementById("add_block_floor").disabled = true;
+              $("#add_block_floor").html("Please Wait....");
+              PostURL = "/addblockfloor";
+              Formdata =  
+              { 
+                "_token": "{{ csrf_token() }}" ,
+                'id' : idx ,
+                "block_name" : $('#blockname').val() ,
+                "floor_count": $('#floorcount').val() ,
+                "have_basement": have_basement,
+                "have_terrace": have_terrace,
+              } ;
+          }
+
+          if(type=="edit")
+          { 
+
+              if( $('#oldbasement').prop('checked') == true ){ have_basement = 1; } else { have_basement = 0; };
+              if( $('#oldterrace').prop('checked') == true ){ have_terrace = 1; } else { have_terrace = 0; };
+
+              document.getElementById("edit_block_floor").disabled = true;
+              $("#edit_block_floor").html("Please Wait....");
+               PostURL = "/editblockfloor";
+               Formdata =  
+                { 
+                  "_token": "{{ csrf_token() }}" ,
+                  'blockfloor_id' : $('#blockfloor_id').val() ,
+                  "block_name" : $('#oldblockname').val() ,
+                  "floor_count": $('#oldfloorcount').val() ,
+                  "have_basement": have_basement,
+                  "have_terrace": have_terrace,
+                } ;
+
+          }
 
 
-         $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
-         setInterval(function(){ 
-         $(".infobar-settings-sidebar-overlay").css({"background": "transparent", "position": "initial"}); 
-         }, 3000);
-         
-    }
+
+          $.ajax({
+          type: "POST",
+          url: PostURL,
+          data: Formdata,
+          dataType:"json",
+          async:"false",
+          success: function(result) 
+          { 
+              
+              $(".infobar-settings-sidebar-overlay").css({"background": "rgba(0,0,0,0.4)", "position": "fixed"});
+              // $('.menu-hamburger-close').click();
+               if(type=="add")
+              {
+                  document.getElementById("add_block_floor").disabled = false;
+                  $("#add_block_floor").html("Add Block And Floor");
+                  alert("Block And Floor Added Successfully");
+              }
+
+              if(type=="edit")
+              { 
+                  document.getElementById("edit_block_floor").disabled = false;
+                  $("#edit_block_floor").html("Edit User Details");
+                  alert("Block And Floor Details Editted Successfully");
+              }
+              location.reload(); 
+          },
+          error: function(json) 
+          {
+             var error_id ;
+              if(type=="add")
+              {
+                  document.getElementById("add_block_floor").disabled = false;
+                  $("#add_block_floor").html("Add Block And Floor");
+                  error_id = "#add_block_floor_errors";
+              }
+
+              if(type=="edit")
+              { 
+                  document.getElementById("edit_block_floor").disabled = false;
+                  $("#edit_block_floor").html("Edit Block And Floor");
+                  error_id = "#edit_block_floor_errors";                  
+              }
+
+              if(json.status === 422) 
+                {
+                    $(error_id).empty();
+                    $(error_id).append("<ul>");
+                    var errors = json.responseJSON;
+                    $.each(errors['errors'], function (key, value) {  $(error_id).append("<li>"+value+"</li>");  });
+                    $(error_id).append("</ul>").show();
+                } 
+                else { $(error_id).hide();  }
+
+          }
+       });
+
+  }
 
 
 
-    $(document).ready(function() {
-      document.getElementById("propertyname").focus(); 
-    });
+
+$('.blockchange').on('change', function() 
+{
+
+    $('.floorchange').empty();
+    $('#floorchange_div').hide();
+
+      $.ajax({
+          type: "GET",
+          url: '/editblockfloor',  //same data without floor as Basement + 6 + Terrace
+          data: { 'id': this.value },
+          dataType:"json",
+          async:'false',
+          success: function(result) 
+          { 
+            
+              var blockfloor = result.data;
+              
+              $('.floorchange').append('<option  value="" selected>Select Floor</option>'); 
+              
+              if(blockfloor.have_basement == 1){ $('.floorchange').append('<option  value="Basement">Basement</option>'); }
+
+              for($f=1;$f<=blockfloor.floor_count;$f++)
+              { $('.floorchange').append("<option  value="+$f+">"+$f+"</option>"); }
+
+              if(blockfloor.have_terrace == 1){ $('.floorchange').append('<option  value="Terrace">Terrace</option>'); }
+
+              $('#floorchange_div').show();
+
+
+          }
+       });
+
+
+  //   alert("You Selected Block - "+this.value);
+  //   console.log(blockfloor);
+
+  //     for($i=0;$i<blockfloor.length;$i++)
+  //     {
+  //         if(blockfloor[$i]['id'] == this.value)
+  //         {
+              
+
+  // if(blockfloor[$i]['have_basement']==1){  $('.floorchange').append('<option  value="Basement">Basement</option>'); }
+
+  // var floor_count = blockfloor[$i]['floor_count'];
+  // for($f=1;$f<=floor_count.length;$f++)
+  // { $('.floorchange').append('<option  value='+$f+'>'+$f+'</option>'); break; }
+  
+  // if(blockfloor[$i]['have_terrace']==1){  $('.floorchange').append('<option  value="Terrace">Terrace</option>'); }
+                                                  
+
+  //         }
+
+  //     }
+
+});
+
+
+// floorchange
+
 
 </script>
     

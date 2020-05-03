@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 use Response;
 use Storage;
@@ -30,7 +31,7 @@ class AdminPropertyController extends Controller
             if(  $action == "delete" && $id!="" ) // $value != "" for toggle status
             {
                 $business = Property::destroy($id);
-                return redirect('/adminproperty');
+                return Redirect::back();
             }
 
         }
@@ -229,7 +230,7 @@ class AdminPropertyController extends Controller
     {
 
         $id= strip_tags( $req['id'] );
-        if( !is_numeric($id)){  return redirect('/adminproperty');  }
+        if( !is_numeric($id)){  return Response::json(array('status'=>'error', 'errors'=>['Incorrect ID Format.']),422);  }
 
         $file_path = public_path().'/PropertyGallery/'.$req['filename'];
         
@@ -357,7 +358,7 @@ class AdminPropertyController extends Controller
             
 
 $id= strip_tags( $req['idx'] );
-if( !is_numeric($id)){  return redirect('/adminproperty');  }
+if( !is_numeric($id)){  return Response::json(array('status'=>'error', 'errors'=>['Incorrect ID Format.']),422);  }
 $current_gallery = DB::table('property')->select('property_photo_gallery')->where('property.id',$id)->first();
 // $current_gallery = explode( " , " , $current_gallery->property_photo_gallery );
 
@@ -404,19 +405,5 @@ if( $current_gallery->property_photo_gallery != "" )
 
  
     }
-
-
-
-    function propertydetailsget()
-    {
-        return view('admin-properties-details-add-edit');
-    }
-    function propertydetailspost(Request $req)
-    {
-        dd($req);
-        return view('admin-properties-details-add-edit');
-    }
-
-
 
 }

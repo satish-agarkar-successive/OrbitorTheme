@@ -79,7 +79,7 @@ Tenant - Properties
                                 <th>Property Address , State , City , Pincode</th>
                                 <th>Property Amenities</th>
                                 <th>No. Of Bed</th>                
-                                <th>Details</th>                                                   
+                                <th>Inventory</th>                                                   
                                 <th>Action</th>                                        
                               </tr>
                             </thead>
@@ -96,18 +96,12 @@ Tenant - Properties
 <td>{{  $p->bedcount }}</td>
 
 <td>
-    @if( $p->bedcount == 0)
-        <button type="button" onclick="javascript: window.location = '/propertydetails?id={{$p->id}}'; " class="btn btn-warning"> <span class="custom ti-pencil"></span>Add</button>
-    @else
-         <button type="button" onclick="javascript: window.location = '/propertydetails?id={{$p->id}}'; " class="btn btn-info"> <span class="custom ti-pencil"></span>Edit</button>
-    @endif
+        <button type="button" onclick="javascript: window.location = '/propertyinventory?id={{$p->id}}'; " class="btn btn-warning"> <span class="custom ti-plus"></span>Add Inventory</button>
 </td>
 
 <td>
       <div class="btn-group btn-group-sm" style="float: none;">                             
-            
             <button type="button" onclick="javascript: window.location = '/editproperty?id={{$p->id}}'; " class="tabledit-edit-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-pencil"></span></button>
-            
             <button type="button"  data-url="/adminproperty" data-action="delete" data-id="{{$p->id}}" class=" delete tabledit-delete-button btn btn-sm btn-info" style="float: none; margin: 5px;"><span class="ti-trash"></span></button>
       </div>
 </td>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Response;
 use Storage;
 use File;
@@ -45,13 +46,13 @@ class AdminBusinessController extends Controller
                 $business = Business::find($id);
                 $business->business_status = $value;
                 $business->save();
-                return redirect('/adminbusiness');
+                return Redirect::back();
             }
 
             if(  $action == "delete" && $id!="" ) // $value != "" for toggle status
             {
                 $business = Business::destroy($id);
-                return redirect('/adminbusiness');
+                return Redirect::back();
             }
 
         }
