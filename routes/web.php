@@ -8,12 +8,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
-Route::get('/route-cache', function() {
-    $exitCode = Artisan::call('route:cache');
-    $exitCode = Artisan::call('config:cache');
+// Route::get('/route-cache', function() {
+//     $exitCode = Artisan::call('route:cache');
+//     $exitCode = Artisan::call('config:cache');
+//     $exitCode = Artisan::call('cache:clear');
+//     $exitCode = Artisan::call('view:clear');
+//     return 'Routes cache cleared';
+// });
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('config:clear');
     $exitCode = Artisan::call('cache:clear');
-    $exitCode = Artisan::call('view:clear');
-    return 'Routes cache cleared';
+    $exitCode = Artisan::call('config:cache');
+    // $exitCode = Artisan::call('storage:link');
+    return 'DONE'; //Return anything
 });
 
 
