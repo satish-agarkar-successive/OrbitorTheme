@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Contracts\Encryption\DecryptException;
 
+Route::get('/route-cache', function() {
+    $exitCode = Artisan::call('route:cache');
+    $exitCode = Artisan::call('config:cache');
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('view:clear');
+    return 'Routes cache cleared';
+});
 
 
 Route::get('/login', 'LoginLogoutController@index')->name('login');
